@@ -22,11 +22,43 @@ struct ReprojectionError
   // WARNING: When dealing with the AutoDiffCostFunction template parameters,
   // pay attention to the order of the template parameters
   //////////////////////////////////////////////////////////////////////////////////////////
-  
-  //
-  // Add your code here
-  //
-  
+
+  double observed_x;
+  double observed_y;
+
+  ReprojectionError(double obs_x, double obs_y)
+      : observed_x(obs_x), observed_y(obs_y) {}
+
+  template <typename T>
+  bool operator()(const T* const camera, const T* const point, T* residuals) const
+  {
+    // camera[0..2] is the axis-angle rotation; rotate the 3D point.
+    T p[3];
+    ceres::AngleAxisRotatePoint(camera, point, p);
+
+    // camera[3..5] is the translation.
+    p[0] += camera[3];
+    p[1] += camera[4];
+    p[2] += camera[5];
+
+    // Canonical camera (K = identity, no distortion): project by dividing by depth.
+    T predicted_x = p[0] / p[2];
+    T predicted_y = p[1] / p[2];
+
+    residuals[0] = predicted_x - T(observed_x);
+    residuals[1] = predicted_y - T(observed_y);
+
+    return true;
+  }
+
+  // Factory to build an AutoDiffCostFunction. Template parameters order:
+  // <Functor, residual_dim, camera_block_size, point_block_size> = <_, 2, 6, 3>.
+  static ceres::CostFunction* Create(double obs_x, double obs_y)
+  {
+    return new ceres::AutoDiffCostFunction<ReprojectionError, 2, 6, 3>(
+        new ReprojectionError(obs_x, obs_y));
+  }
+
   /////////////////////////////////////////////////////////////////////////////////////////
 };
 
@@ -529,9 +561,47 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
   // init_t_vec; defined above
   /////////////////////////////////////////////////////////////////////////////////////////
 
-  //
-  // Add your code here
-  //
+  // Observations are in canonical coordinates; intrinsics_matrix is identity here, so the
+  // RANSAC threshold is in normalized-pixel units. 0.001 corresponds to ~1 pixel.
+  cv::Mat E = cv::findEssentialMat(points0, points1, intrinsics_matrix,
+                                   cv::RANSAC, 0.999, 0.001, inlier_mask_E);
+  cv::Mat H = cv::findHomography(points0, points1, cv::RANSAC, 0.001, inlier_mask_H);
+
+  int inliers_E = cv::countNonZero(inlier_mask_E);
+  int inliers_H = cv::countNonZero(inlier_mask_H);
+
+  std::cout << "Seed pair (" << seed_pair_idx0 << ", " << seed_pair_idx1
+            << "): inliers E=" << inliers_E << " H=" << inliers_H << std::endl;
+
+  // A homography explaining at least as many matches as the Essential matrix indicates a
+  // planar or purely rotational configuration. Reject such seeds.
+  if (inliers_E <= inliers_H)
+    return false;
+
+  // Recover the relative pose from E. init_r_mat and init_t_vec hold the rotation and
+  // unit-norm translation that map points from seed_pair_idx0 frame to seed_pair_idx1
+  // frame. inlier_mask_E is refined by recoverPose.
+  cv::recoverPose(E, points0, points1, intrinsics_matrix,
+                  init_r_mat, init_t_vec, inlier_mask_E);
+
+  // Since t is unit-norm, its components are direction cosines. A motion is "mainly
+  // sideward" when at least one of |tx|, |ty| is >= 0.5. Reject pairs where both
+  // lateral components are below 0.5 (forward-dominant motion, which yields poor
+  // triangulation baselines).
+  double tx = std::fabs(init_t_vec.at<double>(0));
+  double ty = std::fabs(init_t_vec.at<double>(1));
+  // Sideward threshold (env-tunable for experimentation, default 0.5).
+  // SFM_SIDEWARD: pair is rejected if BOTH |tx| and |ty| are below this value.
+  // Lower values let more pairs through (less strict, may admit forward motion).
+  // Higher values only accept clear lateral motion. Spec wording: "mainly sideward".
+  const char *_envsw = std::getenv("SFM_SIDEWARD");
+  double _sw = _envsw ? std::atof(_envsw) : 0.5;
+  if (tx < _sw && ty < _sw)
+  {
+    std::cout << "Forward-dominant motion (|tx|=" << tx
+              << " |ty|=" << ty << "), rejecting." << std::endl;
+    return false;
+  }
 
   /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -718,9 +788,50 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
             // pt[2] = /*X coordinate of the estimated point */;
             /////////////////////////////////////////////////////////////////////////////////////////
 
-            //
-            // Add your code here
-            //
+            // Build 3x4 projection matrices [R | t] for both cameras from the 6-D pose blocks.
+            cv::Mat r_vec0 = (cv::Mat_<double>(3,1) << cam0_data[0], cam0_data[1], cam0_data[2]);
+            cv::Mat r_vec1 = (cv::Mat_<double>(3,1) << cam1_data[0], cam1_data[1], cam1_data[2]);
+            cv::Mat R0, R1;
+            cv::Rodrigues(r_vec0, R0);
+            cv::Rodrigues(r_vec1, R1);
+
+            cv::Mat t0 = (cv::Mat_<double>(3,1) << cam0_data[3], cam0_data[4], cam0_data[5]);
+            cv::Mat t1 = (cv::Mat_<double>(3,1) << cam1_data[3], cam1_data[4], cam1_data[5]);
+
+            R0.copyTo(proj_mat0(cv::Rect(0, 0, 3, 3)));
+            t0.copyTo(proj_mat0(cv::Rect(3, 0, 1, 3)));
+            R1.copyTo(proj_mat1(cv::Rect(0, 0, 3, 3)));
+            t1.copyTo(proj_mat1(cv::Rect(3, 0, 1, 3)));
+
+            // Pick the canonical 2D observation of pt_idx in each camera.
+            int obs0 = cam_observation_[new_cam_pose_idx][pt_idx];
+            int obs1 = co_iter.second;
+            points0[0] = cv::Point2d(observations_[2*obs0],     observations_[2*obs0 + 1]);
+            points1[0] = cv::Point2d(observations_[2*obs1],     observations_[2*obs1 + 1]);
+
+            cv::triangulatePoints(proj_mat0, proj_mat1, points0, points1, hpoints4D);
+
+            // De-homogenize. Guard against near-zero w to avoid points-at-infinity blow-ups.
+            double w = hpoints4D.at<double>(3, 0);
+            if (std::fabs(w) < 1e-8) continue;
+            double X = hpoints4D.at<double>(0, 0) / w;
+            double Y = hpoints4D.at<double>(1, 0) / w;
+            double Z = hpoints4D.at<double>(2, 0) / w;
+
+            // Cheirality: the point must be in front of both cameras.
+            cv::Mat_<double> pt3d = (cv::Mat_<double>(3,1) << X, Y, Z);
+            cv::Mat_<double> p_in_cam0 = R0 * pt3d + t0;
+            cv::Mat_<double> p_in_cam1 = R1 * pt3d + t1;
+
+            if (p_in_cam0(2,0) > 0.0 && p_in_cam1(2,0) > 0.0)
+            {
+              n_new_pts++;
+              pts_optim_iter_[pt_idx] = 1;
+              double *pt = pointBlockPtr(pt_idx);
+              pt[0] = X;
+              pt[1] = Y;
+              pt[2] = Z;
+            }
 
             /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -779,11 +890,43 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
     // a different seed pair.
     /////////////////////////////////////////////////////////////////////////////////////////
 
-    //
-    // Add your code here
-    //
-    //  if( < reconstruction has diverged > )
-    //    return false;
+    // Two independent divergence checks, both expressed in terms of quantities the
+    // surrounding template code already exposes (max_dist, the cam_pose_optim_iter_ flag,
+    // pts_optim_iter_, and the camera/point parameter blocks).
+
+    // Check 1: catastrophic loss of points. The outlier-rejection block immediately above
+    // sets pts_optim_iter_[i] = -1 for points whose magnitude exceeds max_dist. If almost
+    // every point has been pruned, the reconstruction has collapsed.
+    int n_valid_pts = 0;
+    for (int i_p = 0; i_p < num_points_; i_p++)
+      if (pts_optim_iter_[i_p] > 0) n_valid_pts++;
+    if (n_valid_pts < 10)
+    {
+      std::cout << "Diverged: only " << n_valid_pts << " valid points remain." << std::endl;
+      return false;
+    }
+
+    // Check 2: any registered camera whose translation has been pushed outside the scene
+    // bounding box. The unmodified template code right above already computed max_dist as
+    // 5x the bounding-box diagonal of the registered camera centres, with a floor of 10.0.
+    // After BA, a camera whose translation exceeds max_dist in any axis is geometrically
+    // outside its own scene scale and must therefore have diverged.
+    for (int i_c = 0; i_c < num_cam_poses_; i_c++)
+    {
+      if (cam_pose_optim_iter_[i_c] > 0)
+      {
+        const double *camera = cameraBlockPtr(i_c);
+        if (std::fabs(camera[3]) > max_dist ||
+            std::fabs(camera[4]) > max_dist ||
+            std::fabs(camera[5]) > max_dist)
+        {
+          std::cout << "Diverged: camera " << i_c << " translation ("
+                    << camera[3] << ", " << camera[4] << ", " << camera[5]
+                    << ") outside scene scale " << max_dist << "." << std::endl;
+          return false;
+        }
+      }
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////
   }
@@ -846,10 +989,41 @@ void BasicSfM::bundleAdjustmentIter( int new_cam_idx )
         // where 'a' is a scale parameter (e.g., 1.0 or 2 * max_reproj_err_).
         //////////////////////////////////////////////////////////////////////////////////
 
-        //
-        // Add your code here
-        //
-        
+        // Pointer to the 2D observation (canonical (x, y) pair).
+        double *observation = observations_.data() + (i_obs * 2);
+
+        // Auto-diff cost function for this observation.
+        ceres::CostFunction *cost_function =
+            ReprojectionError::Create(observation[0], observation[1]);
+
+        // Robust loss kernel (env-tunable for experimentation).
+        // SFM_LOSS:  one of {cauchy, huber, null}. Default: cauchy.
+        //   - "null"   -> nullptr, plain least-squares (no kernel).
+        //   - "huber"  -> ceres::HuberLoss(SFM_SCALE * max_reproj_err_).
+        //   - "cauchy" -> ceres::CauchyLoss(SFM_SCALE * max_reproj_err_).
+        // SFM_SCALE: scale factor multiplied by max_reproj_err_. Default: 2.0,
+        //            as suggested by the lab spec hint.
+        ceres::LossFunction *loss_function;
+        {
+          const char *_envloss  = std::getenv("SFM_LOSS");
+          const char *_envscale = std::getenv("SFM_SCALE");
+          std::string _lk = _envloss  ? std::string(_envloss) : std::string("cauchy");
+          double      _sc = _envscale ? std::atof(_envscale)  : 2.0;
+          if      (_lk == "null")  loss_function = nullptr;
+          else if (_lk == "huber") loss_function = new ceres::HuberLoss (_sc * max_reproj_err_);
+          else                     loss_function = new ceres::CauchyLoss(_sc * max_reproj_err_);
+        }
+
+        // Pointers into the contiguous parameter vector.
+        double *camera_block = parameters_.data()
+                               + camera_block_size_ * cam_pose_index_[i_obs];
+        double *point_block  = parameters_.data()
+                               + camera_block_size_ * num_cam_poses_
+                               + point_block_size_  * point_index_[i_obs];
+
+        problem.AddResidualBlock(cost_function, loss_function,
+                                 camera_block, point_block);
+
         /////////////////////////////////////////////////////////////////////////////////////////
 
       }
