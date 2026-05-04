@@ -1,0 +1,1 @@
+!!! Se volete provare il superglue matcher, dovete installare nella macchina virtuale python e scaricare dalla repo ufficiale github (linkata nel pdf del prof) "SuperGlue" network. Altrimenti, i file di input da passare come argomenti del basic_sfm sono dentro la cartella "matching_files"
