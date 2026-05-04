@@ -2,6 +2,10 @@
 
 #include <iostream>
 #include <map>
+#include <fstream>
+#include <stdexcept>
+#include <boost/filesystem.hpp>
+
 
 FeatureMatcher::FeatureMatcher(cv::Mat intrinsics_matrix, cv::Mat dist_coeffs,
                                bool use_modern_features, double focal_scale) :
@@ -74,7 +78,8 @@ void FeatureMatcher::extractFeatures()
       // Remeber to Look-up features colors!
 
       //
-      // Add your code here
+      //keypoints already extracted in python implementation script
+      //external features and matches will be loaded in exhaustiveMatching().
       //
     }
     else
@@ -91,6 +96,123 @@ void FeatureMatcher::extractFeatures()
     }
     /////////////////////////////////////////////////////////////////////////////////////////
   }
+}
+
+//HELPER function to deal with directories and files created by Python script
+static boost::filesystem::path getSuperGlueRootFromImage(const std::string& image_name)
+{
+  
+  boost::filesystem::path image_path(image_name);
+
+  boost::filesystem::path images_folder = image_path.parent_path();
+
+  boost::filesystem::path datasets_folder = images_folder.parent_path();
+
+  std::string images_folder_name = images_folder.filename().string(); //for example images_1, images_2...
+
+  return datasets_folder / ("superglue_" + images_folder_name); //directory contained superglue artifacts
+}
+
+//HELPER function to retrieve features obtained in the external Python script
+static void loadExternalFeaturesForImage(int image_id, const std::vector<std::string>& images_names, std::vector<std::vector<cv::KeyPoint>>& features, std::vector<std::vector<cv::Vec3b>>& feats_colors)
+{
+  // If features for this image are already loaded, do nothing.
+  if (!features[image_id].empty())
+  {
+    return;
+  }
+
+  boost::filesystem::path image_path(images_names[image_id]);
+
+  boost::filesystem::path superglue_root = getSuperGlueRootFromImage(images_names[image_id]);
+
+  std::string imgName = image_path.stem().string();
+
+  boost::filesystem::path feature_file = superglue_root / "features" / (imgName + ".txt");
+
+  std::ifstream file_input(feature_file.string());
+
+  if (!file_input)
+  {
+    throw std::runtime_error(std::string("Cannot open SuperGlue feature file: ") + feature_file.string());
+  }
+
+  int num_features = 0;
+  file_input >> num_features;  //first row of the file containes number of extracted features
+
+  features[image_id].clear();
+  feats_colors[image_id].clear();
+
+  features[image_id].reserve(num_features);
+  feats_colors[image_id].reserve(num_features);
+
+  for (int k = 0; k < num_features; k++)  //process every row of the file
+  {
+    float x, y;
+    int b, g, r;
+
+    file_input >> x >> y >> b >> g >> r;
+
+    features[image_id].emplace_back(cv::Point2f(x, y), 1.0f);
+
+    feats_colors[image_id].emplace_back(static_cast<uchar>(b), static_cast<uchar>(g), static_cast<uchar>(r));
+  }
+
+  std::cout << "Loaded " << features[image_id].size() << " SuperGlue features for image " << image_id << std::endl;
+}
+
+//HELPER function to retrieve matches between img pairs obtained in the external Python script
+static void loadExternalMatchesForPair(int image_i, int image_j, const std::vector<std::string>& images_names, const std::vector<std::vector<cv::KeyPoint>>& features, std::vector<cv::DMatch>& inlier_matches)
+{
+  boost::filesystem::path image_i_path(images_names[image_i]);
+  boost::filesystem::path image_j_path(images_names[image_j]);
+
+  boost::filesystem::path superglue_root = getSuperGlueRootFromImage(images_names[image_i]);
+
+  std::string img_i = image_i_path.stem().string();
+  std::string img_j = image_j_path.stem().string();
+
+  //retrieve file with the matches
+  boost::filesystem::path matches_file = superglue_root / "matches" / (img_i + "_" + img_j + ".txt");
+
+  std::ifstream file_input(matches_file.string());
+
+  if (!file_input)
+  {
+    throw std::runtime_error(std::string("Cannot open SuperGlue matches file: ") + matches_file.string());
+  }
+
+  int num_matches = 0;
+  file_input >> num_matches;
+
+  inlier_matches.clear();
+  inlier_matches.reserve(num_matches);
+
+  for (int k = 0; k < num_matches; k++)
+  {
+    int idx0, idx1;
+    float score;
+
+    file_input >> idx0 >> idx1 >> score;
+
+    // idx0 refers to features[image_i]
+    // idx1 refers to features[image_j]
+    if (idx0 >= 0 && idx0 < static_cast<int>(features[image_i].size()) && idx1 >= 0 && idx1 < static_cast<int>(features[image_j].size()))
+    {
+      cv::DMatch match;
+
+      match.queryIdx = idx0;
+      match.trainIdx = idx1;
+
+      // SuperGlue gives confidence: higher is better.
+      // OpenCV DMatch stores distance: lower is better.
+      match.distance = 1.0f - score;
+
+      inlier_matches.emplace_back(match);
+    }
+  }
+
+  std::cout << "Loaded " << inlier_matches.size() << " SuperGlue matches for images " << image_i << " and " << image_j << std::endl;
 }
 
 void FeatureMatcher::exhaustiveMatching()
@@ -114,11 +236,21 @@ void FeatureMatcher::exhaustiveMatching()
         // geometric verification (Code to be completed (1/7)) is not required,
         // since these networks perform both matching and geometric verification.
         // In this case, you may follow OPTION A or OPTION A (see above).
+        
         /////////////////////////////////////////////////////////////////////////////////////////
+        loadExternalFeaturesForImage(i, images_names_, features_, feats_colors_);
 
-        //
-        // Add your code here
-        //
+        loadExternalFeaturesForImage(j, images_names_, features_, feats_colors_);
+
+        loadExternalMatchesForPair(i, j, images_names_, features_, inlier_matches);
+
+        //Superglue already filtered matches, consider them as final result
+        if (inlier_matches.size() > 5)
+        {
+          setMatches( i, j, inlier_matches);
+        }
+
+        continue;
 
         /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -147,10 +279,51 @@ void FeatureMatcher::exhaustiveMatching()
       // where i,j matched images indices.
       /////////////////////////////////////////////////////////////////////////////////////////
       
-      //
-      // Add your code here
-      //
+      //conversion from DMatch to 2d point type to work with opencv E and H estimation methods
+      std::vector<cv::Point2f> points_i, points_j;
+      
+      for (const auto &m : matches)
+      {
+        points_i.emplace_back(features_[i][m.queryIdx].pt);
+        points_j.emplace_back(features_[j][m.trainIdx].pt);
+      }
 
+      cv::Mat essential_mask, homography_mask;
+      const double threshold = 1.0;
+      
+      //estimate E and H
+      cv::Mat E = cv::findEssentialMat(points_i, points_j, new_intrinsics_matrix_, cv::RANSAC, 0.999, threshold, essential_mask);
+      cv::Mat H = cv::findHomography(points_i, points_j, cv::RANSAC, threshold, homography_mask);
+
+      int essential_inlier_value = cv::countNonZero(essential_mask);
+      int homography_inlier_value = cv::countNonZero(homography_mask);
+
+      //choose best mask between the 2 transformations
+      cv::Mat best_mask;
+      if (essential_inlier_value >= homography_inlier_value)
+      {
+        best_mask = essential_mask;
+      }
+      else
+      {
+        best_mask = homography_mask;
+      }
+
+      //insert in inlier array
+      for (int k=0; k < static_cast<int>(matches.size()); k++)
+      {
+        if (best_mask.at<uchar>(k))
+        {
+          inlier_matches.emplace_back(matches[k]);
+        }
+      }
+
+      if (inlier_matches.size() > 5)
+      {
+        setMatches( i, j, inlier_matches);
+      }
+
+      
       /////////////////////////////////////////////////////////////////////////////////////////
     }
   }
