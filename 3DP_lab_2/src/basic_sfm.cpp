@@ -590,13 +590,7 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
   // triangulation baselines).
   double tx = std::fabs(init_t_vec.at<double>(0));
   double ty = std::fabs(init_t_vec.at<double>(1));
-  // Sideward threshold (env-tunable for experimentation, default 0.5).
-  // SFM_SIDEWARD: pair is rejected if BOTH |tx| and |ty| are below this value.
-  // Lower values let more pairs through (less strict, may admit forward motion).
-  // Higher values only accept clear lateral motion. Spec wording: "mainly sideward".
-  const char *_envsw = std::getenv("SFM_SIDEWARD");
-  double _sw = _envsw ? std::atof(_envsw) : 0.5;
-  if (tx < _sw && ty < _sw)
+  if (tx < 0.5 && ty < 0.5)
   {
     std::cout << "Forward-dominant motion (|tx|=" << tx
               << " |ty|=" << ty << "), rejecting." << std::endl;
@@ -847,6 +841,9 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
       cout << int(cam_pose_optim_iter_[i]) << " ";
     cout<<endl;
 
+    // Snapshot parameters before BA so we can detect divergence afterwards (Task 7/7).
+    std::vector<double> params_before_ba = parameters_;
+
     // Execute an iteration of bundle adjustment
     bundleAdjustmentIter(new_cam_pose_idx );
 
@@ -890,13 +887,8 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
     // a different seed pair.
     /////////////////////////////////////////////////////////////////////////////////////////
 
-    // Two independent divergence checks, both expressed in terms of quantities the
-    // surrounding template code already exposes (max_dist, the cam_pose_optim_iter_ flag,
-    // pts_optim_iter_, and the camera/point parameter blocks).
-
-    // Check 1: catastrophic loss of points. The outlier-rejection block immediately above
-    // sets pts_optim_iter_[i] = -1 for points whose magnitude exceeds max_dist. If almost
-    // every point has been pruned, the reconstruction has collapsed.
+    // Check 1: catastrophic loss of points (the outlier filter above pruned almost
+    // everything). Below 10 surviving points the reconstruction is unsalvageable.
     int n_valid_pts = 0;
     for (int i_p = 0; i_p < num_points_; i_p++)
       if (pts_optim_iter_[i_p] > 0) n_valid_pts++;
@@ -906,25 +898,34 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
       return false;
     }
 
-    // Check 2: any registered camera whose translation has been pushed outside the scene
-    // bounding box. The unmodified template code right above already computed max_dist as
-    // 5x the bounding-box diagonal of the registered camera centres, with a floor of 10.0.
-    // After BA, a camera whose translation exceeds max_dist in any axis is geometrically
-    // outside its own scene scale and must therefore have diverged.
+    // Check 2: average translation displacement of cameras already registered before this
+    // iteration. max_dist (computed above) is 5x the scene bounding-box diagonal with a
+    // floor of 10; dividing by 5 recovers the diagonal itself. We use max(2.0, diag) to
+    // avoid spurious resets on very small early scenes.
+    double total_disp = 0.0;
+    int n_prev = 0;
     for (int i_c = 0; i_c < num_cam_poses_; i_c++)
     {
-      if (cam_pose_optim_iter_[i_c] > 0)
+      if (cam_pose_optim_iter_[i_c] > 0 && i_c != new_cam_pose_idx)
       {
-        const double *camera = cameraBlockPtr(i_c);
-        if (std::fabs(camera[3]) > max_dist ||
-            std::fabs(camera[4]) > max_dist ||
-            std::fabs(camera[5]) > max_dist)
-        {
-          std::cout << "Diverged: camera " << i_c << " translation ("
-                    << camera[3] << ", " << camera[4] << ", " << camera[5]
-                    << ") outside scene scale " << max_dist << "." << std::endl;
-          return false;
-        }
+        const double *cam_now = cameraBlockPtr(i_c);
+        const double *cam_bef = params_before_ba.data() + camera_block_size_ * i_c;
+        double dx = cam_now[3] - cam_bef[3];
+        double dy = cam_now[4] - cam_bef[4];
+        double dz = cam_now[5] - cam_bef[5];
+        total_disp += std::sqrt(dx*dx + dy*dy + dz*dz);
+        n_prev++;
+      }
+    }
+    if (n_prev > 0)
+    {
+      double avg_disp = total_disp / n_prev;
+      double thr = std::max(2.0, max_dist / 5.0);
+      if (avg_disp > thr)
+      {
+        std::cout << "Diverged: avg camera displacement " << avg_disp
+                  << " exceeds threshold " << thr << "." << std::endl;
+        return false;
       }
     }
 
@@ -996,23 +997,12 @@ void BasicSfM::bundleAdjustmentIter( int new_cam_idx )
         ceres::CostFunction *cost_function =
             ReprojectionError::Create(observation[0], observation[1]);
 
-        // Robust loss kernel (env-tunable for experimentation).
-        // SFM_LOSS:  one of {cauchy, huber, null}. Default: cauchy.
-        //   - "null"   -> nullptr, plain least-squares (no kernel).
-        //   - "huber"  -> ceres::HuberLoss(SFM_SCALE * max_reproj_err_).
-        //   - "cauchy" -> ceres::CauchyLoss(SFM_SCALE * max_reproj_err_).
-        // SFM_SCALE: scale factor multiplied by max_reproj_err_. Default: 2.0,
-        //            as suggested by the lab spec hint.
-        ceres::LossFunction *loss_function;
-        {
-          const char *_envloss  = std::getenv("SFM_LOSS");
-          const char *_envscale = std::getenv("SFM_SCALE");
-          std::string _lk = _envloss  ? std::string(_envloss) : std::string("cauchy");
-          double      _sc = _envscale ? std::atof(_envscale)  : 2.0;
-          if      (_lk == "null")  loss_function = nullptr;
-          else if (_lk == "huber") loss_function = new ceres::HuberLoss (_sc * max_reproj_err_);
-          else                     loss_function = new ceres::CauchyLoss(_sc * max_reproj_err_);
-        }
+        // Cauchy loss with scale 2 * max_reproj_err_, as suggested by the spec hint.
+        // Cauchy aggressively damps outlier residuals; we picked it after comparing it
+        // against NULL (plain least-squares) and Huber on both provided datasets, see
+        // section 5.1 of the report.
+        ceres::LossFunction *loss_function =
+            new ceres::CauchyLoss(2.0 * max_reproj_err_);
 
         // Pointers into the contiguous parameter vector.
         double *camera_block = parameters_.data()
