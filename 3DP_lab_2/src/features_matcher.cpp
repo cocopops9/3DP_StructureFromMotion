@@ -257,7 +257,6 @@ void FeatureMatcher::exhaustiveMatching()
       }
       else
       {
-        std::cout<<"Matching image "<<i<<" with image "<<j<<std::endl;
         auto matcher = cv::BFMatcher::create(cv::NORM_HAMMING, true);
         matcher->match(descriptors_[i], descriptors_[j], matches);
       }
