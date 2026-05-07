@@ -5,6 +5,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
+#include <algorithm>
+#include <cmath>
 
 #include <ceres/ceres.h>
 #include <ceres/rotation.h>
@@ -465,6 +467,7 @@ void BasicSfM::solve()
     }
   }
 
+  
   // num_cam_poses_ X num_cam_poses_ matrix to mask already tested seed pairs
   // already_tested_pair(r,c) == 0 -> not tested pair
   // already_tested_pair(r,c) != 0 -> already tested pair
@@ -508,6 +511,315 @@ void BasicSfM::solve()
       std::cout<<"Try to look for a better seed pair"<<std::endl;
     }
   }
+
+  /*
+
+  //////////////////////////// OPTIONAL 1 ////////////////////////////////
+  //...
+  //////////////////////////////////////////////////////////////////////////////////////////////
+
+  struct SeedCandidate
+  {
+    int cam0 = -1;
+    int cam1 = -1;
+
+    int common_observations = 0;
+    int essential_inliers = 0;
+    int homography_inliers = 0;
+    int pose_inliers = 0;
+
+    double lateral_motion = 0.0;
+    double forward_motion = 0.0;
+    double score = -1.0;
+
+    // v triang
+    int valid_triangulated_points = 0;
+    int rejected_cheirality = 0;
+    int rejected_reprojection = 0;
+    double valid_triangulation_ratio = 0.0;
+    double cheirality_ratio = 0.0;
+    
+
+  };
+
+  std::vector<SeedCandidate> seed_candidates;
+
+  const double ransac_threshold = 0.001;
+  const int min_common_observations = 8;
+  const int min_pose_inliers = 8;
+
+  // Canonical camera: observations are already normalized.
+  cv::Mat_<double> intrinsics_matrix = cv::Mat_<double>::eye(3, 3);
+
+  for (int r = 0; r < num_cam_poses_; r++)
+  {
+    for (int c = r + 1; c < num_cam_poses_; c++)
+    {
+      if (corr(r, c) < min_common_observations)
+        continue;
+
+      std::vector<cv::Point2d> points0, points1;
+      points0.reserve(corr(r, c));
+      points1.reserve(corr(r, c));
+
+      // Collect common observations between camera r and camera c.
+      for (auto const& co_iter : cam_observation_[r])
+      {
+        const int pt_idx = co_iter.first;
+
+        auto obs_c = cam_observation_[c].find(pt_idx);
+        if (obs_c != cam_observation_[c].end())
+        {
+          const int obs_r_idx = co_iter.second;
+          const int obs_c_idx = obs_c->second;
+
+          points0.emplace_back(observations_[2 * obs_r_idx], observations_[2 * obs_r_idx + 1]);
+
+          points1.emplace_back(observations_[2 * obs_c_idx], observations_[2 * obs_c_idx + 1]);
+        }
+      }
+
+      if (points0.size() < min_common_observations)
+        continue;
+
+      cv::Mat inlier_mask_E, inlier_mask_H;
+
+      cv::Mat E = cv::findEssentialMat(points0, points1, intrinsics_matrix, cv::RANSAC, 0.999, ransac_threshold, inlier_mask_E);
+
+      if (E.empty() || inlier_mask_E.empty())
+        continue;
+
+      cv::Mat H = cv::findHomography(points0, points1, cv::RANSAC, ransac_threshold, inlier_mask_H);
+
+      const int inliers_E = cv::countNonZero(inlier_mask_E);
+      const int inliers_H = (!H.empty() && !inlier_mask_H.empty()) ? cv::countNonZero(inlier_mask_H) : 0;
+
+      // If H explains the pair almost as well as E, the pair is likely planar
+      // or close to a pure rotation, so it is not ideal for SfM initialization.
+      if (inliers_E <= inliers_H)
+        continue;
+
+      cv::Mat R, t;
+      cv::Mat recover_mask = inlier_mask_E.clone();
+
+      const int pose_inliers = cv::recoverPose(E, points0, points1, intrinsics_matrix, R, t, recover_mask);
+
+      if (pose_inliers < min_pose_inliers)
+        continue;
+
+      const double tx = std::fabs(t.at<double>(0, 0));
+      const double ty = std::fabs(t.at<double>(1, 0));
+      const double tz = std::fabs(t.at<double>(2, 0));
+
+      const double lateral_motion = std::sqrt(tx * tx + ty * ty);
+      const double forward_motion = tz;
+
+      // Keep the same idea used in the basic reconstruction: a mostly forward
+      // translation gives a weak triangulation baseline.
+      if (tx < 0.5 && ty < 0.5)
+        continue;
+      
+
+      //v triang 
+      // Evaluate the quality of the initial triangulation for this candidate seed pair.
+      // This makes the score depend not only on two-view model inliers, but also on
+      // how many valid 3D points can actually be initialized from the pair.
+      cv::Mat_<double> proj_mat0 = cv::Mat_<double>::zeros(3, 4);
+      cv::Mat_<double> proj_mat1 = cv::Mat_<double>::zeros(3, 4);
+      cv::Mat hpoints4D;
+
+      proj_mat0(0,0) = 1.0;
+      proj_mat0(1,1) = 1.0;
+      proj_mat0(2,2) = 1.0;
+
+      R.copyTo(proj_mat1(cv::Rect(0, 0, 3, 3)));
+      t.copyTo(proj_mat1(cv::Rect(3, 0, 1, 3)));
+
+      cv::triangulatePoints(proj_mat0, proj_mat1, points0, points1, hpoints4D);
+
+      int valid_triangulated_points = 0;
+      int rejected_cheirality = 0;
+      int rejected_reprojection = 0;
+      int pose_inliers_checked = 0;
+
+      for (int k = 0; k < hpoints4D.cols; k++)
+      {
+        if (!recover_mask.at<unsigned char>(k))
+          continue;
+
+        pose_inliers_checked++;
+
+        const double w = hpoints4D.at<double>(3, k);
+        if (std::fabs(w) < 1e-8){
+          rejected_reprojection++;
+          continue;
+        }
+
+        const double X = hpoints4D.at<double>(0, k) / w;
+        const double Y = hpoints4D.at<double>(1, k) / w;
+        const double Z = hpoints4D.at<double>(2, k) / w;
+
+        if (Z <= 0.0) {
+          rejected_cheirality++;
+          continue;
+        }
+
+        cv::Mat_<double> pt0 = (cv::Mat_<double>(3,1) << X, Y, Z);
+        cv::Mat_<double> pt1 = R * pt0 + t;
+
+        if (pt1(2,0) <= 0.0){
+          rejected_cheirality++;
+          continue;
+        }
+
+        cv::Point2d reproj0(X / Z, Y / Z);
+        cv::Point2d reproj1(pt1(0,0) / pt1(2,0), pt1(1,0) / pt1(2,0));
+
+        if (cv::norm(reproj0 - points0[k]) < max_reproj_err_ && cv::norm(reproj1 - points1[k]) < max_reproj_err_){
+          valid_triangulated_points++;
+        }
+        else {
+          rejected_reprojection++;
+        }
+      }
+
+      const double valid_triangulation_ratio = pose_inliers_checked > 0
+              ? static_cast<double>(valid_triangulated_points) / static_cast<double>(pose_inliers_checked) : 0.0;
+
+      const double cheirality_ratio = pose_inliers_checked > 0
+              ? static_cast<double>(rejected_cheirality) / static_cast<double>(pose_inliers_checked) : 1.0;
+      //v triang   
+
+
+      SeedCandidate candidate;
+      candidate.cam0 = r;
+      candidate.cam1 = c;
+      candidate.common_observations = static_cast<int>(points0.size());
+      candidate.essential_inliers = inliers_E;
+      candidate.homography_inliers = inliers_H;
+      candidate.pose_inliers = pose_inliers;
+      candidate.lateral_motion = lateral_motion;
+      candidate.forward_motion = forward_motion;
+
+      // triang 
+      candidate.valid_triangulated_points = valid_triangulated_points;
+      candidate.rejected_cheirality = rejected_cheirality;
+      candidate.rejected_reprojection = rejected_reprojection;
+      candidate.valid_triangulation_ratio = valid_triangulation_ratio;
+      candidate.cheirality_ratio = cheirality_ratio;
+      
+
+     // Score:     
+      candidate.score =
+          3.0 * static_cast<double>(pose_inliers)
+        + 1.0 * static_cast<double>(candidate.common_observations)
+        + 1.0 * static_cast<double>(inliers_E - inliers_H)
+        + 100.0 * lateral_motion
+        - 50.0 * forward_motion;
+     
+    // v triang
+      candidate.score =
+          3.0 * static_cast<double>(valid_triangulated_points)
+        + 1.0 * static_cast<double>(pose_inliers)
+        + 0.5 * static_cast<double>(candidate.common_observations)
+        + 1.0 * static_cast<double>(inliers_E - inliers_H)
+        + 100.0 * lateral_motion
+        - 100.0 * cheirality_ratio;        
+ 
+      seed_candidates.push_back(candidate);
+    }
+  }
+
+  std::sort(seed_candidates.begin(), seed_candidates.end(), [](const SeedCandidate& a, const SeedCandidate& b) {return a.score > b.score;});
+
+  if (seed_candidates.empty())
+  {
+    std::cout << "No seed pair found with the alternative seed selection, exiting" << std::endl;
+    return;
+  }
+
+  std::cout << "Alternative seed selection candidates:" << std::endl;
+  const int num_to_print = std::min<int>(10, seed_candidates.size());
+
+  for (int i = 0; i < num_to_print; i++)
+  {
+    const SeedCandidate& candidate = seed_candidates[i];
+
+    std::cout << "  rank " << i + 1
+              << " pair (" << candidate.cam0 << ", " << candidate.cam1 << ")"
+
+              //v triang 
+              << " tri=" << candidate.valid_triangulated_points
+              << " cheir=" << candidate.rejected_cheirality
+              << " repr=" << candidate.rejected_reprojection
+              << " valid_ratio=" << candidate.valid_triangulation_ratio
+              << " cheir_ratio=" << candidate.cheirality_ratio
+
+              << " common=" << candidate.common_observations
+              << " E=" << candidate.essential_inliers
+              << " H=" << candidate.homography_inliers
+              << " pose=" << candidate.pose_inliers
+              << " lateral=" << candidate.lateral_motion
+              << " forward=" << candidate.forward_motion
+              << " score=" << candidate.score << std::endl;
+  }
+
+  for (const SeedCandidate& candidate : seed_candidates)
+  {
+    std::cout << "Trying alternative seed pair ("
+              << candidate.cam0 << ", " << candidate.cam1 << ")"
+              << " score=" << candidate.score << std::endl;
+
+    if (incrementalReconstruction(candidate.cam0, candidate.cam1))
+    {
+      std::cout << "Recostruction completed, exiting" << std::endl;
+      return;
+    }
+
+    std::cout << "Alternative seed pair failed, trying next candidate" << std::endl;
+  }
+// triang
+  for (const SeedCandidate& candidate : seed_candidates)
+  {
+    std::cout << "\n[SEED_TRY] pair=("
+            << candidate.cam0 << ", " << candidate.cam1 << ")"
+            << " score=" << candidate.score
+            << " common=" << candidate.common_observations
+            << " E=" << candidate.essential_inliers
+            << " H=" << candidate.homography_inliers
+            << " pose=" << candidate.pose_inliers
+            << " tri=" << candidate.valid_triangulated_points
+            << " cheir=" << candidate.rejected_cheirality
+            << " valid_ratio=" << candidate.valid_triangulation_ratio
+            << " cheir_ratio=" << candidate.cheirality_ratio
+            << " lateral=" << candidate.lateral_motion
+            << " forward=" << candidate.forward_motion
+            << std::endl;
+//
+
+    const bool reconstruction_ok =
+        incrementalReconstruction(candidate.cam0, candidate.cam1);
+
+    std::cout << "[SEED_RESULT] pair=("
+              << candidate.cam0 << ", " << candidate.cam1 << ")"
+              << " success=" << reconstruction_ok
+              << std::endl;
+
+    if (reconstruction_ok)
+    {
+      std::cout << "Recostruction completed, exiting" << std::endl;
+      return;
+    }
+
+    std::cout << "Alternative seed pair failed, trying next candidate" << std::endl;
+  }
+
+
+  std::cout << "No valid reconstruction found with the alternative seed selection, exiting" << std::endl;
+  return;
+*/
+  //////////////////////////////////////////////////////////////////////////////////////////////
+
 
   //////////////////////////// Code to be completed (OPTIONAL 1) ////////////////////////////////
   // Implement an alternative seed selection strategy. Just comment the basic seed selection
@@ -678,9 +990,39 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
   // First bundle adjustment iteration: here we have only two camera poses, i.e., the seed pair
   bundleAdjustmentIter(new_cam_pose_idx );
 
+  
+  /////////////////////////////////////////////////////////////////////////////////////////
+  // OPTIONAL 2 support data.
+  // Since observations are expressed in normalized canonical coordinates, we compute
+  // a fixed global bounding box over all 2D observations. This is used to assign
+  // observations to grid cells in a consistent way for all candidate cameras.
+  /////////////////////////////////////////////////////////////////////////////////////////
+
+  double obs_min_x = std::numeric_limits<double>::max();
+  double obs_min_y = std::numeric_limits<double>::max();
+  double obs_max_x = -std::numeric_limits<double>::max();
+  double obs_max_y = -std::numeric_limits<double>::max();
+
+  for (int i_obs = 0; i_obs < num_observations_; i_obs++)
+  {
+    const double x = observations_[2 * i_obs];
+    const double y = observations_[2 * i_obs + 1];
+
+    obs_min_x = std::min(obs_min_x, x);
+    obs_min_y = std::min(obs_min_y, y);
+    obs_max_x = std::max(obs_max_x, x);
+    obs_max_y = std::max(obs_max_y, y);
+  }
+
+  const double obs_range_x = std::max(1e-12, obs_max_x - obs_min_x);
+  const double obs_range_y = std::max(1e-12, obs_max_y - obs_min_y);
+
+  
+
   // Start to register new poses and observations...
   for(int iter = 1; iter < num_cam_poses_ - 1; iter++ )
   {
+    /* PROFFFFFFF
     // The vector n_init_pts stores the number of points already being optimized
     // that are projected in a new camera pose when is optimized for the first time
     std::vector<int> n_init_pts(num_cam_poses_, 0);
@@ -710,11 +1052,104 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
         new_cam_pose_idx = i_c;
       }
     }
+    */
 
     //////////////////////////// Code to be completed (OPTIONAL 2) ////////////////////////////////
     // Implement an alternative next best view selection strategy, e.g., the one presented
-    // in class(see Structure From Motion Revisited paper, sec. 4.2). Just comment the basic next
+    // in class (see Structure From Motion Revisited paper, sec. 4.2). Just comment the basic next
     // best view selection strategy implemented above and replace it with yours.
+    /////////////////////////////////////////////////////////////////////////////////////////
+/*
+    VERSIONE 1
+    std::vector<int> n_init_pts(num_cam_poses_, 0);
+    std::vector<double> nbv_score(num_cam_poses_, -1.0);
+    std::vector<int> visibility_score(num_cam_poses_, 0);
+
+    int best_visibility_score = -1;
+    double best_nbv_score = -1.0;
+    new_cam_pose_idx = -1;
+
+    const int grid_resolutions[3] = {2, 4, 8};
+    const double visible_points_weight = 1.0;
+    const double visibility_distribution_weight = 1.0;
+
+    for (int i_c = 0; i_c < num_cam_poses_; i_c++)
+    {
+      if (cam_pose_optim_iter_[i_c] != 0)
+        continue;
+
+      std::vector<cv::Point2d> visible_observations;
+
+      for (int i_p = 0; i_p < num_points_; i_p++)
+      {
+        if (pts_optim_iter_[i_p] > 0 &&
+            cam_observation_[i_c].find(i_p) != cam_observation_[i_c].end())
+        {
+          const int obs_idx = cam_observation_[i_c][i_p];
+
+          visible_observations.emplace_back(
+              observations_[2 * obs_idx],
+              observations_[2 * obs_idx + 1]);
+        }
+      }
+
+      n_init_pts[i_c] = static_cast<int>(visible_observations.size());
+
+      if (n_init_pts[i_c] <= 3)
+        continue;
+
+      int weighted_occupied_cells = 0;
+
+      for (int i_res = 0; i_res < 3; i_res++)
+      {
+        const int res = grid_resolutions[i_res];
+        std::vector<unsigned char> occupied(res * res, 0);
+
+        for (const cv::Point2d& p : visible_observations)
+        {
+          int col = static_cast<int>(
+              std::floor((p.x - obs_min_x) / obs_range_x * static_cast<double>(res)));
+
+          int row = static_cast<int>(
+              std::floor((p.y - obs_min_y) / obs_range_y * static_cast<double>(res)));
+
+          col = std::max(0, std::min(res - 1, col));
+          row = std::max(0, std::min(res - 1, row));
+
+          occupied[row * res + col] = 1;
+        }
+
+        int occupied_cells = 0;
+        for (int i_cell = 0; i_cell < res * res; i_cell++)
+        {
+          if (occupied[i_cell])
+            occupied_cells++;
+        }
+
+        weighted_occupied_cells += res * occupied_cells;
+      }
+
+      visibility_score[i_c] = weighted_occupied_cells;
+
+      nbv_score[i_c] =
+          visible_points_weight * static_cast<double>(n_init_pts[i_c])
+        + visibility_distribution_weight * static_cast<double>(visibility_score[i_c]);
+
+      if (nbv_score[i_c] > best_nbv_score)
+      {
+        best_nbv_score = nbv_score[i_c];
+        best_visibility_score = visibility_score[i_c];
+        new_cam_pose_idx = i_c;
+      }
+    }
+
+    if (new_cam_pose_idx < 0)
+    {
+      std::cout << "No other positions can be optimized, exiting" << std::endl;
+      return false;
+    }
+    */
+
     /////////////////////////////////////////////////////////////////////////////////////////
 
 
