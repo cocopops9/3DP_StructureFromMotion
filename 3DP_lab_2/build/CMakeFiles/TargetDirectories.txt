@@ -1,0 +1,5 @@
+/home/giuseppe/Scrivania/3DP_StructureFromMotion-frenci_with_metrics_3/3DP_StructureFromMotion-frenci/3DP_lab_2/build/CMakeFiles/sfm.dir
+/home/giuseppe/Scrivania/3DP_StructureFromMotion-frenci_with_metrics_3/3DP_StructureFromMotion-frenci/3DP_lab_2/build/CMakeFiles/matcher.dir
+/home/giuseppe/Scrivania/3DP_StructureFromMotion-frenci_with_metrics_3/3DP_StructureFromMotion-frenci/3DP_lab_2/build/CMakeFiles/basic_sfm.dir
+/home/giuseppe/Scrivania/3DP_StructureFromMotion-frenci_with_metrics_3/3DP_StructureFromMotion-frenci/3DP_lab_2/build/CMakeFiles/edit_cache.dir
+/home/giuseppe/Scrivania/3DP_StructureFromMotion-frenci_with_metrics_3/3DP_StructureFromMotion-frenci/3DP_lab_2/build/CMakeFiles/rebuild_cache.dir
