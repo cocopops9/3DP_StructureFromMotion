@@ -167,8 +167,12 @@ void BasicSfM::readFromFile ( const std::string& filename, bool load_initial_gue
   {
     memset(parameters_.data(), 0, num_parameters_*sizeof(double));
     // Masks used to indicate which cameras and points have been optimized so far
-    cam_pose_optim_iter_.resize(num_cam_poses_, 0 );
-    pts_optim_iter_.resize( num_points_, 0 );
+    
+    //AAAAAAAA
+    //cam_pose_optim_iter_.resize(num_cam_poses_, 0 );
+    //pts_optim_iter_.resize( num_points_, 0 );
+    cam_pose_optim_iter_.assign(num_cam_poses_, 0);
+    pts_optim_iter_.assign(num_points_, 0);
   }
 
   fclose(fptr);
@@ -467,7 +471,7 @@ void BasicSfM::solve()
     }
   }
 
-  
+  //PROFFF
   // num_cam_poses_ X num_cam_poses_ matrix to mask already tested seed pairs
   // already_tested_pair(r,c) == 0 -> not tested pair
   // already_tested_pair(r,c) != 0 -> already tested pair
@@ -1059,8 +1063,8 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
     // in class (see Structure From Motion Revisited paper, sec. 4.2). Just comment the basic next
     // best view selection strategy implemented above and replace it with yours.
     /////////////////////////////////////////////////////////////////////////////////////////
-/*
-    VERSIONE 1
+    /*
+    // VERSIONE 1
     std::vector<int> n_init_pts(num_cam_poses_, 0);
     std::vector<double> nbv_score(num_cam_poses_, -1.0);
     std::vector<int> visibility_score(num_cam_poses_, 0);
@@ -1150,6 +1154,120 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
     }
     */
 
+    /////////////////////////////////
+    // VERSIONE 2
+
+    std::vector<int> n_init_pts(num_cam_poses_, 0);
+    std::vector<double> nbv_score(num_cam_poses_, -1.0);
+
+    double best_nbv_score = -1.0;
+    int best_visible_points = -1;
+    new_cam_pose_idx = -1;
+
+    // Paper-like pyramid levels. The paper uses K_l = 2^l and w_l = K_l^2.
+    // With levels {2,4,8}, the weights are {4,16,64}.
+    const int grid_resolutions[3] = {2, 4, 8};
+
+    for (int i_c = 0; i_c < num_cam_poses_; i_c++)
+    {
+      if (cam_pose_optim_iter_[i_c] != 0)
+        continue;
+
+      std::vector<cv::Point2d> visible_observations;
+
+      // Collect the 2D observations of already reconstructed 3D points
+      // seen by the candidate camera.
+      for (int i_p = 0; i_p < num_points_; i_p++)
+      {
+        if (pts_optim_iter_[i_p] > 0 &&
+            cam_observation_[i_c].find(i_p) != cam_observation_[i_c].end())
+        {
+          const int obs_idx = cam_observation_[i_c][i_p];
+
+          visible_observations.emplace_back(
+              observations_[2 * obs_idx],
+              observations_[2 * obs_idx + 1]);
+        }
+      }
+
+      n_init_pts[i_c] = static_cast<int>(visible_observations.size());
+
+      // A PnP pose cannot be estimated reliably with fewer than 4 2D-3D correspondences.
+      if (n_init_pts[i_c] <= 3)
+      {
+        std::cout << "[NBV_PYRAMID] iter=" << iter
+                  << " camera=" << i_c
+                  << " visible=" << n_init_pts[i_c]
+                  << " score=-1 skipped=too_few_points"
+                  << std::endl;
+        continue;
+      }
+
+      double pyramid_score = 0.0;
+
+      for (int i_res = 0; i_res < 3; i_res++)
+      {
+        const int res = grid_resolutions[i_res];
+        std::vector<unsigned char> occupied(res * res, 0);
+
+        for (const cv::Point2d& p : visible_observations)
+        {
+          int col = static_cast<int>(
+              std::floor((p.x - obs_min_x) / obs_range_x * static_cast<double>(res)));
+
+          int row = static_cast<int>(
+              std::floor((p.y - obs_min_y) / obs_range_y * static_cast<double>(res)));
+
+          col = std::max(0, std::min(res - 1, col));
+          row = std::max(0, std::min(res - 1, row));
+
+          occupied[row * res + col] = 1;
+        }
+
+        int occupied_cells = 0;
+        for (int i_cell = 0; i_cell < res * res; i_cell++)
+        {
+          if (occupied[i_cell])
+            occupied_cells++;
+        }
+
+        // Paper-like level weight: w_l = K_l^2.
+        const double level_weight = static_cast<double>(res * res);
+        pyramid_score += level_weight * static_cast<double>(occupied_cells);
+      }
+
+      nbv_score[i_c] = pyramid_score;
+
+      std::cout << "[NBV_PYRAMID] iter=" << iter
+                << " camera=" << i_c
+                << " visible=" << n_init_pts[i_c]
+                << " score=" << nbv_score[i_c]
+                << std::endl;
+
+      // Main criterion: maximum pyramid score.
+      // Tie-breaker: if scores are equal, choose the camera with more visible points.
+      if (nbv_score[i_c] > best_nbv_score ||
+          (nbv_score[i_c] == best_nbv_score && n_init_pts[i_c] > best_visible_points))
+      {
+        best_nbv_score = nbv_score[i_c];
+        best_visible_points = n_init_pts[i_c];
+        new_cam_pose_idx = i_c;
+      }
+    }
+
+    if (new_cam_pose_idx < 0)
+    {
+      std::cout << "No other positions can be optimized, exiting" << std::endl;
+      return false;
+    }
+
+    std::cout << "NBV selected camera " << new_cam_pose_idx
+              << " visible=" << n_init_pts[new_cam_pose_idx]
+              << " pyramid_score=" << best_nbv_score
+              << std::endl;
+
+    /////////////////////////////////////////////////////////////////////////////////////////
+
     /////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -1177,6 +1295,7 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
     // Estimate an initial R,t by using PnP + RANSAC
     cv::solvePnPRansac(scene_pts, img_pts, intrinsics_matrix, cv::Mat(),
                        init_r_vec, init_t_vec, false, 100, max_reproj_err_ );
+
     // ... and add to the pool of optimized camera positions
     initCamParams(new_cam_pose_idx, init_r_vec, init_t_vec);
     cam_pose_optim_iter_[new_cam_pose_idx] = 1;
@@ -1448,6 +1567,30 @@ void BasicSfM::bundleAdjustmentIter( int new_cam_idx )
 
         problem.AddResidualBlock(cost_function, loss_function,
                                  camera_block, point_block);
+
+        //AAAAAAAA
+        double p[3];
+        ceres::AngleAxisRotatePoint(camera_block, point_block, p);
+
+        p[0] += camera_block[3];
+        p[1] += camera_block[4];
+        p[2] += camera_block[5];
+
+        if (!std::isfinite(p[0]) ||
+            !std::isfinite(p[1]) ||
+            !std::isfinite(p[2]) ||
+            std::fabs(p[2]) < 1e-10)
+        {
+          pts_optim_iter_[point_index_[i_obs]] = -1;
+
+          std::cout << "[INVALID_RESIDUAL] obs=" << i_obs
+                    << " cam=" << cam_pose_index_[i_obs]
+                    << " point=" << point_index_[i_obs]
+                    << " depth=" << p[2]
+                    << std::endl;
+
+          continue;
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////
 
