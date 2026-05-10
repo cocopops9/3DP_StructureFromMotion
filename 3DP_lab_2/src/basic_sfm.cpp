@@ -5,8 +5,6 @@
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
-#include <algorithm>
-#include <cmath>
 
 #include <ceres/ceres.h>
 #include <ceres/rotation.h>
@@ -42,6 +40,16 @@ struct ReprojectionError
     p[0] += camera[3];
     p[1] += camera[4];
     p[2] += camera[5];
+
+    // AAAA
+    // Avoid division by zero or near-zero depth. This can happen if an invalid
+    // triangulated point accidentally reaches bundle adjustment.
+    if (p[2] == T(0.0))
+    {
+      residuals[0] = T(1e6);
+      residuals[1] = T(1e6);
+      return true;
+    }
 
     // Canonical camera (K = identity, no distortion): project by dividing by depth.
     T predicted_x = p[0] / p[2];
@@ -167,12 +175,9 @@ void BasicSfM::readFromFile ( const std::string& filename, bool load_initial_gue
   {
     memset(parameters_.data(), 0, num_parameters_*sizeof(double));
     // Masks used to indicate which cameras and points have been optimized so far
+    cam_pose_optim_iter_.resize(num_cam_poses_, 0 );
+    pts_optim_iter_.resize( num_points_, 0 );
     
-    //AAAAAAAA
-    //cam_pose_optim_iter_.resize(num_cam_poses_, 0 );
-    //pts_optim_iter_.resize( num_points_, 0 );
-    cam_pose_optim_iter_.assign(num_cam_poses_, 0);
-    pts_optim_iter_.assign(num_points_, 0);
   }
 
   fclose(fptr);
@@ -471,7 +476,6 @@ void BasicSfM::solve()
     }
   }
 
-  //PROFFF
   // num_cam_poses_ X num_cam_poses_ matrix to mask already tested seed pairs
   // already_tested_pair(r,c) == 0 -> not tested pair
   // already_tested_pair(r,c) != 0 -> already tested pair
@@ -516,12 +520,11 @@ void BasicSfM::solve()
     }
   }
 
-  /*
-
-  //////////////////////////// OPTIONAL 1 ////////////////////////////////
-  //...
+  //////////////////////////// Code to be completed (OPTIONAL 1) ////////////////////////////////
+  // Implement an alternative seed selection strategy. Just comment the basic seed selection
+  // strategy implemented above and replace it with yours.
   //////////////////////////////////////////////////////////////////////////////////////////////
-
+/*
   struct SeedCandidate
   {
     int cam0 = -1;
@@ -535,15 +538,6 @@ void BasicSfM::solve()
     double lateral_motion = 0.0;
     double forward_motion = 0.0;
     double score = -1.0;
-
-    // v triang
-    int valid_triangulated_points = 0;
-    int rejected_cheirality = 0;
-    int rejected_reprojection = 0;
-    double valid_triangulation_ratio = 0.0;
-    double cheirality_ratio = 0.0;
-    
-
   };
 
   std::vector<SeedCandidate> seed_candidates;
@@ -622,78 +616,6 @@ void BasicSfM::solve()
       // translation gives a weak triangulation baseline.
       if (tx < 0.5 && ty < 0.5)
         continue;
-      
-
-      //v triang 
-      // Evaluate the quality of the initial triangulation for this candidate seed pair.
-      // This makes the score depend not only on two-view model inliers, but also on
-      // how many valid 3D points can actually be initialized from the pair.
-      cv::Mat_<double> proj_mat0 = cv::Mat_<double>::zeros(3, 4);
-      cv::Mat_<double> proj_mat1 = cv::Mat_<double>::zeros(3, 4);
-      cv::Mat hpoints4D;
-
-      proj_mat0(0,0) = 1.0;
-      proj_mat0(1,1) = 1.0;
-      proj_mat0(2,2) = 1.0;
-
-      R.copyTo(proj_mat1(cv::Rect(0, 0, 3, 3)));
-      t.copyTo(proj_mat1(cv::Rect(3, 0, 1, 3)));
-
-      cv::triangulatePoints(proj_mat0, proj_mat1, points0, points1, hpoints4D);
-
-      int valid_triangulated_points = 0;
-      int rejected_cheirality = 0;
-      int rejected_reprojection = 0;
-      int pose_inliers_checked = 0;
-
-      for (int k = 0; k < hpoints4D.cols; k++)
-      {
-        if (!recover_mask.at<unsigned char>(k))
-          continue;
-
-        pose_inliers_checked++;
-
-        const double w = hpoints4D.at<double>(3, k);
-        if (std::fabs(w) < 1e-8){
-          rejected_reprojection++;
-          continue;
-        }
-
-        const double X = hpoints4D.at<double>(0, k) / w;
-        const double Y = hpoints4D.at<double>(1, k) / w;
-        const double Z = hpoints4D.at<double>(2, k) / w;
-
-        if (Z <= 0.0) {
-          rejected_cheirality++;
-          continue;
-        }
-
-        cv::Mat_<double> pt0 = (cv::Mat_<double>(3,1) << X, Y, Z);
-        cv::Mat_<double> pt1 = R * pt0 + t;
-
-        if (pt1(2,0) <= 0.0){
-          rejected_cheirality++;
-          continue;
-        }
-
-        cv::Point2d reproj0(X / Z, Y / Z);
-        cv::Point2d reproj1(pt1(0,0) / pt1(2,0), pt1(1,0) / pt1(2,0));
-
-        if (cv::norm(reproj0 - points0[k]) < max_reproj_err_ && cv::norm(reproj1 - points1[k]) < max_reproj_err_){
-          valid_triangulated_points++;
-        }
-        else {
-          rejected_reprojection++;
-        }
-      }
-
-      const double valid_triangulation_ratio = pose_inliers_checked > 0
-              ? static_cast<double>(valid_triangulated_points) / static_cast<double>(pose_inliers_checked) : 0.0;
-
-      const double cheirality_ratio = pose_inliers_checked > 0
-              ? static_cast<double>(rejected_cheirality) / static_cast<double>(pose_inliers_checked) : 1.0;
-      //v triang   
-
 
       SeedCandidate candidate;
       candidate.cam0 = r;
@@ -703,33 +625,16 @@ void BasicSfM::solve()
       candidate.homography_inliers = inliers_H;
       candidate.pose_inliers = pose_inliers;
       candidate.lateral_motion = lateral_motion;
-      candidate.forward_motion = forward_motion;
+      candidate.forward_motion = forward_motion;      
 
-      // triang 
-      candidate.valid_triangulated_points = valid_triangulated_points;
-      candidate.rejected_cheirality = rejected_cheirality;
-      candidate.rejected_reprojection = rejected_reprojection;
-      candidate.valid_triangulation_ratio = valid_triangulation_ratio;
-      candidate.cheirality_ratio = cheirality_ratio;
-      
-
-     // Score:     
+     // Score:   
       candidate.score =
           3.0 * static_cast<double>(pose_inliers)
         + 1.0 * static_cast<double>(candidate.common_observations)
         + 1.0 * static_cast<double>(inliers_E - inliers_H)
         + 100.0 * lateral_motion
-        - 50.0 * forward_motion;
-     
-    // v triang
-      candidate.score =
-          3.0 * static_cast<double>(valid_triangulated_points)
-        + 1.0 * static_cast<double>(pose_inliers)
-        + 0.5 * static_cast<double>(candidate.common_observations)
-        + 1.0 * static_cast<double>(inliers_E - inliers_H)
-        + 100.0 * lateral_motion
-        - 100.0 * cheirality_ratio;        
- 
+        - 50.0 * forward_motion; 
+
       seed_candidates.push_back(candidate);
     }
   }
@@ -751,14 +656,6 @@ void BasicSfM::solve()
 
     std::cout << "  rank " << i + 1
               << " pair (" << candidate.cam0 << ", " << candidate.cam1 << ")"
-
-              //v triang 
-              << " tri=" << candidate.valid_triangulated_points
-              << " cheir=" << candidate.rejected_cheirality
-              << " repr=" << candidate.rejected_reprojection
-              << " valid_ratio=" << candidate.valid_triangulation_ratio
-              << " cheir_ratio=" << candidate.cheirality_ratio
-
               << " common=" << candidate.common_observations
               << " E=" << candidate.essential_inliers
               << " H=" << candidate.homography_inliers
@@ -792,17 +689,11 @@ void BasicSfM::solve()
             << " E=" << candidate.essential_inliers
             << " H=" << candidate.homography_inliers
             << " pose=" << candidate.pose_inliers
-            << " tri=" << candidate.valid_triangulated_points
-            << " cheir=" << candidate.rejected_cheirality
-            << " valid_ratio=" << candidate.valid_triangulation_ratio
-            << " cheir_ratio=" << candidate.cheirality_ratio
             << " lateral=" << candidate.lateral_motion
             << " forward=" << candidate.forward_motion
             << std::endl;
-//
 
-    const bool reconstruction_ok =
-        incrementalReconstruction(candidate.cam0, candidate.cam1);
+    const bool reconstruction_ok = incrementalReconstruction(candidate.cam0, candidate.cam1);
 
     std::cout << "[SEED_RESULT] pair=("
               << candidate.cam0 << ", " << candidate.cam1 << ")"
@@ -822,14 +713,6 @@ void BasicSfM::solve()
   std::cout << "No valid reconstruction found with the alternative seed selection, exiting" << std::endl;
   return;
 */
-  //////////////////////////////////////////////////////////////////////////////////////////////
-
-
-  //////////////////////////// Code to be completed (OPTIONAL 1) ////////////////////////////////
-  // Implement an alternative seed selection strategy. Just comment the basic seed selection
-  // strategy implemented above and replace it with yours.
-  //////////////////////////////////////////////////////////////////////////////////////////////
-
 }
 
 bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1 )
@@ -837,9 +720,11 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
   // Reset all parameters: we are starting a brand new reconstruction from a new seed pair
   memset(parameters_.data(), 0, num_parameters_*sizeof(double));
   // Masks used to indicate which cameras and points have been optimized so far
-  cam_pose_optim_iter_.resize(num_cam_poses_, 0 );
-  pts_optim_iter_.resize( num_points_, 0 );
-
+  //cam_pose_optim_iter_.resize(num_cam_poses_, 0 );
+  //pts_optim_iter_.resize( num_points_, 0 );
+  //AAA
+  cam_pose_optim_iter_.assign(num_cam_poses_, 0);
+  pts_optim_iter_.assign(num_points_, 0);
 
   // Init R,t between the seed pair
   cv::Mat init_r_mat, init_r_vec, init_t_vec;
@@ -897,19 +782,24 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
   // Recover the relative pose from E. init_r_mat and init_t_vec hold the rotation and
   // unit-norm translation that map points from seed_pair_idx0 frame to seed_pair_idx1
   // frame. inlier_mask_E is refined by recoverPose.
-  cv::recoverPose(E, points0, points1, intrinsics_matrix,
-                  init_r_mat, init_t_vec, inlier_mask_E);
+  int valid_seed_points = cv::recoverPose(E, points0, points1, intrinsics_matrix, init_r_mat, init_t_vec, inlier_mask_E);
+                  
+  // Se la triangolazione iniziale produce pochi punti affidabili, scartiamo la coppia.
+  if (valid_seed_points < 50) {
+      std::cout << "Seed pair rejected: poor triangulation, only " 
+                << valid_seed_points << " valid points." << std::endl;
+      return false; 
+  }
 
   // Since t is unit-norm, its components are direction cosines. A motion is "mainly
   // sideward" when at least one of |tx|, |ty| is >= 0.5. Reject pairs where both
   // lateral components are below 0.5 (forward-dominant motion, which yields poor
   // triangulation baselines).
-  double tx = std::fabs(init_t_vec.at<double>(0));
-  double ty = std::fabs(init_t_vec.at<double>(1));
-  if (tx < 0.5 && ty < 0.5)
-  {
-    std::cout << "Forward-dominant motion (|tx|=" << tx
-              << " |ty|=" << ty << "), rejecting." << std::endl;
+  double tx = init_t_vec.at<double>(0,0);
+  double ty = init_t_vec.at<double>(1,0);
+  double tz = init_t_vec.at<double>(2,0);
+  if (std::sqrt(tx*tx + ty*ty) < std::fabs(tz)) {
+    std::cout << "Forward-dominant motion detected, rejecting." << std::endl;
     return false;
   }
 
@@ -993,15 +883,8 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
 
   // First bundle adjustment iteration: here we have only two camera poses, i.e., the seed pair
   bundleAdjustmentIter(new_cam_pose_idx );
-
-  
-  /////////////////////////////////////////////////////////////////////////////////////////
+/*
   // OPTIONAL 2 support data.
-  // Since observations are expressed in normalized canonical coordinates, we compute
-  // a fixed global bounding box over all 2D observations. This is used to assign
-  // observations to grid cells in a consistent way for all candidate cameras.
-  /////////////////////////////////////////////////////////////////////////////////////////
-
   double obs_min_x = std::numeric_limits<double>::max();
   double obs_min_y = std::numeric_limits<double>::max();
   double obs_max_x = -std::numeric_limits<double>::max();
@@ -1020,13 +903,11 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
 
   const double obs_range_x = std::max(1e-12, obs_max_x - obs_min_x);
   const double obs_range_y = std::max(1e-12, obs_max_y - obs_min_y);
-
-  
-
+*/
   // Start to register new poses and observations...
   for(int iter = 1; iter < num_cam_poses_ - 1; iter++ )
   {
-    /* PROFFFFFFF
+    
     // The vector n_init_pts stores the number of points already being optimized
     // that are projected in a new camera pose when is optimized for the first time
     std::vector<int> n_init_pts(num_cam_poses_, 0);
@@ -1056,107 +937,13 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
         new_cam_pose_idx = i_c;
       }
     }
-    */
-
+    
     //////////////////////////// Code to be completed (OPTIONAL 2) ////////////////////////////////
     // Implement an alternative next best view selection strategy, e.g., the one presented
-    // in class (see Structure From Motion Revisited paper, sec. 4.2). Just comment the basic next
+    // in class(see Structure From Motion Revisited paper, sec. 4.2). Just comment the basic next
     // best view selection strategy implemented above and replace it with yours.
     /////////////////////////////////////////////////////////////////////////////////////////
-    /*
-    // VERSIONE 1
-    std::vector<int> n_init_pts(num_cam_poses_, 0);
-    std::vector<double> nbv_score(num_cam_poses_, -1.0);
-    std::vector<int> visibility_score(num_cam_poses_, 0);
-
-    int best_visibility_score = -1;
-    double best_nbv_score = -1.0;
-    new_cam_pose_idx = -1;
-
-    const int grid_resolutions[3] = {2, 4, 8};
-    const double visible_points_weight = 1.0;
-    const double visibility_distribution_weight = 1.0;
-
-    for (int i_c = 0; i_c < num_cam_poses_; i_c++)
-    {
-      if (cam_pose_optim_iter_[i_c] != 0)
-        continue;
-
-      std::vector<cv::Point2d> visible_observations;
-
-      for (int i_p = 0; i_p < num_points_; i_p++)
-      {
-        if (pts_optim_iter_[i_p] > 0 &&
-            cam_observation_[i_c].find(i_p) != cam_observation_[i_c].end())
-        {
-          const int obs_idx = cam_observation_[i_c][i_p];
-
-          visible_observations.emplace_back(
-              observations_[2 * obs_idx],
-              observations_[2 * obs_idx + 1]);
-        }
-      }
-
-      n_init_pts[i_c] = static_cast<int>(visible_observations.size());
-
-      if (n_init_pts[i_c] <= 3)
-        continue;
-
-      int weighted_occupied_cells = 0;
-
-      for (int i_res = 0; i_res < 3; i_res++)
-      {
-        const int res = grid_resolutions[i_res];
-        std::vector<unsigned char> occupied(res * res, 0);
-
-        for (const cv::Point2d& p : visible_observations)
-        {
-          int col = static_cast<int>(
-              std::floor((p.x - obs_min_x) / obs_range_x * static_cast<double>(res)));
-
-          int row = static_cast<int>(
-              std::floor((p.y - obs_min_y) / obs_range_y * static_cast<double>(res)));
-
-          col = std::max(0, std::min(res - 1, col));
-          row = std::max(0, std::min(res - 1, row));
-
-          occupied[row * res + col] = 1;
-        }
-
-        int occupied_cells = 0;
-        for (int i_cell = 0; i_cell < res * res; i_cell++)
-        {
-          if (occupied[i_cell])
-            occupied_cells++;
-        }
-
-        weighted_occupied_cells += res * occupied_cells;
-      }
-
-      visibility_score[i_c] = weighted_occupied_cells;
-
-      nbv_score[i_c] =
-          visible_points_weight * static_cast<double>(n_init_pts[i_c])
-        + visibility_distribution_weight * static_cast<double>(visibility_score[i_c]);
-
-      if (nbv_score[i_c] > best_nbv_score)
-      {
-        best_nbv_score = nbv_score[i_c];
-        best_visibility_score = visibility_score[i_c];
-        new_cam_pose_idx = i_c;
-      }
-    }
-
-    if (new_cam_pose_idx < 0)
-    {
-      std::cout << "No other positions can be optimized, exiting" << std::endl;
-      return false;
-    }
-    */
-
-    /////////////////////////////////
-    // VERSIONE 2
-
+/*
     std::vector<int> n_init_pts(num_cam_poses_, 0);
     std::vector<double> nbv_score(num_cam_poses_, -1.0);
 
@@ -1265,11 +1052,8 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
               << " visible=" << n_init_pts[new_cam_pose_idx]
               << " pyramid_score=" << best_nbv_score
               << std::endl;
-
+*/
     /////////////////////////////////////////////////////////////////////////////////////////
-
-    /////////////////////////////////////////////////////////////////////////////////////////
-
 
     // Now new_cam_pose_idx is the index of the next camera pose to be registered
     // Extract the 3D points that are projected in the new_cam_pose_idx-th pose and that are already registered
@@ -1295,7 +1079,6 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
     // Estimate an initial R,t by using PnP + RANSAC
     cv::solvePnPRansac(scene_pts, img_pts, intrinsics_matrix, cv::Mat(),
                        init_r_vec, init_t_vec, false, 100, max_reproj_err_ );
-
     // ... and add to the pool of optimized camera positions
     initCamParams(new_cam_pose_idx, init_r_vec, init_t_vec);
     cam_pose_optim_iter_[new_cam_pose_idx] = 1;
@@ -1395,9 +1178,6 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
       cout << int(cam_pose_optim_iter_[i]) << " ";
     cout<<endl;
 
-    // Snapshot parameters before BA so we can detect divergence afterwards (Task 7/7).
-    std::vector<double> params_before_ba = parameters_;
-
     // Execute an iteration of bundle adjustment
     bundleAdjustmentIter(new_cam_pose_idx );
 
@@ -1440,48 +1220,123 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
     // be reset. In this case, the function must return false to trigger a restart with
     // a different seed pair.
     /////////////////////////////////////////////////////////////////////////////////////////
-
-    // Check 1: catastrophic loss of points (the outlier filter above pruned almost
-    // everything). Below 10 surviving points the reconstruction is unsalvageable.
-    int n_valid_pts = 0;
-    for (int i_p = 0; i_p < num_points_; i_p++)
-      if (pts_optim_iter_[i_p] > 0) n_valid_pts++;
-    if (n_valid_pts < 10)
-    {
-      std::cout << "Diverged: only " << n_valid_pts << " valid points remain." << std::endl;
-      return false;
-    }
-
-    // Check 2: average translation displacement of cameras already registered before this
-    // iteration. max_dist (computed above) is 5x the scene bounding-box diagonal with a
-    // floor of 10; dividing by 5 recovers the diagonal itself. We use max(2.0, diag) to
-    // avoid spurious resets on very small early scenes.
-    double total_disp = 0.0;
-    int n_prev = 0;
-    for (int i_c = 0; i_c < num_cam_poses_; i_c++)
-    {
-      if (cam_pose_optim_iter_[i_c] > 0 && i_c != new_cam_pose_idx)
-      {
-        const double *cam_now = cameraBlockPtr(i_c);
-        const double *cam_bef = params_before_ba.data() + camera_block_size_ * i_c;
-        double dx = cam_now[3] - cam_bef[3];
-        double dy = cam_now[4] - cam_bef[4];
-        double dz = cam_now[5] - cam_bef[5];
-        total_disp += std::sqrt(dx*dx + dy*dy + dz*dz);
-        n_prev++;
-      }
-    }
-    if (n_prev > 0)
-    {
-      double avg_disp = total_disp / n_prev;
-      double thr = std::max(2.0, max_dist / 5.0);
-      if (avg_disp > thr)
-      {
-        std::cout << "Diverged: avg camera displacement " << avg_disp
-                  << " exceeds threshold " << thr << "." << std::endl;
+    
+    // Controllo 1: Esplosione della scala geometrica
+    // Visto che la baseline iniziale è 1.0, se max_dist diventa enorme, 
+    // la geometria è matematicamente esplosa (divergenza di Ceres).
+    if (max_dist > 100.0) {
+        std::cout << "Diverged: geometry exploded (max_dist = " << max_dist << ")" << std::endl;
         return false;
-      }
     }
+
+    // Controllo 2: Collasso dei punti
+    // Se abbiamo perso quasi tutti i punti a causa degli outlier, scartiamo.
+    int n_valid_pts = 0;
+    for (int i_p = 0; i_p < num_points_; i_p++) {
+        if (pts_optim_iter_[i_p] > 0) n_valid_pts++;
+    }
+    
+    if (n_valid_pts < 10) {
+        std::cout << "Diverged: only " << n_valid_pts << " valid points remain." << std::endl;
+        return false;
+    }
+
+    // Final-iteration metrics (lab spec section 4: comparison tables).
+    // The registration loop runs for iter in [1, num_cam_poses_ - 1), so the
+    // last body execution is at iter == num_cam_poses_ - 2. We compute the
+    // three required quantities (registration success rate, reconstruction
+    // density, average reprojection error) only on that final iteration so
+    // that they reflect the converged state.
+    //
+    // The reprojection error is computed with the same projection model as
+    // the ReprojectionError functor at the top of this file: rotate the 3D
+    // point by camera[0..2] (axis-angle), translate by camera[3..5], then
+    // project by dividing x and y by z. The lab spec asks for the MEAN
+    // geometric error, which is the average over all observations of the
+    // Euclidean distance between observation and projection (not the RMS of
+    // the scalar components, which is a different number).
+    //
+    // The lab spec also asks for the result in pixels, but observations in
+    // test_data*.txt are pre-divided by the calibration matrix K (the matcher
+    // applies obs_norm = K^-1 * obs_pixel before writing the data file), so
+    // residuals come out in normalized canonical coordinates. To recover the
+    // pixel error the focal length used during matching must be supplied at
+    // runtime through the SFM_FOCAL_PX environment variable. If it is set,
+    // the pixel error is printed alongside the normalized error; otherwise
+    // only the normalized error is shown together with a reminder.
+    if (iter == num_cam_poses_ - 2)
+    {
+      int n_registered_cams = 0;
+      for (int i_c = 0; i_c < num_cam_poses_; i_c++)
+      {
+        if (cam_pose_optim_iter_[i_c] > 0)
+          n_registered_cams++;
+      }
+
+      double sum_dist = 0.0;
+      long long n_obs = 0;
+      for (int i_c = 0; i_c < num_cam_poses_; i_c++)
+      {
+        if (cam_pose_optim_iter_[i_c] <= 0)
+          continue;
+
+        const double *cam = cameraBlockPtr(i_c);
+
+        for (auto const &kv : cam_observation_[i_c])
+        {
+          const int i_p = kv.first;
+          if (pts_optim_iter_[i_p] <= 0)
+            continue;
+
+          const double *pt = pointBlockPtr(i_p);
+
+          double rotated[3];
+          ceres::AngleAxisRotatePoint(cam, pt, rotated);
+          const double pz = rotated[2] + cam[5];
+          if (pz <= 0.0 || !std::isfinite(pz))
+            continue;
+          const double px = (rotated[0] + cam[3]) / pz;
+          const double py = (rotated[1] + cam[4]) / pz;
+
+          const int obs_idx = kv.second;
+          const double dx = px - observations_[2 * obs_idx];
+          const double dy = py - observations_[2 * obs_idx + 1];
+          sum_dist += std::sqrt(dx*dx + dy*dy);
+          n_obs += 1;
+        }
+      }
+
+      const double mean_err_norm = (n_obs > 0)
+          ? (sum_dist / static_cast<double>(n_obs))
+          : 0.0;
+
+      const char *focal_env = std::getenv("SFM_FOCAL_PX");
+      const double focal_px = (focal_env != nullptr) ? std::atof(focal_env) : 0.0;
+
+      std::cout << "===== FINAL METRICS =====" << std::endl;
+      std::cout << "Registered cameras  : " << n_registered_cams
+                << " / " << num_cam_poses_
+                << "  (success rate "
+                << (100.0 * n_registered_cams / num_cam_poses_) << " %)"
+                << std::endl;
+      std::cout << "Valid 3D points     : " << n_valid_pts << std::endl;
+      if (focal_px > 0.0)
+      {
+        std::cout << "Mean reprojection err: " << (mean_err_norm * focal_px)
+                  << " px  (focal = " << focal_px << " px)" << std::endl;
+      }
+      else
+      {
+        std::cout << "Mean reprojection err: " << mean_err_norm
+                  << " (normalized image units)" << std::endl;
+        std::cout << "  set SFM_FOCAL_PX=<focal length in pixels>"
+                  << " before running to print pixel error directly"
+                  << std::endl;
+      }
+      std::cout << "=========================" << std::endl;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////
 
     /////////////////////////////////////////////////////////////////////////////////////////
   }
@@ -1551,12 +1406,23 @@ void BasicSfM::bundleAdjustmentIter( int new_cam_idx )
         ceres::CostFunction *cost_function =
             ReprojectionError::Create(observation[0], observation[1]);
 
-        // Cauchy loss with scale 2 * max_reproj_err_, as suggested by the spec hint.
-        // Cauchy aggressively damps outlier residuals; we picked it after comparing it
-        // against NULL (plain least-squares) and Huber on both provided datasets, see
-        // section 5.1 of the report.
-        ceres::LossFunction *loss_function =
-            new ceres::CauchyLoss(2.0 * max_reproj_err_);
+        // Robust loss kernel (env-tunable for experimentation).
+        // SFM_LOSS:  one of {cauchy, huber, null}. Default: cauchy.
+        //   - "null"   -> nullptr, plain least-squares (no kernel).
+        //   - "huber"  -> ceres::HuberLoss(SFM_SCALE * max_reproj_err_).
+        //   - "cauchy" -> ceres::CauchyLoss(SFM_SCALE * max_reproj_err_).
+        // SFM_SCALE: scale factor multiplied by max_reproj_err_. Default: 2.0,
+        //            as suggested by the lab spec hint.
+        ceres::LossFunction *loss_function;
+        {
+          const char *_envloss  = std::getenv("SFM_LOSS");
+          const char *_envscale = std::getenv("SFM_SCALE");
+          std::string _lk = _envloss  ? std::string(_envloss) : std::string("cauchy");
+          double      _sc = _envscale ? std::atof(_envscale)  : 2.0;
+          if      (_lk == "null")  loss_function = nullptr;
+          else if (_lk == "huber") loss_function = new ceres::HuberLoss (_sc * max_reproj_err_);
+          else                     loss_function = new ceres::CauchyLoss(_sc * max_reproj_err_);
+        }
 
         // Pointers into the contiguous parameter vector.
         double *camera_block = parameters_.data()
@@ -1567,30 +1433,6 @@ void BasicSfM::bundleAdjustmentIter( int new_cam_idx )
 
         problem.AddResidualBlock(cost_function, loss_function,
                                  camera_block, point_block);
-
-        //AAAAAAAA
-        double p[3];
-        ceres::AngleAxisRotatePoint(camera_block, point_block, p);
-
-        p[0] += camera_block[3];
-        p[1] += camera_block[4];
-        p[2] += camera_block[5];
-
-        if (!std::isfinite(p[0]) ||
-            !std::isfinite(p[1]) ||
-            !std::isfinite(p[2]) ||
-            std::fabs(p[2]) < 1e-10)
-        {
-          pts_optim_iter_[point_index_[i_obs]] = -1;
-
-          std::cout << "[INVALID_RESIDUAL] obs=" << i_obs
-                    << " cam=" << cam_pose_index_[i_obs]
-                    << " point=" << point_index_[i_obs]
-                    << " depth=" << p[2]
-                    << std::endl;
-
-          continue;
-        }
 
         /////////////////////////////////////////////////////////////////////////////////////////
 
