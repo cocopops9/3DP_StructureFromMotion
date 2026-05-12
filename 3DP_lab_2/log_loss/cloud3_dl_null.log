@@ -1,0 +1,160 @@
+Header: 17 7752 43803
+Seed pair (2, 3): inliers E=1565 H=364
+camera[2]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[3]
+{
+	 r_vec : (0.0082987, 0.134075, 0.0358334)
+	 t_vec : (-0.998425, 0.0560987, -0.0011509)
+}
+****************** OPTIM FOUND 7 OUTLIERS : redoing optim!!
+camera[3]
+{
+	 r_vec : (0.00626595, 0.122188, 0.0352926)
+	 t_vec : (-0.894422, 0.0435336, -0.0927936)
+}
+ADDED 2 new points
+Using 3 over 17 cameras
+0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 1040 points : redoing optim!!
+camera[15]
+{
+	 r_vec : (0.589123, 0.251802, -3.03381)
+	 t_vec : (2.59091, 1.65118, -16.4388)
+}
+ADDED 948 new points
+Using 4 over 17 cameras
+0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 478 points : redoing optim!!
+camera[14]
+{
+	 r_vec : (-0.00145279, 0.0759386, 0.0255533)
+	 t_vec : (-0.195566, -0.265775, 0.39587)
+}
+ADDED 602 new points
+Using 5 over 17 cameras
+0 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 192 points : redoing optim!!
+****************** OPTIM FOUND 7 OUTLIERS : redoing optim!!
+camera[1]
+{
+	 r_vec : (-0.0116903, -0.0292689, -0.0116807)
+	 t_vec : (0.691514, -0.0415312, -0.255221)
+}
+ADDED 407 new points
+Using 6 over 17 cameras
+0 1 1 1 0 0 0 0 0 0 0 0 0 1 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 62 points : redoing optim!!
+camera[13]
+{
+	 r_vec : (-0.00303104, 0.0079302, 0.00163818)
+	 t_vec : (0.259979, -0.287726, 0.416584)
+}
+ADDED 387 new points
+Using 7 over 17 cameras
+0 1 1 1 0 0 0 0 0 0 0 0 1 1 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 17 points : redoing optim!!
+****************** OPTIM FOUND 26 OUTLIERS : redoing optim!!
+camera[12]
+{
+	 r_vec : (-0.00607124, -0.0169637, -0.00754768)
+	 t_vec : (0.678149, -0.327372, 0.43117)
+}
+ADDED 0 new points
+Using 8 over 17 cameras
+1 1 1 1 0 0 0 0 0 0 0 0 1 1 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 754 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (-0.0229562, 2.07212, -2.37507)
+	 t_vec : (-0.892257, 7.7731, -12.6533)
+}
+ADDED 256 new points
+Using 9 over 17 cameras
+1 1 1 1 0 0 0 0 0 0 0 0 1 1 1 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 145 points : redoing optim!!
+camera[16]
+{
+	 r_vec : (0.0043434, 0.174269, 0.0614167)
+	 t_vec : (-1.07903, -0.279163, 0.55077)
+}
+ADDED 326 new points
+Using 10 over 17 cameras
+1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 173 points : redoing optim!!
+camera[11]
+{
+	 r_vec : (-0.0114401, -0.0275207, -0.0115938)
+	 t_vec : (1.06878, -0.36124, 0.393083)
+}
+ADDED 385 new points
+Using 11 over 17 cameras
+1 1 1 1 1 0 0 0 0 0 0 1 1 1 1 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 274 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (-0.0116786, -0.0264022, -0.0122521)
+	 t_vec : (1.27311, -0.136245, -0.0661784)
+}
+ADDED 314 new points
+Using 12 over 17 cameras
+1 1 1 1 1 0 0 0 0 0 1 1 1 1 1 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 167 points : redoing optim!!
+camera[10]
+{
+	 r_vec : (-0.0107332, -0.0385943, -0.0204433)
+	 t_vec : (1.45502, -0.360528, 0.313604)
+}
+ADDED 271 new points
+Using 13 over 17 cameras
+1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 77 points : redoing optim!!
+camera[9]
+{
+	 r_vec : (-0.0123147, -0.0454554, -0.0234767)
+	 t_vec : (1.85845, -0.367406, 0.351768)
+}
+ADDED 479 new points
+Using 14 over 17 cameras
+1 1 1 1 1 1 0 0 0 1 1 1 1 1 1 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 50 points : redoing optim!!
+camera[5]
+{
+	 r_vec : (-0.0144917, -0.0276682, -0.019536)
+	 t_vec : (2.28158, -0.243223, -0.0399702)
+}
+ADDED 657 new points
+Using 15 over 17 cameras
+1 1 1 1 1 1 1 0 0 1 1 1 1 1 1 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 17 points : redoing optim!!
+camera[6]
+{
+	 r_vec : (-0.0194714, -0.0741954, -0.0400333)
+	 t_vec : (2.68901, -0.335623, 0.119293)
+}
+ADDED 445 new points
+Using 16 over 17 cameras
+1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 6 points : redoing optim!!
+camera[7]
+{
+	 r_vec : (-0.020289, -0.133191, -0.066917)
+	 t_vec : (2.93684, -0.435838, 0.345195)
+}
+ADDED 124 new points
+Using 17 over 17 cameras
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+camera[8]
+{
+	 r_vec : (-0.0213976, -0.184129, -0.0948007)
+	 t_vec : (3.51654, -0.559767, 0.56678)
+}
+===== FINAL METRICS =====
+Registered cameras  : 17 / 17  (success rate 100 %)
+Valid 3D points     : 3653
+Mean reprojection err: 1.28925 px  (focal = 1296 px)
+=========================
+Recostruction completed, exiting

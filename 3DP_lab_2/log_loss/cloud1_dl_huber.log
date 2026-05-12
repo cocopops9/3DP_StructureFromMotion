@@ -1,0 +1,225 @@
+Header: 9 7416 37746
+Seed pair (0, 8): inliers E=2136 H=220
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[8]
+{
+	 r_vec : (0.0148112, 0.0196042, 0.00580111)
+	 t_vec : (-0.228565, 0.972435, -0.0461285)
+}
+camera[8]
+{
+	 r_vec : (0.0149313, 0.02023, 0.00535649)
+	 t_vec : (-0.252568, 0.974068, -0.0357868)
+}
+ADDED 2023 new points
+Using 3 over 9 cameras
+1 0 0 0 1 0 0 0 1 
+****************** OPTIM FOUND 8 OUTLIERS : redoing optim!!
+camera[4]
+{
+	 r_vec : (-0.0326903, -0.026392, -0.0163745)
+	 t_vec : (0.748514, 0.187203, 0.605771)
+}
+Diverged: only 0 valid points remain.
+Try to look for a better seed pair
+Seed pair (0, 4): inliers E=2300 H=331
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[4]
+{
+	 r_vec : (-0.0333912, -0.0215442, -0.0184488)
+	 t_vec : (0.727, 0.191648, 0.65935)
+}
+camera[4]
+{
+	 r_vec : (-0.0335366, -0.0218192, -0.0182708)
+	 t_vec : (0.753171, 0.185683, 0.657873)
+}
+ADDED 1922 new points
+Using 3 over 9 cameras
+1 0 0 0 1 0 0 0 1 
+****************** OPTIM FOUND 10 OUTLIERS : redoing optim!!
+camera[8]
+{
+	 r_vec : (0.0105794, 0.0236786, 0.00282441)
+	 t_vec : (-0.286542, 0.96188, 0.00828317)
+}
+Diverged: only 0 valid points remain.
+Try to look for a better seed pair
+Seed pair (1, 5): inliers E=1958 H=297
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (4, 8): inliers E=1538 H=151
+camera[4]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[8]
+{
+	 r_vec : (0.0450333, 0.0525861, 0.0224847)
+	 t_vec : (-0.768726, 0.519974, -0.372408)
+}
+camera[8]
+{
+	 r_vec : (0.0451356, 0.0516566, 0.0220428)
+	 t_vec : (-0.765882, 0.521118, -0.373928)
+}
+ADDED 2858 new points
+Using 3 over 9 cameras
+1 0 0 0 1 0 0 0 1 
+****************** OPTIM FOUND 9 OUTLIERS : redoing optim!!
+camera[0]
+{
+	 r_vec : (0.0333625, 0.0265317, 0.0175898)
+	 t_vec : (-0.543914, -0.116269, -0.368909)
+}
+ADDED 0 new points
+Using 4 over 9 cameras
+1 0 0 0 1 0 0 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 410 points : redoing optim!!
+camera[7]
+{
+	 r_vec : (0.425439, 0.899846, -2.96862)
+	 t_vec : (3.35991, 4.56885, -18.3194)
+}
+ADDED 0 new points
+Using 5 over 9 cameras
+1 0 1 0 1 0 0 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 104 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (-0.581384, -0.812428, 2.98496)
+	 t_vec : (2.78363, 4.19406, -16.1825)
+}
+ADDED 1 new points
+Using 6 over 9 cameras
+1 0 1 0 1 1 0 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 45 points : redoing optim!!
+camera[5]
+{
+	 r_vec : (0.425314, 0.882746, -3.00063)
+	 t_vec : (15.1023, -3.17931, -32.9593)
+}
+Diverged: geometry exploded (max_dist = 189.108)
+Try to look for a better seed pair
+Seed pair (5, 6): inliers E=1881 H=261
+camera[5]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[6]
+{
+	 r_vec : (-0.0120124, 0.00714681, -0.00500498)
+	 t_vec : (-0.907403, 0.0769388, 0.413159)
+}
+camera[6]
+{
+	 r_vec : (-0.0112551, 0.00898139, -0.00485854)
+	 t_vec : (-0.921672, 0.0983169, 0.441814)
+}
+ADDED 2044 new points
+Using 3 over 9 cameras
+0 1 0 0 0 1 1 0 0 
+camera[1]
+{
+	 r_vec : (-0.00233543, -0.0893044, -0.011466)
+	 t_vec : (1.08956, -0.177849, -0.843173)
+}
+Diverged: only 0 valid points remain.
+Try to look for a better seed pair
+Seed pair (5, 7): inliers E=1801 H=376
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (1, 7): inliers E=1622 H=267
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (1, 6): inliers E=1529 H=148
+camera[1]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[6]
+{
+	 r_vec : (-0.00675591, 0.0941617, 0.00368328)
+	 t_vec : (-0.763634, 0.14955, 0.628091)
+}
+camera[6]
+{
+	 r_vec : (-0.00677838, 0.096724, 0.00403605)
+	 t_vec : (-0.783719, 0.149313, 0.640234)
+}
+ADDED 2407 new points
+Using 3 over 9 cameras
+0 1 0 0 0 1 1 0 0 
+****************** OPTIM FOUND 7 OUTLIERS : redoing optim!!
+camera[5]
+{
+	 r_vec : (0.00128653, 0.0866067, 0.00940043)
+	 t_vec : (-0.35421, 0.0687559, 0.483628)
+}
+ADDED 724 new points
+Using 4 over 9 cameras
+0 1 0 0 0 1 1 1 0 
+camera[7]
+{
+	 r_vec : (-0.017767, 0.0930708, 0.00814122)
+	 t_vec : (-0.169957, 0.266932, 0.84711)
+}
+ADDED 514 new points
+Using 5 over 9 cameras
+1 1 0 0 0 1 1 1 0 
+camera[0]
+{
+	 r_vec : (0.0420727, -0.0222462, -0.0118172)
+	 t_vec : (1.42781, -0.237401, -0.293979)
+}
+ADDED 697 new points
+Using 6 over 9 cameras
+1 1 0 0 0 1 1 1 1 
+****************** OPTIM FOUND 6 OUTLIERS : redoing optim!!
+camera[8]
+{
+	 r_vec : (0.0537175, -0.000245183, -0.00885598)
+	 t_vec : (1.2623, 0.326698, -0.344564)
+}
+ADDED 386 new points
+Using 7 over 9 cameras
+1 1 0 0 1 1 1 1 1 
+camera[4]
+{
+	 r_vec : (0.00757964, -0.0476229, -0.028616)
+	 t_vec : (1.87548, -0.175054, 0.104172)
+}
+ADDED 193 new points
+Using 8 over 9 cameras
+1 1 1 0 1 1 1 1 1 
+****************** OPTIM FOUND 7 OUTLIERS : redoing optim!!
+camera[2]
+{
+	 r_vec : (-0.00917308, -0.149102, -0.0156389)
+	 t_vec : (3.22834, 0.163445, -0.371613)
+}
+ADDED 951 new points
+Using 9 over 9 cameras
+1 1 1 1 1 1 1 1 1 
+camera[3]
+{
+	 r_vec : (-0.0110491, -0.125349, -0.0396375)
+	 t_vec : (3.07396, 0.804043, -0.021224)
+}
+===== FINAL METRICS =====
+Registered cameras  : 9 / 9  (success rate 100 %)
+Valid 3D points     : 4961
+Mean reprojection err: 1.79054 px  (focal = 1296 px)
+=========================
+Recostruction completed, exiting

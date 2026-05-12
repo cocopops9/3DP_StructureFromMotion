@@ -1,0 +1,1658 @@
+Header: 13 2321 12010
+Seed pair (0, 5): inliers E=688 H=487
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (0, 1): inliers E=652 H=240
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[1]
+{
+	 r_vec : (-0.00205864, -0.0858197, 0.000156908)
+	 t_vec : (0.98552, 0.0512439, 0.161631)
+}
+camera[1]
+{
+	 r_vec : (-0.0021925, -0.0677854, -0.00276474)
+	 t_vec : (0.821217, 0.0560556, 0.0756932)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 1 0 0 0 1 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 488 points : redoing optim!!
+camera[5]
+{
+	 r_vec : (-0.136767, 0.120144, 3.13418)
+	 t_vec : (1.03192, -0.473201, -20.8091)
+}
+Diverged: geometry exploded (max_dist = 104.557)
+Try to look for a better seed pair
+Seed pair (2, 4): inliers E=617 H=346
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (1, 5): inliers E=594 H=264
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (1, 2): inliers E=592 H=217
+camera[1]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[2]
+{
+	 r_vec : (-0.0117462, -0.160573, -0.0176467)
+	 t_vec : (0.992799, -0.114283, 0.0359018)
+}
+camera[2]
+{
+	 r_vec : (-0.00575649, -0.117343, -0.0165286)
+	 t_vec : (0.818967, -0.0745993, -0.0202842)
+}
+ADDED 1 new points
+Using 3 over 13 cameras
+0 1 1 0 1 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 421 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (-0.267841, -0.083023, -3.17391)
+	 t_vec : (-1.19609, -0.0585611, -10.5051)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 1 1 0 1 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 93 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (0.207493, -0.128287, -3.12123)
+	 t_vec : (0.814703, -0.412383, -10.7653)
+}
+ADDED 0 new points
+Using 5 over 13 cameras
+1 1 1 0 1 0 0 0 0 0 0 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 30 points : redoing optim!!
+camera[11]
+{
+	 r_vec : (-58.9772, 91.2254, -151.326)
+	 t_vec : (-32.511, -51.4521, -2077.28)
+}
+Diverged: geometry exploded (max_dist = 10390.8)
+Try to look for a better seed pair
+Seed pair (3, 4): inliers E=567 H=209
+camera[3]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[4]
+{
+	 r_vec : (0.0199956, 0.15113, -0.0184676)
+	 t_vec : (-0.971869, 0.0464602, 0.230895)
+}
+camera[4]
+{
+	 r_vec : (0.0153654, 0.094707, -0.0126739)
+	 t_vec : (-0.736561, 0.0305167, 0.139706)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+0 0 1 1 1 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 406 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (-30.387, 16.3013, -21.7357)
+	 t_vec : (-17.1354, -19.6677, -457.525)
+}
+Diverged: geometry exploded (max_dist = 2291.98)
+Try to look for a better seed pair
+Seed pair (0, 6): inliers E=542 H=206
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (2, 3): inliers E=542 H=161
+camera[2]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[3]
+{
+	 r_vec : (-0.0233819, -0.0648859, -0.0124127)
+	 t_vec : (0.949551, -0.30346, 0.0791487)
+}
+camera[3]
+{
+	 r_vec : (-0.0151998, -0.0509902, -0.0105091)
+	 t_vec : (0.869856, -0.242747, 0.122645)
+}
+ADDED 1 new points
+Using 3 over 13 cameras
+0 0 1 1 1 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 422 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (0.0931731, 0.0560949, 3.12668)
+	 t_vec : (-0.544504, -0.0302631, -15.0564)
+}
+ADDED 1 new points
+Using 4 over 13 cameras
+0 1 1 1 1 0 0 0 0 0 0 0 0 
+****************** OPTIM FOUND 53 OUTLIERS : redoing optim!!
+camera[1]
+{
+	 r_vec : (-17694.1, -12868.4, 2298.88)
+	 t_vec : (149.565, 1527.71, 21651.4)
+}
+Diverged: geometry exploded (max_dist = 108604)
+Try to look for a better seed pair
+Seed pair (0, 12): inliers E=468 H=175
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (1, 4): inliers E=539 H=154
+camera[1]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[4]
+{
+	 r_vec : (0.0124162, -0.0831955, -0.0270274)
+	 t_vec : (0.956502, -0.209933, 0.202565)
+}
+camera[4]
+{
+	 r_vec : (0.011823, -0.0839412, -0.0324054)
+	 t_vec : (0.957789, -0.214471, 0.196609)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+0 1 1 0 1 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 426 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (-0.073947, -0.196336, -3.14701)
+	 t_vec : (-0.600285, -0.809494, -14.1862)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 1 1 0 1 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 75 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (-82.4145, 143.899, 119.641)
+	 t_vec : (199.554, -382.666, -7177.75)
+}
+Diverged: geometry exploded (max_dist = 35954.6)
+Try to look for a better seed pair
+Seed pair (0, 2): inliers E=499 H=126
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[2]
+{
+	 r_vec : (-0.0120384, -0.0845871, -0.0354732)
+	 t_vec : (0.984515, -0.115048, 0.132262)
+}
+camera[2]
+{
+	 r_vec : (-0.00672951, -0.0769566, -0.0303448)
+	 t_vec : (0.941813, -0.0722765, 0.120658)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 1 1 0 0 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 401 points : redoing optim!!
+camera[1]
+{
+	 r_vec : (-8.63919, 0.73482, 4.05132)
+	 t_vec : (5.75235, 0.310297, -3.97881)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 1 1 0 1 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 61 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (-0.232269, -0.145301, -3.17435)
+	 t_vec : (-1.58418, -0.383227, -15.3744)
+}
+ADDED 2 new points
+Using 5 over 13 cameras
+1 1 1 0 1 1 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 25 points : redoing optim!!
+camera[5]
+{
+	 r_vec : (0.186737, -0.119188, -3.14534)
+	 t_vec : (1.05162, -0.362639, -15.8839)
+}
+ADDED 329 new points
+Using 6 over 13 cameras
+1 1 1 0 1 1 0 1 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 269 points : redoing optim!!
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W0512 21:49:18.129272 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+camera[7]
+{
+	 r_vec : (-0.0194244, -0.0664374, 0.089427)
+	 t_vec : (-0.404328, -0.0203145, 0.978637)
+}
+ADDED 294 new points
+Using 7 over 13 cameras
+1 1 1 0 1 1 1 1 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 174 points : redoing optim!!
+W0512 21:49:18.199849 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.200258 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.200675 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.201092 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.201225 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.201924 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.202059 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.202728 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.202858 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.203500 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.203631 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.204032 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+camera[6]
+{
+	 r_vec : (0.0101437, -0.0835884, 0.0427196)
+	 t_vec : (-0.0475428, -0.00437268, 0.435277)
+}
+ADDED 0 new points
+Using 8 over 13 cameras
+1 1 1 0 1 1 1 1 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 63 points : redoing optim!!
+camera[8]
+{
+	 r_vec : (0.369621, -0.237448, -2.96283)
+	 t_vec : (2.99389, -1.25263, -18.0796)
+}
+Diverged: geometry exploded (max_dist = 103.02)
+Try to look for a better seed pair
+Seed pair (0, 7): inliers E=456 H=119
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (0, 4): inliers E=471 H=137
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[4]
+{
+	 r_vec : (0.033389, -0.248522, -0.0232267)
+	 t_vec : (0.977685, -0.0142, 0.209594)
+}
+camera[4]
+{
+	 r_vec : (0.0246628, -0.202462, -0.0437222)
+	 t_vec : (0.880377, -0.0390903, 0.224289)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 1 0 0 1 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 366 points : redoing optim!!
+camera[1]
+{
+	 r_vec : (-2.99234, 0.233446, 0.360962)
+	 t_vec : (1.37858, -4.65748, -64.3061)
+}
+Diverged: geometry exploded (max_dist = 323.535)
+Try to look for a better seed pair
+Seed pair (6, 7): inliers E=496 H=208
+camera[6]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[7]
+{
+	 r_vec : (-0.042341, 0.0888688, 0.0410228)
+	 t_vec : (-0.919711, -0.141221, 0.366317)
+}
+camera[7]
+{
+	 r_vec : (-0.0407639, 0.0761213, 0.0429023)
+	 t_vec : (-0.826575, -0.125679, 0.355057)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 0 0 0 0 0 1 1 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 360 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (0.174883, -0.188725, -3.13472)
+	 t_vec : (0.364964, -1.10329, -16.173)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 0 0 0 0 0 1 1 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 57 points : redoing optim!!
+camera[8]
+{
+	 r_vec : (-6.83579, 1.89537, 6.49911)
+	 t_vec : (36.9153, -14.9268, -307.359)
+}
+Diverged: geometry exploded (max_dist = 1551.99)
+Try to look for a better seed pair
+Seed pair (5, 6): inliers E=452 H=170
+camera[5]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[6]
+{
+	 r_vec : (-0.00389705, 0.235772, 0.00960003)
+	 t_vec : (-0.988244, 0.0287056, 0.150164)
+}
+camera[6]
+{
+	 r_vec : (-0.00823475, 0.164399, 0.0342972)
+	 t_vec : (-0.812061, 0.0189729, 0.193397)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 0 0 0 0 1 1 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 380 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (-237.591, 91.2564, -81.038)
+	 t_vec : (26.4305, -63.3479, -1416.64)
+}
+Diverged: geometry exploded (max_dist = 7092.72)
+Try to look for a better seed pair
+Seed pair (1, 12): inliers E=443 H=133
+camera[1]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[12]
+{
+	 r_vec : (0.162973, 0.0451262, 0.0172485)
+	 t_vec : (-0.369693, 0.919431, 0.134067)
+}
+camera[12]
+{
+	 r_vec : (0.162093, 0.043551, 0.016923)
+	 t_vec : (-0.361176, 0.915391, 0.121459)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 1 0 0 0 0 0 0 0 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 373 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (0.792741, -0.297471, -3.11371)
+	 t_vec : (2.97579, -1.52942, -16.9916)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 1 1 0 0 0 0 0 0 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 43 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (-30.8822, 36.5482, 84.6436)
+	 t_vec : (-6.00885, -19.9547, -283.803)
+}
+Diverged: geometry exploded (max_dist = 1424.64)
+Try to look for a better seed pair
+Seed pair (2, 5): inliers E=427 H=133
+camera[2]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[5]
+{
+	 r_vec : (-0.0356209, 0.206982, 0.00481372)
+	 t_vec : (-0.923457, -0.212933, 0.319198)
+}
+camera[5]
+{
+	 r_vec : (-0.0202886, 0.151781, 0.00337783)
+	 t_vec : (-0.794743, -0.158345, 0.35507)
+}
+ADDED 19 new points
+Using 3 over 13 cameras
+0 1 1 0 0 1 0 0 0 0 0 0 0 
+camera[1]
+{
+	 r_vec : (-22467.1, 25074, 10798.7)
+	 t_vec : (-1102.65, -318.977, 36008.5)
+}
+Diverged: geometry exploded (max_dist = 19222.9)
+Try to look for a better seed pair
+Seed pair (1, 3): inliers E=440 H=104
+camera[1]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[3]
+{
+	 r_vec : (0.0170997, -0.0890512, -0.02439)
+	 t_vec : (0.99739, -0.0615086, 0.0378011)
+}
+camera[3]
+{
+	 r_vec : (0.0126401, -0.0890781, -0.0319575)
+	 t_vec : (0.994739, -0.0858715, 0.0316536)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+0 1 0 1 1 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 345 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (0.151374, 0.074759, 3.1027)
+	 t_vec : (-0.771735, -0.0252916, -10.5275)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+0 1 0 1 1 1 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 56 points : redoing optim!!
+camera[5]
+{
+	 r_vec : (1.68812, -0.621662, -2.69673)
+	 t_vec : (4.5726, -1.71422, -6.7178)
+}
+ADDED 0 new points
+Using 5 over 13 cameras
+0 1 1 1 1 1 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 21 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (-0.0841346, -0.254187, -3.13223)
+	 t_vec : (-0.472055, -0.805815, -10.788)
+}
+ADDED 0 new points
+Using 6 over 13 cameras
+1 1 1 1 1 1 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 7 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (2.28601, -0.189835, -2.13776)
+	 t_vec : (5.20428, -0.379008, -4.8648)
+}
+No other positions can be optimized, exiting
+Try to look for a better seed pair
+Seed pair (1, 6): inliers E=419 H=123
+camera[1]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[6]
+{
+	 r_vec : (-0.00129075, 0.101739, 0.0220702)
+	 t_vec : (-0.926076, -0.115023, 0.359378)
+}
+camera[6]
+{
+	 r_vec : (-0.00117415, 0.0962552, 0.0217491)
+	 t_vec : (-0.90714, -0.113339, 0.383079)
+}
+ADDED 47 new points
+Using 3 over 13 cameras
+1 1 0 0 0 0 1 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 309 points : redoing optim!!
+W0512 21:49:18.985242 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.985641 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.986037 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.986163 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.986802 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.986927 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.987722 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.987856 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.988541 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.988668 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.989337 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.989470 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.990146 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.990276 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.990669 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.991075 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.991205 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.991880 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.992281 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.992676 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.992811 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.993211 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.993613 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.994011 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.994143 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.994530 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.994925 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.995333 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.995467 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.995878 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.996294 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.996733 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.997172 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.997314 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.998041 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.998198 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.998924 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.999064 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.999514 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:18.999948 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.000090 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.000802 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.000957 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.001713 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.001929 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.002866 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.003446 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.003654 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.004637 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+****************** OPTIM CHEIRALITY VIOLATION for 50 points : redoing optim!!
+****************** OPTIM CHEIRALITY VIOLATION for 47 points : redoing optim!!
+****************** OPTIM CHEIRALITY VIOLATION for 24 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (-0.0226277, 0.150804, 0.0355545)
+	 t_vec : (-1.10713, -0.78535, -4.47732)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 1 0 1 0 0 1 0 0 0 0 0 0 
+W0512 21:49:19.076951 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.077085 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.077122 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.077337 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.077380 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.077513 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.077641 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.077775 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.077814 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.078027 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.078068 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.078276 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.078315 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.078435 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.078567 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.078685 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.078725 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.078929 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.078969 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.079166 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.079205 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.079330 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.079455 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.079579 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:49:19.079617 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+****************** OPTIM CHEIRALITY VIOLATION for 15 points : redoing optim!!
+camera[3]
+{
+	 r_vec : (0.227489, -0.152513, 3.03498)
+	 t_vec : (-0.167739, 1.09976, -4.62899)
+}
+ADDED 9 new points
+Using 5 over 13 cameras
+1 1 0 1 0 1 1 0 0 0 0 0 0 
+****************** OPTIM FOUND 12 OUTLIERS : redoing optim!!
+camera[5]
+{
+	 r_vec : (-1.4199, 0.431011, 2.76222)
+	 t_vec : (4.02646, -0.447301, -2.34883)
+}
+Diverged: only 8 valid points remain.
+Try to look for a better seed pair
+Seed pair (5, 12): inliers E=412 H=130
+camera[5]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[12]
+{
+	 r_vec : (0.050445, 0.00713054, 0.0243716)
+	 t_vec : (0.0175341, 0.952627, -0.303634)
+}
+camera[12]
+{
+	 r_vec : (0.0775903, 0.00768492, 0.0183743)
+	 t_vec : (0.00836914, 1.22217, -0.194621)
+}
+ADDED 537 new points
+Using 3 over 13 cameras
+1 0 0 0 0 1 0 0 0 0 0 0 1 
+camera[0]
+{
+	 r_vec : (12.524, -13.6419, -3.22647)
+	 t_vec : (-0.195139, -0.143912, -0.572504)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 1 0 0 0 1 0 0 0 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 28 points : redoing optim!!
+camera[1]
+{
+	 r_vec : (0.145314, 0.18418, -3.15181)
+	 t_vec : (0.576324, 0.889221, -19.2294)
+}
+ADDED 0 new points
+Using 5 over 13 cameras
+1 1 0 0 0 1 1 0 0 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 11 points : redoing optim!!
+camera[6]
+{
+	 r_vec : (0.407015, -0.264146, -3.14848)
+	 t_vec : (2.95022, -1.64639, -19.2089)
+}
+Diverged: only 8 valid points remain.
+Try to look for a better seed pair
+Seed pair (4, 5): inliers E=437 H=100
+camera[4]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[5]
+{
+	 r_vec : (-0.0102245, 0.101568, 0.0240145)
+	 t_vec : (-0.979217, -0.0383061, 0.199164)
+}
+camera[5]
+{
+	 r_vec : (-0.00705073, 0.105086, 0.0252624)
+	 t_vec : (-0.993353, -0.021265, 0.196495)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 0 0 0 1 1 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 364 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (69.1713, -124.858, 72.8661)
+	 t_vec : (28.0962, -66.7485, -1371.94)
+}
+Diverged: geometry exploded (max_dist = 6870.36)
+Try to look for a better seed pair
+Seed pair (0, 3): inliers E=398 H=78
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[3]
+{
+	 r_vec : (-0.0187793, -0.313748, -0.0265459)
+	 t_vec : (0.980814, -0.101794, 0.166256)
+}
+camera[3]
+{
+	 r_vec : (-0.013544, -0.251991, -0.0289678)
+	 t_vec : (0.901773, -0.0871771, 0.270386)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 0 0 1 1 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 320 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (0.395197, 0.0757569, 3.07763)
+	 t_vec : (-0.774698, -0.0247413, -5.0728)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 0 0 1 1 1 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 48 points : redoing optim!!
+camera[5]
+{
+	 r_vec : (0.0533326, -0.132192, -3.14214)
+	 t_vec : (0.130676, -0.135162, -5.08241)
+}
+ADDED 360 new points
+Using 5 over 13 cameras
+1 0 0 1 1 1 0 1 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 275 points : redoing optim!!
+camera[7]
+{
+	 r_vec : (3.02742, 4.83385, -1.38191)
+	 t_vec : (0.732838, -0.338948, 0.634854)
+}
+ADDED 0 new points
+Using 6 over 13 cameras
+1 0 0 1 1 1 1 1 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 62 points : redoing optim!!
+camera[6]
+{
+	 r_vec : (-4.61888, 3.03819, 7.37965)
+	 t_vec : (9.00095, -6.50539, -89.8126)
+}
+Diverged: geometry exploded (max_dist = 455.458)
+Try to look for a better seed pair
+Seed pair (7, 8): inliers E=441 H=141
+camera[7]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[8]
+{
+	 r_vec : (-0.00699204, 0.055023, 0.0326134)
+	 t_vec : (-0.933177, -0.165895, 0.318841)
+}
+camera[8]
+{
+	 r_vec : (-0.0115551, 0.0951965, 0.0272809)
+	 t_vec : (-1.92901, -0.307207, 1.12394)
+}
+ADDED 351 new points
+Using 3 over 13 cameras
+1 0 0 0 0 0 0 1 1 0 0 0 0 
+camera[0]
+{
+	 r_vec : (-0.0332115, -0.258818, 0.0206043)
+	 t_vec : (10.9508, -0.861807, 0.508772)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 0 0 0 0 0 1 1 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 504 points : redoing optim!!
+camera[6]
+{
+	 r_vec : (0.0254466, -0.105419, -3.10207)
+	 t_vec : (1.51698, -2.16569, -74.5653)
+}
+Diverged: geometry exploded (max_dist = 399.481)
+Try to look for a better seed pair
+Seed pair (2, 11): inliers E=350 H=88
+camera[2]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[11]
+{
+	 r_vec : (0.260618, -0.113801, -0.0530654)
+	 t_vec : (0.353705, 0.859754, 0.368396)
+}
+camera[11]
+{
+	 r_vec : (0.231154, -0.106848, -0.0682494)
+	 t_vec : (0.344958, 0.788564, 0.26565)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+0 0 1 0 1 0 0 0 0 0 0 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 274 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (873.842, 818.673, -412.285)
+	 t_vec : (-262.927, -50.3457, -5943.98)
+}
+Diverged: geometry exploded (max_dist = 29751.4)
+Try to look for a better seed pair
+Seed pair (5, 7): inliers E=356 H=103
+camera[5]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[7]
+{
+	 r_vec : (-0.0698088, 0.0553792, 0.0471674)
+	 t_vec : (-0.875322, -0.198067, 0.441113)
+}
+camera[7]
+{
+	 r_vec : (-0.0682269, 0.0983298, 0.0179259)
+	 t_vec : (-1.06899, -0.192614, 0.300511)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 0 0 0 0 1 0 1 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 303 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (1.21368, -1.11549, -2.69696)
+	 t_vec : (3.8394, -3.69259, -7.09876)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 1 0 0 0 1 0 1 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 25 points : redoing optim!!
+camera[1]
+{
+	 r_vec : (-12124.5, -5375.99, -11981)
+	 t_vec : (-8313.17, -65841.7, -1.06816e+06)
+}
+Diverged: geometry exploded (max_dist = 5.35112e+06)
+Try to look for a better seed pair
+Seed pair (3, 11): inliers E=380 H=87
+camera[3]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[11]
+{
+	 r_vec : (0.266499, -0.0320082, -0.0367226)
+	 t_vec : (-0.146263, 0.937214, 0.316604)
+}
+camera[11]
+{
+	 r_vec : (0.237754, -0.0436883, -0.0572941)
+	 t_vec : (-0.1, 0.872119, 0.301868)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+0 0 1 1 0 0 0 0 0 0 0 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 279 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (16.5284, -13.9272, -26.8612)
+	 t_vec : (-5.58107, -14.8415, -259.504)
+}
+Diverged: geometry exploded (max_dist = 1301.7)
+Try to look for a better seed pair
+Seed pair (4, 11): inliers E=346 H=97
+camera[4]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[11]
+{
+	 r_vec : (0.240118, -0.100564, -0.034073)
+	 t_vec : (0.268423, 0.933668, 0.237092)
+}
+camera[11]
+{
+	 r_vec : (0.20918, -0.0900016, -0.0340703)
+	 t_vec : (0.242651, 0.858901, 0.173637)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+0 0 1 0 1 0 0 0 0 0 0 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 268 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (17.157, -22.7097, -18.9881)
+	 t_vec : (-2.1264, -10.279, -166.306)
+}
+Diverged: geometry exploded (max_dist = 834.241)
+Try to look for a better seed pair
+Seed pair (2, 12): inliers E=344 H=91
+camera[2]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[12]
+{
+	 r_vec : (0.149362, 0.125348, 0.0272917)
+	 t_vec : (-0.753815, 0.626269, 0.198872)
+}
+camera[12]
+{
+	 r_vec : (0.14265, 0.108763, 0.0215747)
+	 t_vec : (-0.695215, 0.616709, 0.188374)
+}
+ADDED 1 new points
+Using 3 over 13 cameras
+0 1 1 0 0 0 0 0 0 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 283 points : redoing optim!!
+camera[1]
+{
+	 r_vec : (0.250914, -0.220511, -3.12677)
+	 t_vec : (0.863754, -0.607801, -8.35095)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+0 1 1 0 1 0 0 0 0 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 45 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (1167.51, -653.883, -662.395)
+	 t_vec : (-269.66, -176.22, -5356.22)
+}
+Diverged: geometry exploded (max_dist = 26830.7)
+Try to look for a better seed pair
+Seed pair (1, 7): inliers E=373 H=89
+camera[1]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[7]
+{
+	 r_vec : (-0.048421, 0.102745, 0.046149)
+	 t_vec : (-0.838906, -0.178036, 0.514335)
+}
+camera[7]
+{
+	 r_vec : (-0.0464703, 0.12439, 0.0392869)
+	 t_vec : (-0.895709, -0.171846, 0.464353)
+}
+ADDED 29 new points
+Using 3 over 13 cameras
+1 1 0 0 0 0 0 1 0 0 0 0 0 
+camera[0]
+{
+	 r_vec : (-0.0396176, 0.199412, -0.11696)
+	 t_vec : (-0.539791, -0.350453, -3.21573)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 1 0 0 0 1 0 1 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 293 points : redoing optim!!
+camera[5]
+{
+	 r_vec : (2.62864, 3.24302, -8.86979)
+	 t_vec : (2.13992, 2.18015, -3.12895)
+}
+ADDED 0 new points
+Using 5 over 13 cameras
+1 1 0 0 0 1 1 1 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 64 points : redoing optim!!
+camera[6]
+{
+	 r_vec : (-1625.66, -813.785, 509.188)
+	 t_vec : (2742.6, -812.073, -33487.9)
+}
+Diverged: geometry exploded (max_dist = 168034)
+Try to look for a better seed pair
+Seed pair (0, 11): inliers E=317 H=65
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[11]
+{
+	 r_vec : (0.138856, -0.0814967, -0.0627368)
+	 t_vec : (0.577395, 0.606479, 0.546624)
+}
+camera[11]
+{
+	 r_vec : (0.154935, -0.110491, -0.0871465)
+	 t_vec : (0.687768, 0.637801, 0.574233)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 0 0 0 1 0 0 0 0 0 0 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 242 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (0.136562, 0.140287, 3.08667)
+	 t_vec : (-0.707628, -0.228799, -9.23404)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 0 0 0 1 1 0 0 0 0 0 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 45 points : redoing optim!!
+camera[5]
+{
+	 r_vec : (65.3102, -5.86018, -30.3826)
+	 t_vec : (32.2696, -3.52982, -1098.16)
+}
+Diverged: geometry exploded (max_dist = 5496)
+Try to look for a better seed pair
+Seed pair (1, 11): inliers E=317 H=79
+camera[1]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[11]
+{
+	 r_vec : (0.254683, -0.287316, -0.0814104)
+	 t_vec : (0.765898, 0.554817, 0.324927)
+}
+camera[11]
+{
+	 r_vec : (0.242056, -0.260839, -0.0619929)
+	 t_vec : (0.718023, 0.549812, 0.287887)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+0 1 1 0 0 0 0 0 0 0 0 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 250 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (80394.9, -52779.8, -13143.3)
+	 t_vec : (-4607.05, -4169.13, -142541)
+}
+Diverged: geometry exploded (max_dist = 713384)
+Try to look for a better seed pair
+Seed pair (0, 8): inliers E=351 H=101
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[8]
+{
+	 r_vec : (-0.098881, 0.400255, 0.0600515)
+	 t_vec : (-0.870311, -0.180816, 0.45811)
+}
+camera[8]
+{
+	 r_vec : (-0.0823856, 0.333478, 0.068558)
+	 t_vec : (-0.802323, -0.150753, 0.486749)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 0 0 0 0 0 0 1 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 267 points : redoing optim!!
+camera[7]
+{
+	 r_vec : (-1.92695, 0.192279, 2.59923)
+	 t_vec : (2.12467, -0.109753, -2.897)
+}
+ADDED 551 new points
+Using 4 over 13 cameras
+1 0 0 0 0 1 0 1 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 226 points : redoing optim!!
+camera[5]
+{
+	 r_vec : (-0.00125352, 0.0333266, -0.00820685)
+	 t_vec : (-0.088024, -0.0483589, 0.207956)
+}
+ADDED 252 new points
+Using 5 over 13 cameras
+1 1 0 0 0 1 0 1 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 69 points : redoing optim!!
+camera[1]
+{
+	 r_vec : (-0.0170498, 0.0318358, 0.00642177)
+	 t_vec : (-0.0217497, -0.00382161, 0.0949546)
+}
+ADDED 189 new points
+Using 6 over 13 cameras
+1 1 1 0 0 1 0 1 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 32 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (-0.0130332, -0.0121789, -0.0257642)
+	 t_vec : (0.149115, -0.0176465, 0.0752262)
+}
+ADDED 187 new points
+Using 7 over 13 cameras
+1 1 1 0 1 1 0 1 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 10 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (-0.000820424, -0.0300786, -0.0441662)
+	 t_vec : (0.210337, -0.0640705, 0.135155)
+}
+ADDED 173 new points
+Using 8 over 13 cameras
+1 1 1 1 1 1 0 1 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 10 points : redoing optim!!
+camera[3]
+{
+	 r_vec : (-0.0121222, -0.0343682, -0.041747)
+	 t_vec : (0.331734, -0.0592212, 0.0894214)
+}
+ADDED 71 new points
+Using 9 over 13 cameras
+1 1 1 1 1 1 0 1 1 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 17 points : redoing optim!!
+camera[12]
+{
+	 r_vec : (0.12729, 0.0786903, 0.0155255)
+	 t_vec : (-0.146327, 0.261689, 0.117479)
+}
+ADDED 0 new points
+Using 10 over 13 cameras
+1 1 1 1 1 1 0 1 1 0 0 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 324 points : redoing optim!!
+camera[11]
+{
+	 r_vec : (105.873, -104.13, 121.569)
+	 t_vec : (-19.1398, -50.8687, -1229.33)
+}
+Diverged: geometry exploded (max_dist = 6155.36)
+Try to look for a better seed pair
+Seed pair (3, 5): inliers E=329 H=65
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (4, 12): inliers E=333 H=83
+camera[4]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[12]
+{
+	 r_vec : (0.0346418, -0.0104377, 0.0645952)
+	 t_vec : (-0.662637, 0.745416, -0.0725723)
+}
+camera[12]
+{
+	 r_vec : (0.0676541, 0.0206432, 0.0779975)
+	 t_vec : (-0.966172, 0.993725, -0.3339)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 0 0 0 1 0 0 0 0 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 281 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (-3.2106, 0.230669, 0.886499)
+	 t_vec : (5.11245, 1.08263, -3.04744)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 0 1 0 1 0 0 0 0 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 42 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (-4.06805e+10, -3.25454e+10, 1.99146e+10)
+	 t_vec : (-1.0223e+10, -1.76787e+10, -4.03655e+11)
+}
+Diverged: geometry exploded (max_dist = 2.02085e+12)
+Try to look for a better seed pair
+Seed pair (6, 12): inliers E=325 H=93
+camera[6]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[12]
+{
+	 r_vec : (0.217145, -0.15953, -0.00617874)
+	 t_vec : (0.695681, 0.718166, -0.0162993)
+}
+camera[12]
+{
+	 r_vec : (0.199158, -0.129668, 0.0118566)
+	 t_vec : (0.616401, 0.699253, -0.0124579)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 0 0 0 0 0 1 0 0 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 291 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (2.53132e+06, -1.38108e+06, 1.09078e+06)
+	 t_vec : (2.95231e+06, -1.19848e+07, -1.78944e+08)
+}
+Diverged: geometry exploded (max_dist = 8.96846e+08)
+Try to look for a better seed pair
+Seed pair (2, 6): inliers E=319 H=82
+camera[2]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[6]
+{
+	 r_vec : (-0.00264724, 0.0933338, 0.0363718)
+	 t_vec : (-0.93288, -0.0718484, 0.352948)
+}
+camera[6]
+{
+	 r_vec : (-0.00350196, 0.11136, 0.0358932)
+	 t_vec : (-0.983771, -0.0799265, 0.305897)
+}
+ADDED 591 new points
+Using 3 over 13 cameras
+1 0 1 0 0 0 1 0 0 0 0 0 0 
+camera[0]
+{
+	 r_vec : (-0.00344506, 0.0838409, 0.0220045)
+	 t_vec : (-0.569747, -0.0148199, -0.0634893)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 0 1 0 0 1 1 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 622 points : redoing optim!!
+camera[5]
+{
+	 r_vec : (1.92719, -0.296857, -2.53538)
+	 t_vec : (4.08428, -0.613471, -4.75579)
+}
+ADDED 0 new points
+Using 5 over 13 cameras
+1 1 1 0 0 1 1 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 158 points : redoing optim!!
+camera[1]
+{
+	 r_vec : (0.409319, -0.213055, -2.69402)
+	 t_vec : (1.17469, -2.91081, -44.4251)
+}
+Diverged: geometry exploded (max_dist = 225.488)
+Try to look for a better seed pair
+Seed pair (4, 6): inliers E=340 H=60
+camera[4]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[6]
+{
+	 r_vec : (-0.0189866, 0.170922, 0.0451217)
+	 t_vec : (-0.975558, -0.0168038, 0.2191)
+}
+camera[6]
+{
+	 r_vec : (-0.0183318, 0.17091, 0.047699)
+	 t_vec : (-0.975508, -0.0151248, 0.221927)
+}
+ADDED 545 new points
+Using 3 over 13 cameras
+1 0 0 0 1 0 1 0 0 0 0 0 0 
+camera[0]
+{
+	 r_vec : (-0.0155158, 0.123385, 0.0338803)
+	 t_vec : (-0.595599, 0.0436102, -0.0974159)
+}
+ADDED 284 new points
+Using 4 over 13 cameras
+1 0 0 0 1 1 1 0 0 0 0 0 0 
+camera[5]
+{
+	 r_vec : (-0.000579294, 0.105383, 0.0288872)
+	 t_vec : (-0.584561, 0.00742929, 0.117586)
+}
+ADDED 199 new points
+Using 5 over 13 cameras
+1 1 0 0 1 1 1 0 0 0 0 0 0 
+camera[1]
+{
+	 r_vec : (-0.0147916, 0.0690728, 0.02992)
+	 t_vec : (-0.379994, 0.0698809, -0.092701)
+}
+ADDED 0 new points
+Using 6 over 13 cameras
+1 1 1 0 1 1 1 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 710 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (179.841, -180.916, 52.4876)
+	 t_vec : (-82.6616, -122.774, -2389.27)
+}
+Diverged: geometry exploded (max_dist = 11970.4)
+Try to look for a better seed pair
+Seed pair (2, 7): inliers E=295 H=65
+camera[2]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[7]
+{
+	 r_vec : (-0.0539122, 0.232747, 0.0691125)
+	 t_vec : (-0.904897, -0.115868, 0.409556)
+}
+camera[7]
+{
+	 r_vec : (-0.0520455, 0.226525, 0.0700536)
+	 t_vec : (-0.896886, -0.111584, 0.416114)
+}
+ADDED 542 new points
+Using 3 over 13 cameras
+1 0 1 0 0 0 0 1 0 0 0 0 0 
+camera[0]
+{
+	 r_vec : (-0.00723423, 0.070067, 0.00357702)
+	 t_vec : (-0.281395, -0.0251591, -0.126679)
+}
+ADDED 317 new points
+Using 4 over 13 cameras
+1 1 1 0 0 0 0 1 0 0 0 0 0 
+camera[1]
+{
+	 r_vec : (-0.00681991, 0.0560451, 0.00865366)
+	 t_vec : (-0.225709, -1.05202e-05, -0.0505917)
+}
+ADDED 220 new points
+Using 5 over 13 cameras
+1 1 1 0 0 1 0 1 0 0 0 0 0 
+camera[5]
+{
+	 r_vec : (0.00686148, 0.0706799, 0.003835)
+	 t_vec : (-0.323931, -0.0491123, 0.0675295)
+}
+ADDED 5 new points
+Using 6 over 13 cameras
+1 1 1 0 0 1 1 1 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 663 points : redoing optim!!
+****************** OPTIM FOUND 10 OUTLIERS : redoing optim!!
+W0512 21:49:22.201115 52026 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+camera[6]
+{
+	 r_vec : (-0.00388004, 0.162716, 0.307376)
+	 t_vec : (-0.466887, -0.258904, -1.98722)
+}
+ADDED 0 new points
+Using 7 over 13 cameras
+1 1 1 0 1 1 1 1 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 322 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (-24.6848, 3.87516, -12.8564)
+	 t_vec : (-3.47818, -0.515976, -26.7222)
+}
+Diverged: geometry exploded (max_dist = 126.124)
+Try to look for a better seed pair
+Seed pair (6, 8): inliers E=317 H=95
+camera[6]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[8]
+{
+	 r_vec : (-0.0511817, 0.105583, 0.0620588)
+	 t_vec : (-0.847013, -0.207292, 0.489489)
+}
+camera[8]
+{
+	 r_vec : (-0.0543043, 0.139748, 0.0530145)
+	 t_vec : (-1.06299, -0.228428, 0.657047)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+0 0 0 0 0 0 1 1 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 248 points : redoing optim!!
+camera[7]
+{
+	 r_vec : (0.491174, -0.0977294, -3.07322)
+	 t_vec : (2.56843, -0.651108, -15.4613)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 0 0 0 0 0 1 1 1 0 0 0 0 
+****************** OPTIM FOUND 46 OUTLIERS : redoing optim!!
+camera[0]
+{
+	 r_vec : (6.29603e+08, 3.29802e+08, -2.56706e+08)
+	 t_vec : (1.01357e+08, 1.24531e+09, 1.82714e+10)
+}
+Diverged: geometry exploded (max_dist = 9.15702e+10)
+Try to look for a better seed pair
+Seed pair (10, 11): inliers E=331 H=74
+camera[10]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[11]
+{
+	 r_vec : (0.0436257, 0.120968, 0.0513891)
+	 t_vec : (-0.947559, 0.232057, -0.219731)
+}
+camera[11]
+{
+	 r_vec : (0.0443847, 0.132284, 0.0501616)
+	 t_vec : (-1.01155, 0.225919, -0.127146)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+0 0 0 1 0 0 0 0 0 0 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 214 points : redoing optim!!
+camera[3]
+{
+	 r_vec : (0.0862319, 0.159123, -3.06846)
+	 t_vec : (-0.089565, 0.919095, -13.5639)
+}
+ADDED 0 new points
+Using 4 over 13 cameras
+1 0 0 1 0 0 0 0 0 0 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 38 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (-3.08329, 0.654157, 0.806865)
+	 t_vec : (4.70323, -4.53306, -67.8694)
+}
+Diverged: geometry exploded (max_dist = 340.673)
+Try to look for a better seed pair
+Seed pair (3, 12): inliers E=291 H=55
+camera[3]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[12]
+{
+	 r_vec : (0.0824634, 0.00627734, 0.0763393)
+	 t_vec : (-0.803206, 0.5957, 0.000972896)
+}
+camera[12]
+{
+	 r_vec : (0.104357, 0.03487, 0.0830867)
+	 t_vec : (-0.954159, 0.672798, -0.132714)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+0 1 0 1 0 0 0 0 0 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 240 points : redoing optim!!
+camera[1]
+{
+	 r_vec : (1408.99, -8374.45, -3670.7)
+	 t_vec : (109.671, -1369.22, -22616.2)
+}
+Diverged: geometry exploded (max_dist = 113289)
+Try to look for a better seed pair
+Seed pair (11, 12): inliers E=287 H=58
+camera[11]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[12]
+{
+	 r_vec : (-0.0582604, 0.181444, 0.102349)
+	 t_vec : (-0.957607, -0.273055, -0.0918104)
+}
+camera[12]
+{
+	 r_vec : (-0.0516172, 0.17761, 0.0933058)
+	 t_vec : (-0.951978, -0.240992, -0.123962)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 0 0 0 0 0 0 0 0 0 0 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 249 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (-4.85351e+08, -2.14622e+08, -1.27465e+08)
+	 t_vec : (2.41871e+07, -6.36275e+07, -1.26845e+09)
+}
+Diverged: geometry exploded (max_dist = 6.35139e+09)
+Try to look for a better seed pair
+Seed pair (7, 12): inliers E=271 H=62
+camera[7]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[12]
+{
+	 r_vec : (0.28402, -0.270817, -0.0254602)
+	 t_vec : (0.801301, 0.598119, -0.0130654)
+}
+camera[12]
+{
+	 r_vec : (0.245144, -0.217469, -0.0221237)
+	 t_vec : (0.716321, 0.558614, -0.00947297)
+}
+ADDED 0 new points
+Using 3 over 13 cameras
+1 0 0 0 0 0 0 1 0 0 0 0 1 
+****************** OPTIM FOUND 252 OUTLIERS : redoing optim!!
+camera[0]
+{
+	 r_vec : (10672.6, 8444.57, -7591.36)
+	 t_vec : (-13716.7, 54898.8, 757429)
+}
+Diverged: geometry exploded (max_dist = 3.7977e+06)
+Try to look for a better seed pair
+Seed pair (5, 11): inliers E=285 H=53
+camera[5]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[11]
+{
+	 r_vec : (0.186809, -0.196301, -0.077513)
+	 t_vec : (0.774985, 0.609668, 0.166443)
+}
+camera[11]
+{
+	 r_vec : (0.181585, -0.189705, -0.0752482)
+	 t_vec : (0.761266, 0.602258, 0.168929)
+}
+ADDED 614 new points
+Using 3 over 13 cameras
+1 0 0 0 0 1 0 0 0 0 0 1 0 
+camera[0]
+{
+	 r_vec : (-0.0136577, 0.0235788, -0.00519372)
+	 t_vec : (-0.031445, 0.0422084, -0.179469)
+}
+ADDED 278 new points
+Using 4 over 13 cameras
+1 1 0 0 0 1 0 0 0 0 0 1 0 
+camera[1]
+{
+	 r_vec : (-0.0142964, 0.000138121, -0.00301102)
+	 t_vec : (0.0838665, 0.0611862, -0.147323)
+}
+ADDED 199 new points
+Using 5 over 13 cameras
+1 1 1 0 0 1 0 0 0 0 0 1 0 
+camera[2]
+{
+	 r_vec : (-0.00794973, -0.0801187, -0.0212277)
+	 t_vec : (0.435741, 0.0463382, -0.198909)
+}
+ADDED 0 new points
+Using 6 over 13 cameras
+1 1 1 0 1 1 0 0 0 0 0 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 714 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (0.141974, 0.0345164, -3.24905)
+	 t_vec : (-1.51861, -0.470478, -36.8642)
+}
+Diverged: geometry exploded (max_dist = 185.521)
+Try to look for a better seed pair
+Seed pair (1, 8): inliers E=303 H=61
+camera[1]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[8]
+{
+	 r_vec : (-0.0653528, 0.242439, 0.0756669)
+	 t_vec : (-0.863012, -0.184822, 0.470161)
+}
+camera[8]
+{
+	 r_vec : (-0.0632512, 0.256489, 0.0695159)
+	 t_vec : (-0.885962, -0.178364, 0.458348)
+}
+ADDED 544 new points
+Using 3 over 13 cameras
+1 1 0 0 0 0 0 0 1 0 0 0 0 
+camera[0]
+{
+	 r_vec : (-0.000642635, 0.023964, -0.011303)
+	 t_vec : (-0.10223, -0.0274349, -0.0459155)
+}
+ADDED 309 new points
+Using 4 over 13 cameras
+1 1 0 0 0 1 0 0 1 0 0 0 0 
+camera[5]
+{
+	 r_vec : (0.0123049, 0.00355267, -0.0263524)
+	 t_vec : (-0.0864823, -0.0644424, 0.112102)
+}
+ADDED 164 new points
+Using 5 over 13 cameras
+1 1 0 0 0 1 1 0 1 0 0 0 0 
+camera[6]
+{
+	 r_vec : (-0.00375594, 0.0637303, -0.00486436)
+	 t_vec : (-0.379603, -0.0690671, 0.141539)
+}
+ADDED 169 new points
+Using 6 over 13 cameras
+1 1 1 0 0 1 1 0 1 0 0 0 0 
+camera[2]
+{
+	 r_vec : (0.00329248, -0.0751376, -0.0431823)
+	 t_vec : (0.273028, -0.0252191, -0.0533533)
+}
+ADDED 0 new points
+Using 7 over 13 cameras
+1 1 1 0 1 1 1 0 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 690 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (2.06112, -0.361823, 2.21193)
+	 t_vec : (-2.53968, 0.692808, -3.15697)
+}
+ADDED 0 new points
+Using 8 over 13 cameras
+1 1 1 0 1 1 1 1 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 323 points : redoing optim!!
+camera[7]
+{
+	 r_vec : (0.63552, -0.179652, -3.01655)
+	 t_vec : (1.29573, -0.257743, -5.05505)
+}
+ADDED 76 new points
+Using 9 over 13 cameras
+1 1 1 0 1 1 1 1 1 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 30 points : redoing optim!!
+camera[12]
+{
+	 r_vec : (0.15056, 0.0126274, -0.00383494)
+	 t_vec : (-0.0824494, 0.355753, 0.00784873)
+}
+ADDED 0 new points
+Using 10 over 13 cameras
+1 1 1 1 1 1 1 1 1 0 0 0 1 
+****************** OPTIM CHEIRALITY VIOLATION for 88 points : redoing optim!!
+camera[3]
+{
+	 r_vec : (0.422143, 0.166152, 3.05586)
+	 t_vec : (-0.921126, -0.163628, -4.88826)
+}
+ADDED 0 new points
+Using 11 over 13 cameras
+1 1 1 1 1 1 1 1 1 0 0 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 46 points : redoing optim!!
+camera[11]
+{
+	 r_vec : (3.05113, -0.515534, -0.985003)
+	 t_vec : (1.29037, -0.580884, -3.24387)
+}
+ADDED 0 new points
+Using 12 over 13 cameras
+1 1 1 1 1 1 1 1 1 0 1 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 19 points : redoing optim!!
+camera[10]
+{
+	 r_vec : (-0.266649, -0.318242, -3.24837)
+	 t_vec : (-0.499563, -0.432163, -5.2498)
+}
+ADDED 67 new points
+Using 13 over 13 cameras
+1 1 1 1 1 1 1 1 1 1 1 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 54 points : redoing optim!!
+camera[9]
+{
+	 r_vec : (0.167467, 1.41366, -0.21478)
+	 t_vec : (-2.28991, 0.459236, 2.51676)
+}
+===== FINAL METRICS =====
+Registered cameras  : 13 / 13  (success rate 100 %)
+Valid 3D points     : 372
+Mean reprojection err: 0.700243 px  (focal = 1296 px)
+=========================
+Recostruction completed, exiting

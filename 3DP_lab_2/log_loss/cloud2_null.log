@@ -1,0 +1,138 @@
+Header: 15 6359 20466
+Seed pair (0, 1): inliers E=888 H=113
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[1]
+{
+	 r_vec : (-0.0350512, 0.0440793, 0.0216099)
+	 t_vec : (-0.280834, -0.89233, 0.353383)
+}
+camera[1]
+{
+	 r_vec : (-0.0325074, 0.0426477, 0.0208526)
+	 t_vec : (-0.263742, -0.863436, 0.34561)
+}
+ADDED 514 new points
+Using 3 over 15 cameras
+1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 
+camera[2]
+{
+	 r_vec : (-0.0382652, 0.0940988, 0.0201824)
+	 t_vec : (-1.31016, -0.822893, 0.623474)
+}
+ADDED 484 new points
+Using 4 over 15 cameras
+1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 
+camera[3]
+{
+	 r_vec : (-0.0547497, 0.159421, 0.0357405)
+	 t_vec : (-2.28496, -0.866694, 1.03382)
+}
+ADDED 379 new points
+Using 5 over 15 cameras
+1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 
+****************** OPTIM FOUND 7 OUTLIERS : redoing optim!!
+camera[4]
+{
+	 r_vec : (-0.0524313, 0.230437, 0.0585706)
+	 t_vec : (-3.36798, -0.820954, 1.40954)
+}
+ADDED 358 new points
+Using 6 over 15 cameras
+1 1 1 1 1 0 0 0 0 0 0 0 0 1 0 
+****************** OPTIM FOUND 21 OUTLIERS : redoing optim!!
+camera[13]
+{
+	 r_vec : (-0.0837298, 0.373334, 0.129159)
+	 t_vec : (-4.09437, -1.79084, 2.07355)
+}
+ADDED 546 new points
+Using 7 over 15 cameras
+1 1 1 1 1 1 0 0 0 0 0 0 0 1 0 
+****************** OPTIM FOUND 16 OUTLIERS : redoing optim!!
+camera[5]
+{
+	 r_vec : (-0.0415682, 0.305593, 0.0943423)
+	 t_vec : (-4.4515, -1.02953, 1.91492)
+}
+ADDED 317 new points
+Using 8 over 15 cameras
+1 1 1 1 1 1 0 0 0 0 0 0 1 1 0 
+****************** OPTIM FOUND 30 OUTLIERS : redoing optim!!
+camera[12]
+{
+	 r_vec : (-0.0836977, 0.430955, 0.172939)
+	 t_vec : (-5.19929, -2.14006, 2.18961)
+}
+ADDED 479 new points
+Using 9 over 15 cameras
+1 1 1 1 1 1 1 0 0 0 0 0 1 1 0 
+****************** OPTIM FOUND 42 OUTLIERS : redoing optim!!
+camera[6]
+{
+	 r_vec : (-0.052049, 0.413104, 0.149759)
+	 t_vec : (-5.36576, -1.30968, 2.58561)
+}
+ADDED 356 new points
+Using 10 over 15 cameras
+1 1 1 1 1 1 1 1 0 0 0 0 1 1 0 
+****************** OPTIM FOUND 70 OUTLIERS : redoing optim!!
+camera[7]
+{
+	 r_vec : (-0.0539475, 0.460488, 0.157528)
+	 t_vec : (-6.30173, -1.3207, 2.807)
+}
+ADDED 386 new points
+Using 11 over 15 cameras
+1 1 1 1 1 1 1 1 0 0 0 1 1 1 0 
+****************** OPTIM FOUND 45 OUTLIERS : redoing optim!!
+camera[11]
+{
+	 r_vec : (-0.0803025, 0.467955, 0.172989)
+	 t_vec : (-6.47828, -2.37623, 2.3802)
+}
+ADDED 400 new points
+Using 12 over 15 cameras
+1 1 1 1 1 1 1 1 0 0 1 1 1 1 0 
+****************** OPTIM FOUND 102 OUTLIERS : redoing optim!!
+camera[10]
+{
+	 r_vec : (-0.0590257, 0.502333, 0.174548)
+	 t_vec : (-7.34786, -2.2035, 2.84996)
+}
+ADDED 409 new points
+Using 13 over 15 cameras
+1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 
+****************** OPTIM FOUND 69 OUTLIERS : redoing optim!!
+camera[8]
+{
+	 r_vec : (-0.0474392, 0.552361, 0.168611)
+	 t_vec : (-7.3026, -1.43348, 3.28132)
+}
+ADDED 478 new points
+Using 14 over 15 cameras
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 
+****************** OPTIM FOUND 56 OUTLIERS : redoing optim!!
+camera[9]
+{
+	 r_vec : (-0.051287, 0.545034, 0.175905)
+	 t_vec : (-7.70875, -1.46197, 3.21151)
+}
+ADDED 125 new points
+Using 15 over 15 cameras
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+****************** OPTIM FOUND 104 OUTLIERS : redoing optim!!
+camera[14]
+{
+	 r_vec : (-0.0919696, 0.316187, 0.0510463)
+	 t_vec : (-2.61616, -1.4735, 2.01432)
+}
+===== FINAL METRICS =====
+Registered cameras  : 15 / 15  (success rate 100 %)
+Valid 3D points     : 4467
+Mean reprojection err: 0.92929 px  (focal = 1296 px)
+=========================
+Recostruction completed, exiting
