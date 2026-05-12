@@ -1,0 +1,306 @@
+Header: 15 6359 20466
+Alternative seed selection candidates:
+  rank 1 pair (0, 1) common=964 E=888 H=113 pose=888 lateral=0.935479 forward=0.353383 score=49054.4
+  rank 2 pair (5, 13) common=755 E=627 H=101 pose=627 lateral=0.979557 forward=0.201168 score=36397.5
+  rank 3 pair (1, 2) common=681 E=585 H=61 pose=585 lateral=0.976827 forward=0.21403 score=36011.5
+  rank 4 pair (10, 11) common=680 E=554 H=77 pose=554 lateral=0.967391 forward=0.253288 score=33423.9
+  rank 5 pair (2, 3) common=684 E=523 H=58 pose=523 lateral=0.977853 forward=0.209293 score=32963.6
+  rank 6 pair (9, 10) common=732 E=532 H=82 pose=525 lateral=0.976945 forward=0.213493 score=32295.8
+  rank 7 pair (8, 10) common=692 E=517 H=88 pose=517 lateral=0.992118 forward=0.125304 score=31491.7
+  rank 8 pair (4, 5) common=590 E=501 H=65 pose=501 lateral=0.979143 forward=0.203174 score=31307.2
+  rank 9 pair (6, 12) common=709 E=524 H=92 pose=524 lateral=0.83446 forward=0.551069 score=29364
+  rank 10 pair (7, 12) common=554 E=449 H=46 pose=449 lateral=0.928684 forward=0.370871 score=28658.3
+Trying alternative seed pair (0, 1) score=49054.4
+Seed pair (0, 1): inliers E=888 H=113
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[1]
+{
+	 r_vec : (-0.0350512, 0.0440793, 0.0216099)
+	 t_vec : (-0.280834, -0.89233, 0.353383)
+}
+camera[1]
+{
+	 r_vec : (-0.0325073, 0.0426476, 0.0208526)
+	 t_vec : (-0.263741, -0.863435, 0.345609)
+}
+[NBV_PYRAMID] iter=1 camera=2 visible=334 score=1936 pnp_inliers=323 ratio=0.967066
+[NBV_PYRAMID] iter=1 camera=3 visible=180 score=1680 pnp_inliers=173 ratio=0.961111
+[NBV_PYRAMID] iter=1 camera=4 visible=119 score=1312 pnp_inliers=105 ratio=0.882353
+[NBV_PYRAMID] iter=1 camera=5 visible=60 score=1168 pnp_inliers=49 ratio=0.816667
+[NBV_PYRAMID] iter=1 camera=6 visible=56 score=1312 pnp_inliers=35 ratio=0.625
+[NBV_PYRAMID] iter=1 camera=7 visible=43 score=1248 pnp_inliers=23 ratio=0.534884
+[NBV_PYRAMID] iter=1 camera=8 visible=36 score=896 pnp_inliers=8 ratio=0.222222 skipped=bad_pnp
+[NBV_PYRAMID] iter=1 camera=9 visible=29 score=976 pnp_inliers=8 ratio=0.275862 skipped=bad_pnp
+[NBV_PYRAMID] iter=1 camera=10 visible=46 score=1024 pnp_inliers=15 ratio=0.326087 skipped=bad_pnp
+[NBV_PYRAMID] iter=1 camera=11 visible=56 score=1584 pnp_inliers=22 ratio=0.392857
+[NBV_PYRAMID] iter=1 camera=12 visible=70 score=1312 pnp_inliers=47 ratio=0.671429
+[NBV_PYRAMID] iter=1 camera=13 visible=82 score=1328 pnp_inliers=68 ratio=0.829268
+[NBV_PYRAMID] iter=1 camera=14 visible=18 score=-1 skipped=too_few_points
+NBV selected camera 2 visible=334 pyramid_score=1936 pnp_inliers=323
+ADDED 514 new points
+Using 3 over 15 cameras
+1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 
+camera[2]
+{
+	 r_vec : (-0.0421617, 0.0997224, 0.0214349)
+	 t_vec : (-1.37349, -0.865276, 0.632178)
+}
+[NBV_PYRAMID] iter=2 camera=3 visible=98 score=1180 pnp_inliers=95 ratio=0.969388
+[NBV_PYRAMID] iter=2 camera=4 visible=63 score=748 pnp_inliers=58 ratio=0.920635
+[NBV_PYRAMID] iter=2 camera=5 visible=30 score=556 pnp_inliers=26 ratio=0.866667
+[NBV_PYRAMID] iter=2 camera=6 visible=29 score=688 pnp_inliers=24 ratio=0.827586
+[NBV_PYRAMID] iter=2 camera=7 visible=21 score=560 pnp_inliers=16 ratio=0.761905
+[NBV_PYRAMID] iter=2 camera=8 visible=16 score=-1 skipped=too_few_points
+[NBV_PYRAMID] iter=2 camera=9 visible=16 score=-1 skipped=too_few_points
+[NBV_PYRAMID] iter=2 camera=10 visible=16 score=-1 skipped=too_few_points
+[NBV_PYRAMID] iter=2 camera=11 visible=21 score=560 pnp_inliers=17 ratio=0.809524
+[NBV_PYRAMID] iter=2 camera=12 visible=30 score=624 pnp_inliers=24 ratio=0.8
+[NBV_PYRAMID] iter=2 camera=13 visible=46 score=688 pnp_inliers=42 ratio=0.913043
+[NBV_PYRAMID] iter=2 camera=14 visible=4 score=-1 skipped=too_few_points
+NBV selected camera 3 visible=98 pyramid_score=1180 pnp_inliers=95
+ADDED 484 new points
+Using 4 over 15 cameras
+1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 
+camera[3]
+{
+	 r_vec : (-0.0484042, 0.161635, 0.0337337)
+	 t_vec : (-2.33493, -0.805591, 1.00016)
+}
+[NBV_PYRAMID] iter=3 camera=4 visible=219 score=1696 pnp_inliers=210 ratio=0.958904
+[NBV_PYRAMID] iter=3 camera=5 visible=119 score=1568 pnp_inliers=109 ratio=0.915966
+[NBV_PYRAMID] iter=3 camera=6 visible=79 score=1328 pnp_inliers=68 ratio=0.860759
+[NBV_PYRAMID] iter=3 camera=7 visible=62 score=1344 pnp_inliers=44 ratio=0.709677
+[NBV_PYRAMID] iter=3 camera=8 visible=41 score=1312 pnp_inliers=22 ratio=0.536585
+[NBV_PYRAMID] iter=3 camera=9 visible=47 score=1184 pnp_inliers=23 ratio=0.489362
+[NBV_PYRAMID] iter=3 camera=10 visible=52 score=944 pnp_inliers=36 ratio=0.692308
+[NBV_PYRAMID] iter=3 camera=11 visible=65 score=1440 pnp_inliers=48 ratio=0.738462
+[NBV_PYRAMID] iter=3 camera=12 visible=89 score=1392 pnp_inliers=73 ratio=0.820225
+[NBV_PYRAMID] iter=3 camera=13 visible=127 score=1344 pnp_inliers=119 ratio=0.937008
+[NBV_PYRAMID] iter=3 camera=14 visible=44 score=1248 pnp_inliers=37 ratio=0.840909
+NBV selected camera 4 visible=219 pyramid_score=1696 pnp_inliers=210
+ADDED 381 new points
+Using 5 over 15 cameras
+1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W0512 14:36:35.606436 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.607296 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.609753 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.613847 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.614678 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.619593 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.621918 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.622743 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.626561 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.627337 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.629603 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.631929 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.634560 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.635373 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.641534 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.642354 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.644951 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.647491 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.648324 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.653777 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.654548 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.656764 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.659092 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.661428 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.662213 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.666018 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.666810 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.669368 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.671998 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.674539 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.675354 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.679718 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.680528 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.683044 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.685364 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.687701 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.688526 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.693904 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.694670 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.696961 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.697731 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.703068 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.703842 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.706252 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.708774 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.711050 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.713337 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.714118 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.716404 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.720839 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 14:36:35.721709 24177 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+****************** OPTIM FOUND 8 OUTLIERS : redoing optim!!
+camera[4]
+{
+	 r_vec : (-0.0530611, 0.2327, 0.0583632)
+	 t_vec : (-3.41653, -0.826633, 1.41871)
+}
+[NBV_PYRAMID] iter=4 camera=5 visible=245 score=2000 pnp_inliers=236 ratio=0.963265
+[NBV_PYRAMID] iter=4 camera=6 visible=154 score=1648 pnp_inliers=138 ratio=0.896104
+[NBV_PYRAMID] iter=4 camera=7 visible=124 score=1664 pnp_inliers=99 ratio=0.798387
+[NBV_PYRAMID] iter=4 camera=8 visible=86 score=1504 pnp_inliers=47 ratio=0.546512
+[NBV_PYRAMID] iter=4 camera=9 visible=87 score=1472 pnp_inliers=56 ratio=0.643678
+[NBV_PYRAMID] iter=4 camera=10 visible=106 score=1296 pnp_inliers=80 ratio=0.754717
+[NBV_PYRAMID] iter=4 camera=11 visible=128 score=1696 pnp_inliers=101 ratio=0.789062
+[NBV_PYRAMID] iter=4 camera=12 visible=181 score=1712 pnp_inliers=163 ratio=0.900552
+[NBV_PYRAMID] iter=4 camera=13 visible=249 score=1840 pnp_inliers=234 ratio=0.939759
+[NBV_PYRAMID] iter=4 camera=14 visible=84 score=1456 pnp_inliers=76 ratio=0.904762
+NBV selected camera 5 visible=245 pyramid_score=2000 pnp_inliers=236
+ADDED 365 new points
+Using 6 over 15 cameras
+1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 
+****************** OPTIM FOUND 8 OUTLIERS : redoing optim!!
+camera[5]
+{
+	 r_vec : (-0.0420179, 0.307678, 0.0933731)
+	 t_vec : (-4.50916, -1.03501, 1.91365)
+}
+[NBV_PYRAMID] iter=5 camera=6 visible=281 score=1920 pnp_inliers=260 ratio=0.925267
+[NBV_PYRAMID] iter=5 camera=7 visible=208 score=2000 pnp_inliers=183 ratio=0.879808
+[NBV_PYRAMID] iter=5 camera=8 visible=134 score=1568 pnp_inliers=96 ratio=0.716418
+[NBV_PYRAMID] iter=5 camera=9 visible=138 score=1664 pnp_inliers=101 ratio=0.731884
+[NBV_PYRAMID] iter=5 camera=10 visible=160 score=1504 pnp_inliers=130 ratio=0.8125
+[NBV_PYRAMID] iter=5 camera=11 visible=212 score=1840 pnp_inliers=180 ratio=0.849057
+[NBV_PYRAMID] iter=5 camera=12 visible=308 score=1968 pnp_inliers=286 ratio=0.928571
+[NBV_PYRAMID] iter=5 camera=13 visible=425 score=2000 pnp_inliers=406 ratio=0.955294
+[NBV_PYRAMID] iter=5 camera=14 visible=102 score=1520 pnp_inliers=90 ratio=0.882353
+NBV selected camera 13 visible=425 pyramid_score=2000 pnp_inliers=406
+ADDED 539 new points
+Using 7 over 15 cameras
+1 1 1 1 1 1 0 0 0 0 0 0 0 1 0 
+****************** OPTIM FOUND 20 OUTLIERS : redoing optim!!
+camera[13]
+{
+	 r_vec : (-0.0837021, 0.376377, 0.128819)
+	 t_vec : (-4.15925, -1.8004, 2.08505)
+}
+[NBV_PYRAMID] iter=6 camera=6 visible=407 score=2064 pnp_inliers=388 ratio=0.953317
+[NBV_PYRAMID] iter=6 camera=7 visible=290 score=2000 pnp_inliers=255 ratio=0.87931
+[NBV_PYRAMID] iter=6 camera=8 visible=182 score=1712 pnp_inliers=141 ratio=0.774725
+[NBV_PYRAMID] iter=6 camera=9 visible=179 score=1744 pnp_inliers=135 ratio=0.75419
+[NBV_PYRAMID] iter=6 camera=10 visible=203 score=1808 pnp_inliers=167 ratio=0.82266
+[NBV_PYRAMID] iter=6 camera=11 visible=270 score=1920 pnp_inliers=235 ratio=0.87037
+[NBV_PYRAMID] iter=6 camera=12 visible=419 score=2176 pnp_inliers=398 ratio=0.949881
+[NBV_PYRAMID] iter=6 camera=14 visible=115 score=1520 pnp_inliers=97 ratio=0.843478
+NBV selected camera 12 visible=419 pyramid_score=2176 pnp_inliers=398
+ADDED 317 new points
+Using 8 over 15 cameras
+1 1 1 1 1 1 0 0 0 0 0 0 1 1 0 
+****************** OPTIM FOUND 23 OUTLIERS : redoing optim!!
+camera[12]
+{
+	 r_vec : (-0.0845565, 0.430183, 0.172759)
+	 t_vec : (-5.2409, -2.15991, 2.19309)
+}
+[NBV_PYRAMID] iter=7 camera=6 visible=516 score=2064 pnp_inliers=504 ratio=0.976744
+[NBV_PYRAMID] iter=7 camera=7 visible=372 score=2064 pnp_inliers=337 ratio=0.905914
+[NBV_PYRAMID] iter=7 camera=8 visible=230 score=1792 pnp_inliers=186 ratio=0.808696
+[NBV_PYRAMID] iter=7 camera=9 visible=232 score=1872 pnp_inliers=187 ratio=0.806034
+[NBV_PYRAMID] iter=7 camera=10 visible=254 score=1872 pnp_inliers=216 ratio=0.850394
+[NBV_PYRAMID] iter=7 camera=11 visible=336 score=1984 pnp_inliers=301 ratio=0.895833
+[NBV_PYRAMID] iter=7 camera=14 visible=123 score=1600 pnp_inliers=103 ratio=0.837398
+NBV selected camera 6 visible=516 pyramid_score=2064 pnp_inliers=504
+ADDED 479 new points
+Using 9 over 15 cameras
+1 1 1 1 1 1 1 0 0 0 0 0 1 1 0 
+****************** OPTIM FOUND 23 OUTLIERS : redoing optim!!
+camera[6]
+{
+	 r_vec : (-0.0523262, 0.413587, 0.149533)
+	 t_vec : (-5.42111, -1.31526, 2.60086)
+}
+[NBV_PYRAMID] iter=8 camera=7 visible=528 score=2256 pnp_inliers=494 ratio=0.935606
+[NBV_PYRAMID] iter=8 camera=8 visible=296 score=1792 pnp_inliers=251 ratio=0.847973
+[NBV_PYRAMID] iter=8 camera=9 visible=302 score=1872 pnp_inliers=249 ratio=0.824503
+[NBV_PYRAMID] iter=8 camera=10 visible=335 score=1936 pnp_inliers=276 ratio=0.823881
+[NBV_PYRAMID] iter=8 camera=11 visible=457 score=1984 pnp_inliers=418 ratio=0.914661
+[NBV_PYRAMID] iter=8 camera=14 visible=133 score=1600 pnp_inliers=106 ratio=0.796992
+NBV selected camera 7 visible=528 pyramid_score=2256 pnp_inliers=494
+ADDED 355 new points
+Using 10 over 15 cameras
+1 1 1 1 1 1 1 1 0 0 0 0 1 1 0 
+****************** OPTIM FOUND 36 OUTLIERS : redoing optim!!
+camera[7]
+{
+	 r_vec : (-0.057247, 0.454979, 0.157959)
+	 t_vec : (-6.31989, -1.35481, 2.8081)
+}
+[NBV_PYRAMID] iter=9 camera=8 visible=374 score=1920 pnp_inliers=334 ratio=0.893048
+[NBV_PYRAMID] iter=9 camera=9 visible=375 score=2000 pnp_inliers=328 ratio=0.874667
+[NBV_PYRAMID] iter=9 camera=10 visible=407 score=2064 pnp_inliers=378 ratio=0.928747
+[NBV_PYRAMID] iter=9 camera=11 visible=550 score=2128 pnp_inliers=512 ratio=0.930909
+[NBV_PYRAMID] iter=9 camera=14 visible=135 score=1536 pnp_inliers=105 ratio=0.777778
+NBV selected camera 11 visible=550 pyramid_score=2128 pnp_inliers=512
+ADDED 385 new points
+Using 11 over 15 cameras
+1 1 1 1 1 1 1 1 0 0 0 1 1 1 0 
+****************** OPTIM FOUND 36 OUTLIERS : redoing optim!!
+camera[11]
+{
+	 r_vec : (-0.0810143, 0.461372, 0.17412)
+	 t_vec : (-6.49633, -2.39841, 2.3764)
+}
+[NBV_PYRAMID] iter=10 camera=8 visible=462 score=2064 pnp_inliers=429 ratio=0.928571
+[NBV_PYRAMID] iter=10 camera=9 visible=450 score=2064 pnp_inliers=404 ratio=0.897778
+[NBV_PYRAMID] iter=10 camera=10 visible=516 score=2128 pnp_inliers=492 ratio=0.953488
+[NBV_PYRAMID] iter=10 camera=14 visible=138 score=1600 pnp_inliers=101 ratio=0.731884
+NBV selected camera 10 visible=516 pyramid_score=2128 pnp_inliers=492
+ADDED 400 new points
+Using 12 over 15 cameras
+1 1 1 1 1 1 1 1 0 0 1 1 1 1 0 
+****************** OPTIM FOUND 42 OUTLIERS : redoing optim!!
+camera[10]
+{
+	 r_vec : (-0.0659086, 0.495341, 0.178293)
+	 t_vec : (-7.35953, -2.29245, 2.84308)
+}
+[NBV_PYRAMID] iter=11 camera=8 visible=577 score=2128 pnp_inliers=553 ratio=0.958406
+[NBV_PYRAMID] iter=11 camera=9 visible=574 score=2064 pnp_inliers=540 ratio=0.940767
+[NBV_PYRAMID] iter=11 camera=14 visible=140 score=1600 pnp_inliers=103 ratio=0.735714
+NBV selected camera 8 visible=577 pyramid_score=2128 pnp_inliers=553
+ADDED 411 new points
+Using 13 over 15 cameras
+1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 
+****************** OPTIM FOUND 38 OUTLIERS : redoing optim!!
+camera[8]
+{
+	 r_vec : (-0.0524038, 0.545873, 0.171049)
+	 t_vec : (-7.32882, -1.48747, 3.30088)
+}
+[NBV_PYRAMID] iter=12 camera=9 visible=756 score=2192 pnp_inliers=723 ratio=0.956349
+[NBV_PYRAMID] iter=12 camera=14 visible=143 score=1600 pnp_inliers=107 ratio=0.748252
+NBV selected camera 9 visible=756 pyramid_score=2192 pnp_inliers=723
+ADDED 476 new points
+Using 14 over 15 cameras
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 
+****************** OPTIM FOUND 47 OUTLIERS : redoing optim!!
+camera[9]
+{
+	 r_vec : (-0.0546343, 0.541391, 0.177532)
+	 t_vec : (-7.7571, -1.50114, 3.2265)
+}
+[NBV_PYRAMID] iter=13 camera=14 visible=144 score=1664 pnp_inliers=102 ratio=0.708333
+NBV selected camera 14 visible=144 pyramid_score=1664 pnp_inliers=102
+ADDED 124 new points
+Using 15 over 15 cameras
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+****************** OPTIM FOUND 45 OUTLIERS : redoing optim!!
+camera[14]
+{
+	 r_vec : (-0.0951448, 0.313794, 0.0508126)
+	 t_vec : (-2.60899, -1.50559, 2.00233)
+}
+===== FINAL METRICS =====
+Registered cameras  : 15 / 15  (success rate 100 %)
+Valid 3D points     : 4687
+Mean reprojection err: 0.707702 px  (focal = 892.37 px)
+=========================
+Recostruction completed, exiting
