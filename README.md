@@ -56,7 +56,7 @@ affects how the error is *displayed*, never how it is computed.
 | Dataset       | Calibration source         | Focal length (px) |
 | :------------ | :------------------------- | ----------------: |
 | DS1, DS2      | `3dp_cam.yml` (teacher)    | 892.37            |
-| DS3, DS4      | `calibrationfile.yml` (self-captured) | 1295.997 |
+| DS1, DS2, DS3, DS4      | `calibrationfile.yml` (self-captured) | 1295.997 |
 
 ### Examples
 
