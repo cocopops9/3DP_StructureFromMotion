@@ -1,0 +1,194 @@
+Header: 15 6359 20466
+Seed pair (0, 1): inliers E=888 H=113
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[1]
+{
+	 r_vec : (-0.0350512, 0.0440793, 0.0216099)
+	 t_vec : (-0.280834, -0.89233, 0.353383)
+}
+camera[1]
+{
+	 r_vec : (-0.0325073, 0.0426476, 0.0208526)
+	 t_vec : (-0.263741, -0.863435, 0.345609)
+}
+ADDED 514 new points
+Using 3 over 15 cameras
+1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 
+camera[2]
+{
+	 r_vec : (-0.0421617, 0.0997224, 0.0214349)
+	 t_vec : (-1.37349, -0.865276, 0.632178)
+}
+ADDED 484 new points
+Using 4 over 15 cameras
+1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 
+camera[3]
+{
+	 r_vec : (-0.0484042, 0.161635, 0.0337337)
+	 t_vec : (-2.33493, -0.805591, 1.00016)
+}
+ADDED 381 new points
+Using 5 over 15 cameras
+1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W0512 21:07:33.729738 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.732057 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.732753 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.736424 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.737170 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.740953 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.743269 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.745524 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.747808 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.748517 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.750766 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.753032 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.755239 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.755964 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.759646 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.760358 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.762591 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.764904 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.767330 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.768172 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.770529 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.771337 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.775604 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.778805 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.779579 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.784569 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.787114 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.787879 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.792903 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.793635 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.797333 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.798048 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.800211 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.802419 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.803157 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.806960 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.807693 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.811455 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.812172 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.815945 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.818078 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.818799 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.821067 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.824733 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.825492 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.829299 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.831750 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.832597 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.835058 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.837471 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.839943 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.842430 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.843282 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.847425 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:07:33.848253 28180 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+****************** OPTIM FOUND 8 OUTLIERS : redoing optim!!
+camera[4]
+{
+	 r_vec : (-0.0530611, 0.2327, 0.0583632)
+	 t_vec : (-3.41653, -0.826633, 1.41871)
+}
+ADDED 358 new points
+Using 6 over 15 cameras
+1 1 1 1 1 0 0 0 0 0 0 0 0 1 0 
+****************** OPTIM FOUND 11 OUTLIERS : redoing optim!!
+camera[13]
+{
+	 r_vec : (-0.0839324, 0.377684, 0.129098)
+	 t_vec : (-4.17032, -1.80282, 2.09944)
+}
+ADDED 546 new points
+Using 7 over 15 cameras
+1 1 1 1 1 1 0 0 0 0 0 0 0 1 0 
+****************** OPTIM FOUND 16 OUTLIERS : redoing optim!!
+camera[5]
+{
+	 r_vec : (-0.0420504, 0.309652, 0.0941804)
+	 t_vec : (-4.52832, -1.03628, 1.93738)
+}
+ADDED 317 new points
+Using 8 over 15 cameras
+1 1 1 1 1 1 0 0 0 0 0 0 1 1 0 
+****************** OPTIM FOUND 23 OUTLIERS : redoing optim!!
+camera[12]
+{
+	 r_vec : (-0.0849349, 0.430825, 0.172882)
+	 t_vec : (-5.24894, -2.1648, 2.19711)
+}
+ADDED 479 new points
+Using 9 over 15 cameras
+1 1 1 1 1 1 1 0 0 0 0 0 1 1 0 
+****************** OPTIM FOUND 23 OUTLIERS : redoing optim!!
+camera[6]
+{
+	 r_vec : (-0.0526974, 0.414231, 0.149663)
+	 t_vec : (-5.42941, -1.3194, 2.60507)
+}
+ADDED 355 new points
+Using 10 over 15 cameras
+1 1 1 1 1 1 1 1 0 0 0 0 1 1 0 
+****************** OPTIM FOUND 36 OUTLIERS : redoing optim!!
+camera[7]
+{
+	 r_vec : (-0.0576187, 0.455623, 0.158094)
+	 t_vec : (-6.32882, -1.35901, 2.81265)
+}
+ADDED 385 new points
+Using 11 over 15 cameras
+1 1 1 1 1 1 1 1 0 0 0 1 1 1 0 
+****************** OPTIM FOUND 36 OUTLIERS : redoing optim!!
+camera[11]
+{
+	 r_vec : (-0.0813914, 0.462013, 0.174249)
+	 t_vec : (-6.50533, -2.40349, 2.38068)
+}
+ADDED 400 new points
+Using 12 over 15 cameras
+1 1 1 1 1 1 1 1 0 0 1 1 1 1 0 
+****************** OPTIM FOUND 42 OUTLIERS : redoing optim!!
+camera[10]
+{
+	 r_vec : (-0.0662847, 0.495981, 0.178433)
+	 t_vec : (-7.36916, -2.29748, 2.84784)
+}
+ADDED 411 new points
+Using 13 over 15 cameras
+1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 
+****************** OPTIM FOUND 38 OUTLIERS : redoing optim!!
+camera[8]
+{
+	 r_vec : (-0.052774, 0.546514, 0.171202)
+	 t_vec : (-7.33833, -1.49181, 3.30618)
+}
+ADDED 476 new points
+Using 14 over 15 cameras
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 
+****************** OPTIM FOUND 47 OUTLIERS : redoing optim!!
+camera[9]
+{
+	 r_vec : (-0.0550071, 0.542031, 0.177684)
+	 t_vec : (-7.76696, -1.50552, 3.23172)
+}
+ADDED 124 new points
+Using 15 over 15 cameras
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+****************** OPTIM FOUND 45 OUTLIERS : redoing optim!!
+camera[14]
+{
+	 r_vec : (-0.095451, 0.314489, 0.0509146)
+	 t_vec : (-2.61577, -1.50905, 2.0053)
+}
+===== FINAL METRICS =====
+Registered cameras  : 15 / 15  (success rate 100 %)
+Valid 3D points     : 4687
+Mean reprojection err: 1.0278 px  (focal = 1296 px)
+=========================
+Recostruction completed, exiting
