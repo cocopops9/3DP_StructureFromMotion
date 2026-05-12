@@ -1,0 +1,252 @@
+Header: 9 9910 36146
+Seed pair (5, 7): inliers E=2664 H=868
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (5, 6): inliers E=2574 H=553
+camera[5]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[6]
+{
+	 r_vec : (-0.00391372, 0.0145353, -0.00531925)
+	 t_vec : (-0.879234, 0.224902, 0.419961)
+}
+camera[6]
+{
+	 r_vec : (-0.00570968, 0.0138708, -0.00501778)
+	 t_vec : (-0.913384, 0.198098, 0.382495)
+}
+[NBV_PYRAMID] iter=1 camera=0 visible=902 score=2400 pnp_inliers=810 ratio=0.898004
+[NBV_PYRAMID] iter=1 camera=1 visible=1628 score=2736 pnp_inliers=1625 ratio=0.998157
+[NBV_PYRAMID] iter=1 camera=2 visible=412 score=2272 pnp_inliers=307 ratio=0.745146
+[NBV_PYRAMID] iter=1 camera=3 visible=419 score=2080 pnp_inliers=334 ratio=0.797136
+[NBV_PYRAMID] iter=1 camera=4 visible=789 score=2400 pnp_inliers=730 ratio=0.925222
+[NBV_PYRAMID] iter=1 camera=7 visible=1808 score=2528 pnp_inliers=1805 ratio=0.998341
+[NBV_PYRAMID] iter=1 camera=8 visible=874 score=2656 pnp_inliers=829 ratio=0.948513
+NBV selected camera 1 visible=1628 pyramid_score=2736 pnp_inliers=1625
+ADDED 1778 new points
+Using 3 over 9 cameras
+0 1 0 0 0 1 1 0 0 
+camera[1]
+{
+	 r_vec : (0.00153381, -0.0921079, -0.0112243)
+	 t_vec : (0.831418, -0.0599712, -0.809275)
+}
+Diverged: only 0 valid points remain.
+Try to look for a better seed pair
+Seed pair (1, 5): inliers E=2250 H=509
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (6, 7): inliers E=2285 H=455
+camera[6]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[7]
+{
+	 r_vec : (-0.0175601, 0.00212247, 0.0054472)
+	 t_vec : (0.917616, 0.0739426, 0.39053)
+}
+camera[7]
+{
+	 r_vec : (-0.0160859, -0.000362231, 0.00517411)
+	 t_vec : (1.01189, 0.0980482, 0.409121)
+}
+[NBV_PYRAMID] iter=1 camera=0 visible=867 score=2192 pnp_inliers=825 ratio=0.951557
+[NBV_PYRAMID] iter=1 camera=1 visible=1558 score=2656 pnp_inliers=1552 ratio=0.996149
+[NBV_PYRAMID] iter=1 camera=2 visible=385 score=2080 pnp_inliers=332 ratio=0.862338
+[NBV_PYRAMID] iter=1 camera=3 visible=417 score=2080 pnp_inliers=363 ratio=0.870504
+[NBV_PYRAMID] iter=1 camera=4 visible=760 score=2448 pnp_inliers=711 ratio=0.935526
+[NBV_PYRAMID] iter=1 camera=5 visible=1785 score=2544 pnp_inliers=1782 ratio=0.998319
+[NBV_PYRAMID] iter=1 camera=8 visible=853 score=2448 pnp_inliers=813 ratio=0.953107
+NBV selected camera 1 visible=1558 pyramid_score=2656 pnp_inliers=1552
+ADDED 1859 new points
+Using 3 over 9 cameras
+0 1 0 0 0 0 1 1 0 
+camera[1]
+{
+	 r_vec : (0.00484565, -0.0980337, -0.00562574)
+	 t_vec : (1.53579, -0.279959, -0.845026)
+}
+Diverged: only 0 valid points remain.
+Try to look for a better seed pair
+Seed pair (1, 7): inliers E=2377 H=494
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (0, 8): inliers E=2406 H=336
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[8]
+{
+	 r_vec : (0.0161154, 0.0257103, 0.00226224)
+	 t_vec : (-0.31451, 0.948944, -0.0242677)
+}
+camera[8]
+{
+	 r_vec : (0.0155842, 0.0252485, 0.00284388)
+	 t_vec : (-0.287434, 0.937786, -0.0214876)
+}
+[NBV_PYRAMID] iter=1 camera=1 visible=1083 score=2224 pnp_inliers=1076 ratio=0.993536
+[NBV_PYRAMID] iter=1 camera=2 visible=748 score=2464 pnp_inliers=709 ratio=0.947861
+[NBV_PYRAMID] iter=1 camera=3 visible=714 score=2400 pnp_inliers=698 ratio=0.977591
+[NBV_PYRAMID] iter=1 camera=4 visible=1549 score=2576 pnp_inliers=1542 ratio=0.995481
+[NBV_PYRAMID] iter=1 camera=5 visible=1016 score=2544 pnp_inliers=1003 ratio=0.987205
+[NBV_PYRAMID] iter=1 camera=6 visible=912 score=2144 pnp_inliers=885 ratio=0.970395
+[NBV_PYRAMID] iter=1 camera=7 visible=1080 score=2400 pnp_inliers=1062 ratio=0.983333
+NBV selected camera 4 visible=1549 pyramid_score=2576 pnp_inliers=1542
+ADDED 1536 new points
+Using 3 over 9 cameras
+1 0 0 0 1 0 0 0 1 
+camera[4]
+{
+	 r_vec : (-0.032638, -0.023683, -0.0179332)
+	 t_vec : (0.713745, 0.179855, 0.572494)
+}
+Diverged: only 0 valid points remain.
+Try to look for a better seed pair
+Seed pair (0, 4): inliers E=2178 H=587
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (1, 6): inliers E=2028 H=279
+camera[1]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[6]
+{
+	 r_vec : (-0.00204407, 0.10096, 0.00532568)
+	 t_vec : (-0.768567, 0.172583, 0.616051)
+}
+camera[6]
+{
+	 r_vec : (-0.00343211, 0.103245, 0.0056496)
+	 t_vec : (-0.79305, 0.161217, 0.619409)
+}
+[NBV_PYRAMID] iter=1 camera=0 visible=869 score=2208 pnp_inliers=853 ratio=0.981588
+[NBV_PYRAMID] iter=1 camera=2 visible=410 score=2336 pnp_inliers=364 ratio=0.887805
+[NBV_PYRAMID] iter=1 camera=3 visible=410 score=2080 pnp_inliers=385 ratio=0.939024
+[NBV_PYRAMID] iter=1 camera=4 visible=791 score=2400 pnp_inliers=775 ratio=0.979772
+[NBV_PYRAMID] iter=1 camera=5 visible=1618 score=2464 pnp_inliers=1616 ratio=0.998764
+[NBV_PYRAMID] iter=1 camera=7 visible=1538 score=2336 pnp_inliers=1536 ratio=0.9987
+[NBV_PYRAMID] iter=1 camera=8 visible=877 score=2400 pnp_inliers=856 ratio=0.976055
+NBV selected camera 5 visible=1618 pyramid_score=2464 pnp_inliers=1616
+ADDED 2454 new points
+Using 3 over 9 cameras
+0 1 0 0 0 1 1 0 0 
+camera[5]
+{
+	 r_vec : (0.00370451, 0.0889015, 0.0104294)
+	 t_vec : (-0.370599, 0.0807545, 0.443323)
+}
+[NBV_PYRAMID] iter=2 camera=0 visible=1471 score=2464 pnp_inliers=1411 ratio=0.959211
+[NBV_PYRAMID] iter=2 camera=2 visible=688 score=2336 pnp_inliers=595 ratio=0.864826
+[NBV_PYRAMID] iter=2 camera=3 visible=672 score=2272 pnp_inliers=595 ratio=0.885417
+[NBV_PYRAMID] iter=2 camera=4 visible=1311 score=2656 pnp_inliers=1232 ratio=0.939741
+[NBV_PYRAMID] iter=2 camera=7 visible=2803 score=2528 pnp_inliers=2800 ratio=0.99893
+[NBV_PYRAMID] iter=2 camera=8 visible=1433 score=2720 pnp_inliers=1390 ratio=0.969993
+NBV selected camera 8 visible=1433 pyramid_score=2720 pnp_inliers=1390
+ADDED 748 new points
+Using 4 over 9 cameras
+0 1 0 0 0 1 1 0 1 
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W0512 21:21:17.505043 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.508711 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.530107 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.534287 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.546157 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.558624 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.562369 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.582688 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.594635 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.598152 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.618499 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.622007 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.641155 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.644629 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.656423 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.668133 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.671677 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:21:17.683113 38298 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+****************** OPTIM FOUND 12 OUTLIERS : redoing optim!!
+camera[8]
+{
+	 r_vec : (0.0553224, 0.00299051, -0.00748776)
+	 t_vec : (1.10918, 0.31252, -0.339043)
+}
+[NBV_PYRAMID] iter=3 camera=0 visible=1941 score=2528 pnp_inliers=1918 ratio=0.98815
+[NBV_PYRAMID] iter=3 camera=2 visible=906 score=2464 pnp_inliers=850 ratio=0.93819
+[NBV_PYRAMID] iter=3 camera=3 visible=879 score=2336 pnp_inliers=842 ratio=0.957907
+[NBV_PYRAMID] iter=3 camera=4 visible=1686 score=2656 pnp_inliers=1669 ratio=0.989917
+[NBV_PYRAMID] iter=3 camera=7 visible=3086 score=2528 pnp_inliers=3081 ratio=0.99838
+NBV selected camera 4 visible=1686 pyramid_score=2656 pnp_inliers=1669
+ADDED 1099 new points
+Using 5 over 9 cameras
+0 1 0 0 1 1 1 0 1 
+****************** OPTIM FOUND 7 OUTLIERS : redoing optim!!
+camera[4]
+{
+	 r_vec : (0.00916094, -0.0455321, -0.0275005)
+	 t_vec : (1.67988, -0.147521, 0.0755964)
+}
+[NBV_PYRAMID] iter=4 camera=0 visible=2656 score=2592 pnp_inliers=2641 ratio=0.994352
+[NBV_PYRAMID] iter=4 camera=2 visible=1191 score=2592 pnp_inliers=1152 ratio=0.967254
+[NBV_PYRAMID] iter=4 camera=3 visible=1136 score=2528 pnp_inliers=1106 ratio=0.973592
+[NBV_PYRAMID] iter=4 camera=7 visible=3246 score=2592 pnp_inliers=3237 ratio=0.997227
+NBV selected camera 7 visible=3246 pyramid_score=2592 pnp_inliers=3237
+ADDED 1125 new points
+Using 6 over 9 cameras
+0 1 0 0 1 1 1 1 1 
+****************** OPTIM FOUND 7 OUTLIERS : redoing optim!!
+camera[7]
+{
+	 r_vec : (-0.0159224, 0.0972196, 0.0092082)
+	 t_vec : (-0.220957, 0.257761, 0.779565)
+}
+[NBV_PYRAMID] iter=5 camera=0 visible=2780 score=2592 pnp_inliers=2763 ratio=0.993885
+[NBV_PYRAMID] iter=5 camera=2 visible=1253 score=2656 pnp_inliers=1204 ratio=0.960894
+[NBV_PYRAMID] iter=5 camera=3 visible=1195 score=2592 pnp_inliers=1135 ratio=0.949791
+NBV selected camera 2 visible=1253 pyramid_score=2656 pnp_inliers=1204
+ADDED 526 new points
+Using 7 over 9 cameras
+0 1 1 0 1 1 1 1 1 
+****************** OPTIM FOUND 19 OUTLIERS : redoing optim!!
+camera[2]
+{
+	 r_vec : (-0.00628289, -0.148562, -0.0141966)
+	 t_vec : (2.93327, 0.173146, -0.371839)
+}
+[NBV_PYRAMID] iter=6 camera=0 visible=2900 score=2592 pnp_inliers=2884 ratio=0.994483
+[NBV_PYRAMID] iter=6 camera=3 visible=1435 score=2656 pnp_inliers=1405 ratio=0.979094
+NBV selected camera 3 visible=1435 pyramid_score=2656 pnp_inliers=1405
+ADDED 919 new points
+Using 8 over 9 cameras
+0 1 1 1 1 1 1 1 1 
+****************** OPTIM FOUND 12 OUTLIERS : redoing optim!!
+camera[3]
+{
+	 r_vec : (-0.0101113, -0.123654, -0.0384499)
+	 t_vec : (2.7811, 0.742067, -0.0469987)
+}
+[NBV_PYRAMID] iter=7 camera=0 visible=2968 score=2592 pnp_inliers=2949 ratio=0.993598
+NBV selected camera 0 visible=2968 pyramid_score=2592 pnp_inliers=2949
+ADDED 980 new points
+Using 9 over 9 cameras
+1 1 1 1 1 1 1 1 1 
+camera[0]
+{
+	 r_vec : (0.0432166, -0.0186109, -0.0112143)
+	 t_vec : (1.25503, -0.20864, -0.287113)
+}
+===== FINAL METRICS =====
+Registered cameras  : 9 / 9  (success rate 100 %)
+Valid 3D points     : 9532
+Mean reprojection err: 0.834566 px  (focal = 1296 px)
+=========================
+Recostruction completed, exiting

@@ -1,0 +1,705 @@
+Header: 17 11042 55871
+Seed pair (0, 4): inliers E=2354 H=1348
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (6, 7): inliers E=2074 H=894
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (5, 6): inliers E=1788 H=620
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (0, 1): inliers E=1898 H=489
+camera[0]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[1]
+{
+	 r_vec : (-0.00290675, 0.0895956, 0.0103493)
+	 t_vec : (-0.998379, -0.0199433, 0.0532981)
+}
+camera[1]
+{
+	 r_vec : (-0.00208455, 0.0632665, 0.0104668)
+	 t_vec : (-0.870221, -0.015772, 0.124808)
+}
+[NBV_PYRAMID] iter=1 camera=2 visible=1026 score=1232 pnp_inliers=995 ratio=0.969786
+[NBV_PYRAMID] iter=1 camera=3 visible=879 score=1216 pnp_inliers=835 ratio=0.949943
+[NBV_PYRAMID] iter=1 camera=4 visible=1453 score=1264 pnp_inliers=1448 ratio=0.996559
+[NBV_PYRAMID] iter=1 camera=5 visible=936 score=1152 pnp_inliers=891 ratio=0.951923
+[NBV_PYRAMID] iter=1 camera=6 visible=788 score=860 pnp_inliers=748 ratio=0.949239
+[NBV_PYRAMID] iter=1 camera=7 visible=716 score=864 pnp_inliers=665 ratio=0.928771
+[NBV_PYRAMID] iter=1 camera=8 visible=572 score=800 pnp_inliers=473 ratio=0.826923
+[NBV_PYRAMID] iter=1 camera=9 visible=1035 score=928 pnp_inliers=1006 ratio=0.971981
+[NBV_PYRAMID] iter=1 camera=10 visible=1076 score=1120 pnp_inliers=1055 ratio=0.980483
+[NBV_PYRAMID] iter=1 camera=11 visible=1177 score=1056 pnp_inliers=1164 ratio=0.988955
+[NBV_PYRAMID] iter=1 camera=12 visible=1157 score=928 pnp_inliers=1140 ratio=0.985307
+[NBV_PYRAMID] iter=1 camera=13 visible=1089 score=992 pnp_inliers=1068 ratio=0.980716
+[NBV_PYRAMID] iter=1 camera=14 visible=904 score=928 pnp_inliers=876 ratio=0.969027
+[NBV_PYRAMID] iter=1 camera=15 visible=758 score=928 pnp_inliers=730 ratio=0.963061
+[NBV_PYRAMID] iter=1 camera=16 visible=711 score=864 pnp_inliers=672 ratio=0.945148
+NBV selected camera 4 visible=1453 pyramid_score=1264 pnp_inliers=1448
+ADDED 1610 new points
+Using 3 over 17 cameras
+1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+****************** OPTIM FOUND 9 OUTLIERS : redoing optim!!
+camera[4]
+{
+	 r_vec : (-0.000302733, 0.0450521, 0.010392)
+	 t_vec : (-0.241533, -0.0833492, 0.281169)
+}
+[NBV_PYRAMID] iter=2 camera=2 visible=1357 score=1296 pnp_inliers=1260 ratio=0.928519
+[NBV_PYRAMID] iter=2 camera=3 visible=1155 score=1216 pnp_inliers=1029 ratio=0.890909
+[NBV_PYRAMID] iter=2 camera=5 visible=1387 score=1216 pnp_inliers=1235 ratio=0.890411
+[NBV_PYRAMID] iter=2 camera=6 visible=1150 score=988 pnp_inliers=963 ratio=0.837391
+[NBV_PYRAMID] iter=2 camera=7 visible=1043 score=928 pnp_inliers=891 ratio=0.854267
+[NBV_PYRAMID] iter=2 camera=8 visible=853 score=944 pnp_inliers=641 ratio=0.751465
+[NBV_PYRAMID] iter=2 camera=9 visible=1619 score=928 pnp_inliers=1546 ratio=0.95491
+[NBV_PYRAMID] iter=2 camera=10 visible=1786 score=1200 pnp_inliers=1736 ratio=0.972004
+[NBV_PYRAMID] iter=2 camera=11 visible=1906 score=1136 pnp_inliers=1888 ratio=0.990556
+[NBV_PYRAMID] iter=2 camera=12 visible=1718 score=1008 pnp_inliers=1689 ratio=0.98312
+[NBV_PYRAMID] iter=2 camera=13 visible=1518 score=1072 pnp_inliers=1452 ratio=0.956522
+[NBV_PYRAMID] iter=2 camera=14 visible=1243 score=1088 pnp_inliers=1140 ratio=0.917136
+[NBV_PYRAMID] iter=2 camera=15 visible=1037 score=1008 pnp_inliers=882 ratio=0.85053
+[NBV_PYRAMID] iter=2 camera=16 visible=954 score=928 pnp_inliers=838 ratio=0.878407
+NBV selected camera 2 visible=1357 pyramid_score=1296 pnp_inliers=1260
+ADDED 0 new points
+Using 4 over 17 cameras
+1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 1357 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (0.919824, 0.0964244, -2.95233)
+	 t_vec : (4.29574, 0.50567, -11.3012)
+}
+[NBV_PYRAMID] iter=3 camera=3 visible=248 score=1004 pnp_inliers=196 ratio=0.790323
+[NBV_PYRAMID] iter=3 camera=5 visible=682 score=1136 pnp_inliers=616 ratio=0.903226
+[NBV_PYRAMID] iter=3 camera=6 visible=551 score=988 pnp_inliers=479 ratio=0.869328
+[NBV_PYRAMID] iter=3 camera=7 visible=493 score=844 pnp_inliers=420 ratio=0.851927
+[NBV_PYRAMID] iter=3 camera=8 visible=395 score=880 pnp_inliers=295 ratio=0.746835
+[NBV_PYRAMID] iter=3 camera=9 visible=845 score=928 pnp_inliers=813 ratio=0.96213
+[NBV_PYRAMID] iter=3 camera=10 visible=977 score=1200 pnp_inliers=959 ratio=0.981576
+[NBV_PYRAMID] iter=3 camera=11 visible=1024 score=1136 pnp_inliers=1016 ratio=0.992188
+[NBV_PYRAMID] iter=3 camera=12 visible=804 score=1008 pnp_inliers=792 ratio=0.985075
+[NBV_PYRAMID] iter=3 camera=13 visible=606 score=1072 pnp_inliers=577 ratio=0.952145
+[NBV_PYRAMID] iter=3 camera=14 visible=372 score=1088 pnp_inliers=334 ratio=0.897849
+[NBV_PYRAMID] iter=3 camera=15 visible=261 score=1008 pnp_inliers=209 ratio=0.800766
+[NBV_PYRAMID] iter=3 camera=16 visible=223 score=928 pnp_inliers=174 ratio=0.780269
+NBV selected camera 10 visible=977 pyramid_score=1200 pnp_inliers=959
+ADDED 651 new points
+Using 5 over 17 cameras
+1 1 1 0 1 0 0 0 0 0 1 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 127 points : redoing optim!!
+****************** OPTIM FOUND 11 OUTLIERS : redoing optim!!
+camera[10]
+{
+	 r_vec : (0.000979455, 0.0165266, -0.00235817)
+	 t_vec : (0.0238457, -0.274937, 0.701337)
+}
+[NBV_PYRAMID] iter=4 camera=3 visible=281 score=1004 pnp_inliers=229 ratio=0.814947
+[NBV_PYRAMID] iter=4 camera=5 visible=806 score=1136 pnp_inliers=744 ratio=0.923077
+[NBV_PYRAMID] iter=4 camera=6 visible=637 score=988 pnp_inliers=582 ratio=0.913658
+[NBV_PYRAMID] iter=4 camera=7 visible=576 score=924 pnp_inliers=529 ratio=0.918403
+[NBV_PYRAMID] iter=4 camera=8 visible=446 score=944 pnp_inliers=359 ratio=0.804933
+[NBV_PYRAMID] iter=4 camera=9 visible=1045 score=1008 pnp_inliers=1011 ratio=0.967464
+[NBV_PYRAMID] iter=4 camera=11 visible=1201 score=1136 pnp_inliers=1190 ratio=0.990841
+[NBV_PYRAMID] iter=4 camera=12 visible=928 score=1088 pnp_inliers=915 ratio=0.985991
+[NBV_PYRAMID] iter=4 camera=13 visible=672 score=1072 pnp_inliers=637 ratio=0.947917
+[NBV_PYRAMID] iter=4 camera=14 visible=430 score=1088 pnp_inliers=386 ratio=0.897674
+[NBV_PYRAMID] iter=4 camera=15 visible=300 score=1008 pnp_inliers=249 ratio=0.83
+[NBV_PYRAMID] iter=4 camera=16 visible=253 score=928 pnp_inliers=200 ratio=0.790514
+NBV selected camera 11 visible=1201 pyramid_score=1136 pnp_inliers=1190
+ADDED 595 new points
+Using 6 over 17 cameras
+1 1 1 0 1 0 0 0 0 0 1 1 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 124 points : redoing optim!!
+****************** OPTIM FOUND 7 OUTLIERS : redoing optim!!
+camera[11]
+{
+	 r_vec : (0.00235578, 0.050012, 0.00861749)
+	 t_vec : (-0.453022, -0.267966, 0.720235)
+}
+[NBV_PYRAMID] iter=5 camera=3 visible=312 score=1004 pnp_inliers=256 ratio=0.820513
+[NBV_PYRAMID] iter=5 camera=5 visible=882 score=1216 pnp_inliers=826 ratio=0.936508
+[NBV_PYRAMID] iter=5 camera=6 visible=710 score=1072 pnp_inliers=649 ratio=0.914085
+[NBV_PYRAMID] iter=5 camera=7 visible=638 score=1008 pnp_inliers=581 ratio=0.910658
+[NBV_PYRAMID] iter=5 camera=8 visible=499 score=944 pnp_inliers=405 ratio=0.811623
+[NBV_PYRAMID] iter=5 camera=9 visible=1138 score=1008 pnp_inliers=1100 ratio=0.966608
+[NBV_PYRAMID] iter=5 camera=12 visible=1088 score=1088 pnp_inliers=1072 ratio=0.985294
+[NBV_PYRAMID] iter=5 camera=13 visible=776 score=1072 pnp_inliers=751 ratio=0.967784
+[NBV_PYRAMID] iter=5 camera=14 visible=475 score=1168 pnp_inliers=428 ratio=0.901053
+[NBV_PYRAMID] iter=5 camera=15 visible=341 score=1008 pnp_inliers=281 ratio=0.824047
+[NBV_PYRAMID] iter=5 camera=16 visible=293 score=928 pnp_inliers=233 ratio=0.795222
+NBV selected camera 5 visible=882 pyramid_score=1216 pnp_inliers=826
+ADDED 0 new points
+Using 7 over 17 cameras
+1 1 1 0 1 1 0 0 0 0 1 1 0 0 0 0 0 
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W0512 21:23:00.782051 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:00.784525 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:00.799947 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:00.802610 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:00.816612 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:00.819139 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:00.828349 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:00.837522 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:00.845481 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:00.847891 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:00.857887 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:00.860298 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+****************** OPTIM CHEIRALITY VIOLATION for 882 points : redoing optim!!
+camera[5]
+{
+	 r_vec : (0.240036, -0.190461, 3.13064)
+	 t_vec : (-1.93107, 0.915101, -13.2448)
+}
+[NBV_PYRAMID] iter=6 camera=3 visible=188 score=1004 pnp_inliers=152 ratio=0.808511
+[NBV_PYRAMID] iter=6 camera=6 visible=176 score=796 pnp_inliers=153 ratio=0.869318
+[NBV_PYRAMID] iter=6 camera=7 visible=173 score=924 pnp_inliers=138 ratio=0.797688
+[NBV_PYRAMID] iter=6 camera=8 visible=136 score=944 pnp_inliers=88 ratio=0.647059
+[NBV_PYRAMID] iter=6 camera=9 visible=540 score=1008 pnp_inliers=515 ratio=0.953704
+[NBV_PYRAMID] iter=6 camera=12 visible=696 score=1088 pnp_inliers=686 ratio=0.985632
+[NBV_PYRAMID] iter=6 camera=13 visible=495 score=1072 pnp_inliers=477 ratio=0.963636
+[NBV_PYRAMID] iter=6 camera=14 visible=297 score=1088 pnp_inliers=269 ratio=0.905724
+[NBV_PYRAMID] iter=6 camera=15 visible=212 score=1008 pnp_inliers=169 ratio=0.79717
+[NBV_PYRAMID] iter=6 camera=16 visible=158 score=928 pnp_inliers=125 ratio=0.791139
+NBV selected camera 12 visible=696 pyramid_score=1088 pnp_inliers=686
+ADDED 489 new points
+Using 8 over 17 cameras
+1 1 1 0 1 1 0 0 0 0 1 1 1 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 183 points : redoing optim!!
+camera[12]
+{
+	 r_vec : (0.00549209, 0.0657449, 0.0132767)
+	 t_vec : (-0.818589, -0.260425, 0.747965)
+}
+[NBV_PYRAMID] iter=7 camera=3 visible=217 score=1152 pnp_inliers=179 ratio=0.824885
+[NBV_PYRAMID] iter=7 camera=6 visible=195 score=796 pnp_inliers=166 ratio=0.851282
+[NBV_PYRAMID] iter=7 camera=7 visible=194 score=924 pnp_inliers=156 ratio=0.804124
+[NBV_PYRAMID] iter=7 camera=8 visible=149 score=944 pnp_inliers=94 ratio=0.630872
+[NBV_PYRAMID] iter=7 camera=9 visible=564 score=1008 pnp_inliers=540 ratio=0.957447
+[NBV_PYRAMID] iter=7 camera=13 visible=585 score=1072 pnp_inliers=570 ratio=0.974359
+[NBV_PYRAMID] iter=7 camera=14 visible=346 score=1168 pnp_inliers=314 ratio=0.907514
+[NBV_PYRAMID] iter=7 camera=15 visible=243 score=1008 pnp_inliers=193 ratio=0.794239
+[NBV_PYRAMID] iter=7 camera=16 visible=179 score=928 pnp_inliers=146 ratio=0.815642
+NBV selected camera 14 visible=346 pyramid_score=1168 pnp_inliers=314
+ADDED 365 new points
+Using 9 over 17 cameras
+1 1 1 0 1 1 0 0 0 0 1 1 1 0 1 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 219 points : redoing optim!!
+****************** OPTIM FOUND 8 OUTLIERS : redoing optim!!
+camera[14]
+{
+	 r_vec : (0.0204323, 0.155581, 0.200067)
+	 t_vec : (-1.55232, -0.217273, 0.865413)
+}
+[NBV_PYRAMID] iter=8 camera=3 visible=251 score=1152 pnp_inliers=213 ratio=0.848606
+[NBV_PYRAMID] iter=8 camera=6 visible=203 score=796 pnp_inliers=175 ratio=0.862069
+[NBV_PYRAMID] iter=8 camera=7 visible=200 score=924 pnp_inliers=164 ratio=0.82
+[NBV_PYRAMID] iter=8 camera=8 visible=159 score=944 pnp_inliers=99 ratio=0.622642
+[NBV_PYRAMID] iter=8 camera=9 visible=580 score=1008 pnp_inliers=555 ratio=0.956897
+[NBV_PYRAMID] iter=8 camera=13 visible=624 score=1072 pnp_inliers=613 ratio=0.982372
+[NBV_PYRAMID] iter=8 camera=15 visible=278 score=1008 pnp_inliers=239 ratio=0.859712
+[NBV_PYRAMID] iter=8 camera=16 visible=211 score=1008 pnp_inliers=175 ratio=0.829384
+NBV selected camera 3 visible=251 pyramid_score=1152 pnp_inliers=213
+ADDED 10 new points
+Using 10 over 17 cameras
+1 1 1 1 1 1 0 0 0 0 1 1 1 0 1 0 0 
+W0512 21:23:02.548991 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:02.557250 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:02.559828 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:02.574541 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:02.583434 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:02.586045 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:02.594954 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:02.597555 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+****************** OPTIM CHEIRALITY VIOLATION for 254 points : redoing optim!!
+camera[3]
+{
+	 r_vec : (0.995539, 2.4394, 0.301633)
+	 t_vec : (-13.6533, 1.25677, 28.0637)
+}
+Diverged: geometry exploded (max_dist = 238.005)
+Try to look for a better seed pair
+Seed pair (1, 4): inliers E=1753 H=468
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (0, 11): inliers E=1787 H=638
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (0, 10): inliers E=1718 H=628
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (4, 11): inliers E=1638 H=691
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (5, 9): inliers E=1682 H=510
+camera[5]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[9]
+{
+	 r_vec : (-0.0135717, 0.0423745, 0.00327837)
+	 t_vec : (-0.890297, -0.247363, 0.382337)
+}
+****************** OPTIM FOUND 9 OUTLIERS : redoing optim!!
+camera[9]
+{
+	 r_vec : (-0.00563038, 0.016404, 0.000380433)
+	 t_vec : (-0.703424, -0.194946, 0.496196)
+}
+[NBV_PYRAMID] iter=1 camera=0 visible=940 score=1136 pnp_inliers=930 ratio=0.989362
+[NBV_PYRAMID] iter=1 camera=1 visible=750 score=1024 pnp_inliers=723 ratio=0.964
+[NBV_PYRAMID] iter=1 camera=2 visible=522 score=1088 pnp_inliers=485 ratio=0.929119
+[NBV_PYRAMID] iter=1 camera=3 visible=452 score=1136 pnp_inliers=401 ratio=0.887168
+[NBV_PYRAMID] iter=1 camera=4 visible=865 score=1200 pnp_inliers=853 ratio=0.986127
+[NBV_PYRAMID] iter=1 camera=6 visible=1068 score=1152 pnp_inliers=1057 ratio=0.9897
+[NBV_PYRAMID] iter=1 camera=7 visible=923 score=928 pnp_inliers=905 ratio=0.980498
+[NBV_PYRAMID] iter=1 camera=8 visible=702 score=864 pnp_inliers=651 ratio=0.92735
+[NBV_PYRAMID] iter=1 camera=10 visible=884 score=1056 pnp_inliers=874 ratio=0.988688
+[NBV_PYRAMID] iter=1 camera=11 visible=734 score=1056 pnp_inliers=712 ratio=0.970027
+[NBV_PYRAMID] iter=1 camera=12 visible=673 score=928 pnp_inliers=645 ratio=0.958395
+[NBV_PYRAMID] iter=1 camera=13 visible=559 score=928 pnp_inliers=528 ratio=0.944544
+[NBV_PYRAMID] iter=1 camera=14 visible=480 score=928 pnp_inliers=431 ratio=0.897917
+[NBV_PYRAMID] iter=1 camera=15 visible=398 score=1008 pnp_inliers=366 ratio=0.919598
+[NBV_PYRAMID] iter=1 camera=16 visible=378 score=880 pnp_inliers=340 ratio=0.899471
+NBV selected camera 4 visible=865 pyramid_score=1200 pnp_inliers=853
+ADDED 0 new points
+Using 3 over 17 cameras
+0 0 0 0 1 1 0 0 0 1 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 865 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (0.396572, 0.146578, -3.07565)
+	 t_vec : (2.97039, 0.723342, -15.1629)
+}
+[NBV_PYRAMID] iter=2 camera=0 visible=189 score=1008 pnp_inliers=185 ratio=0.978836
+[NBV_PYRAMID] iter=2 camera=1 visible=128 score=860 pnp_inliers=117 ratio=0.914062
+[NBV_PYRAMID] iter=2 camera=2 visible=91 score=796 pnp_inliers=79 ratio=0.868132
+[NBV_PYRAMID] iter=2 camera=3 visible=85 score=880 pnp_inliers=69 ratio=0.811765
+[NBV_PYRAMID] iter=2 camera=6 visible=460 score=1088 pnp_inliers=458 ratio=0.995652
+[NBV_PYRAMID] iter=2 camera=7 visible=360 score=928 pnp_inliers=350 ratio=0.972222
+[NBV_PYRAMID] iter=2 camera=8 visible=246 score=780 pnp_inliers=234 ratio=0.95122
+[NBV_PYRAMID] iter=2 camera=10 visible=238 score=992 pnp_inliers=235 ratio=0.987395
+[NBV_PYRAMID] iter=2 camera=11 visible=146 score=992 pnp_inliers=135 ratio=0.924658
+[NBV_PYRAMID] iter=2 camera=12 visible=132 score=928 pnp_inliers=116 ratio=0.878788
+[NBV_PYRAMID] iter=2 camera=13 visible=99 score=800 pnp_inliers=84 ratio=0.848485
+[NBV_PYRAMID] iter=2 camera=14 visible=91 score=700 pnp_inliers=77 ratio=0.846154
+[NBV_PYRAMID] iter=2 camera=15 visible=82 score=864 pnp_inliers=69 ratio=0.841463
+[NBV_PYRAMID] iter=2 camera=16 visible=68 score=636 pnp_inliers=50 ratio=0.735294
+NBV selected camera 6 visible=460 pyramid_score=1088 pnp_inliers=458
+ADDED 1 new points
+Using 4 over 17 cameras
+0 0 0 0 1 1 1 0 0 1 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 460 points : redoing optim!!
+camera[6]
+{
+	 r_vec : (0.269876, -0.169551, 3.11338)
+	 t_vec : (-1.48772, 0.964046, -16.6396)
+}
+[NBV_PYRAMID] iter=3 camera=0 visible=82 score=1008 pnp_inliers=80 ratio=0.97561
+[NBV_PYRAMID] iter=3 camera=1 visible=52 score=796 pnp_inliers=44 ratio=0.846154
+[NBV_PYRAMID] iter=3 camera=2 visible=40 score=648 pnp_inliers=33 ratio=0.825
+[NBV_PYRAMID] iter=3 camera=3 visible=40 score=672 pnp_inliers=31 ratio=0.775
+[NBV_PYRAMID] iter=3 camera=7 visible=64 score=700 pnp_inliers=62 ratio=0.96875
+[NBV_PYRAMID] iter=3 camera=8 visible=41 score=636 pnp_inliers=38 ratio=0.926829
+[NBV_PYRAMID] iter=3 camera=10 visible=94 score=912 pnp_inliers=93 ratio=0.989362
+[NBV_PYRAMID] iter=3 camera=11 visible=53 score=720 pnp_inliers=48 ratio=0.90566
+[NBV_PYRAMID] iter=3 camera=12 visible=53 score=848 pnp_inliers=46 ratio=0.867925
+[NBV_PYRAMID] iter=3 camera=13 visible=36 score=636 pnp_inliers=29 ratio=0.805556
+[NBV_PYRAMID] iter=3 camera=14 visible=38 score=636 pnp_inliers=29 ratio=0.763158
+[NBV_PYRAMID] iter=3 camera=15 visible=35 score=636 pnp_inliers=29 ratio=0.828571
+[NBV_PYRAMID] iter=3 camera=16 visible=29 score=552 pnp_inliers=23 ratio=0.793103
+NBV selected camera 0 visible=82 pyramid_score=1008 pnp_inliers=80
+ADDED 1305 new points
+Using 5 over 17 cameras
+1 0 0 0 1 1 1 0 0 1 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 968 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (-0.0205636, 0.0218975, 0.011783)
+	 t_vec : (-1.43474, 0.00829309, -7.0129)
+}
+Diverged: geometry exploded (max_dist = 244.851)
+Try to look for a better seed pair
+Seed pair (2, 3): inliers E=1610 H=503
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (5, 7): inliers E=1717 H=386
+camera[5]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[7]
+{
+	 r_vec : (-0.00441776, -0.127216, -0.0494253)
+	 t_vec : (0.979787, -0.0872896, 0.179996)
+}
+W0512 21:23:04.181653 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:04.182940 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+W0512 21:23:04.189152 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+****************** OPTIM FOUND 17 OUTLIERS : redoing optim!!
+camera[7]
+{
+	 r_vec : (-0.00497921, -0.125493, -0.0503544)
+	 t_vec : (0.96904, -0.0939511, 0.187627)
+}
+[NBV_PYRAMID] iter=1 camera=0 visible=805 score=1072 pnp_inliers=784 ratio=0.973913
+[NBV_PYRAMID] iter=1 camera=1 visible=639 score=1024 pnp_inliers=602 ratio=0.942097
+[NBV_PYRAMID] iter=1 camera=2 visible=457 score=1088 pnp_inliers=426 ratio=0.932166
+[NBV_PYRAMID] iter=1 camera=3 visible=382 score=1088 pnp_inliers=339 ratio=0.887435
+[NBV_PYRAMID] iter=1 camera=4 visible=722 score=1008 pnp_inliers=702 ratio=0.972299
+[NBV_PYRAMID] iter=1 camera=6 visible=1370 score=1152 pnp_inliers=1364 ratio=0.99562
+[NBV_PYRAMID] iter=1 camera=8 visible=964 score=1152 pnp_inliers=940 ratio=0.975104
+[NBV_PYRAMID] iter=1 camera=9 visible=953 score=928 pnp_inliers=945 ratio=0.991605
+[NBV_PYRAMID] iter=1 camera=10 visible=710 score=1008 pnp_inliers=695 ratio=0.978873
+[NBV_PYRAMID] iter=1 camera=11 visible=622 score=1136 pnp_inliers=596 ratio=0.958199
+[NBV_PYRAMID] iter=1 camera=12 visible=557 score=1008 pnp_inliers=529 ratio=0.949731
+[NBV_PYRAMID] iter=1 camera=13 visible=481 score=928 pnp_inliers=446 ratio=0.927235
+[NBV_PYRAMID] iter=1 camera=14 visible=418 score=1024 pnp_inliers=382 ratio=0.913876
+[NBV_PYRAMID] iter=1 camera=15 visible=339 score=864 pnp_inliers=298 ratio=0.879056
+[NBV_PYRAMID] iter=1 camera=16 visible=314 score=944 pnp_inliers=269 ratio=0.856688
+NBV selected camera 6 visible=1370 pyramid_score=1152 pnp_inliers=1364
+ADDED 1753 new points
+Using 3 over 17 cameras
+0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 
+****************** OPTIM FOUND 24 OUTLIERS : redoing optim!!
+camera[6]
+{
+	 r_vec : (-0.00330287, -0.0595762, -0.0238042)
+	 t_vec : (0.59866, -0.0368239, 0.0466006)
+}
+[NBV_PYRAMID] iter=2 camera=0 visible=1210 score=1136 pnp_inliers=1152 ratio=0.952066
+[NBV_PYRAMID] iter=2 camera=1 visible=958 score=1024 pnp_inliers=844 ratio=0.881002
+[NBV_PYRAMID] iter=2 camera=2 visible=691 score=1088 pnp_inliers=617 ratio=0.892909
+[NBV_PYRAMID] iter=2 camera=3 visible=581 score=1072 pnp_inliers=482 ratio=0.829604
+[NBV_PYRAMID] iter=2 camera=4 visible=1101 score=1072 pnp_inliers=1049 ratio=0.95277
+[NBV_PYRAMID] iter=2 camera=8 visible=1469 score=1072 pnp_inliers=1427 ratio=0.971409
+[NBV_PYRAMID] iter=2 camera=9 visible=1451 score=1008 pnp_inliers=1425 ratio=0.982081
+[NBV_PYRAMID] iter=2 camera=10 visible=1063 score=992 pnp_inliers=1025 ratio=0.964252
+[NBV_PYRAMID] iter=2 camera=11 visible=917 score=1056 pnp_inliers=861 ratio=0.938931
+[NBV_PYRAMID] iter=2 camera=12 visible=842 score=1008 pnp_inliers=776 ratio=0.921615
+[NBV_PYRAMID] iter=2 camera=13 visible=734 score=928 pnp_inliers=656 ratio=0.893733
+[NBV_PYRAMID] iter=2 camera=14 visible=624 score=1008 pnp_inliers=542 ratio=0.86859
+[NBV_PYRAMID] iter=2 camera=15 visible=512 score=1008 pnp_inliers=438 ratio=0.855469
+[NBV_PYRAMID] iter=2 camera=16 visible=491 score=1008 pnp_inliers=392 ratio=0.798371
+NBV selected camera 0 visible=1210 pyramid_score=1136 pnp_inliers=1152
+ADDED 0 new points
+Using 4 over 17 cameras
+1 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 1210 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (4.94914, 21.2739, 34.2359)
+	 t_vec : (155.43, 32.1452, -2417.5)
+}
+Diverged: geometry exploded (max_dist = 12114.4)
+Try to look for a better seed pair
+Seed pair (4, 10): inliers E=1480 H=676
+Forward-dominant motion detected, rejecting.
+Try to look for a better seed pair
+Seed pair (1, 13): inliers E=1514 H=563
+camera[1]
+{
+	 r_vec : (0, 0, 0)
+	 t_vec : (0, 0, 0)
+}
+camera[13]
+{
+	 r_vec : (-0.0267096, 0.0878428, 0.00285035)
+	 t_vec : (-0.678983, -0.453513, 0.577329)
+}
+camera[13]
+{
+	 r_vec : (-0.0151897, 0.0701859, 0.00849408)
+	 t_vec : (-0.579124, -0.378712, 0.582579)
+}
+[NBV_PYRAMID] iter=1 camera=0 visible=990 score=1200 pnp_inliers=986 ratio=0.99596
+[NBV_PYRAMID] iter=1 camera=2 visible=900 score=1216 pnp_inliers=883 ratio=0.981111
+[NBV_PYRAMID] iter=1 camera=3 visible=763 score=1280 pnp_inliers=723 ratio=0.947575
+[NBV_PYRAMID] iter=1 camera=4 visible=951 score=1200 pnp_inliers=942 ratio=0.990536
+[NBV_PYRAMID] iter=1 camera=5 visible=611 score=1088 pnp_inliers=560 ratio=0.91653
+[NBV_PYRAMID] iter=1 camera=6 visible=514 score=860 pnp_inliers=476 ratio=0.92607
+[NBV_PYRAMID] iter=1 camera=7 visible=475 score=864 pnp_inliers=398 ratio=0.837895
+[NBV_PYRAMID] iter=1 camera=8 visible=398 score=800 pnp_inliers=305 ratio=0.766332
+[NBV_PYRAMID] iter=1 camera=9 visible=719 score=928 pnp_inliers=695 ratio=0.96662
+[NBV_PYRAMID] iter=1 camera=10 visible=756 score=1120 pnp_inliers=741 ratio=0.980159
+[NBV_PYRAMID] iter=1 camera=11 visible=897 score=1056 pnp_inliers=887 ratio=0.988852
+[NBV_PYRAMID] iter=1 camera=12 visible=1007 score=928 pnp_inliers=1001 ratio=0.994042
+[NBV_PYRAMID] iter=1 camera=14 visible=858 score=928 pnp_inliers=844 ratio=0.983683
+[NBV_PYRAMID] iter=1 camera=15 visible=720 score=864 pnp_inliers=700 ratio=0.972222
+[NBV_PYRAMID] iter=1 camera=16 visible=661 score=864 pnp_inliers=633 ratio=0.95764
+NBV selected camera 3 visible=763 pyramid_score=1280 pnp_inliers=723
+ADDED 1 new points
+Using 3 over 17 cameras
+0 1 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 764 points : redoing optim!!
+camera[3]
+{
+	 r_vec : (-0.998669, -0.137691, 3.04059)
+	 t_vec : (4.14221, 0.697996, -11.8489)
+}
+[NBV_PYRAMID] iter=2 camera=0 visible=414 score=1200 pnp_inliers=412 ratio=0.995169
+[NBV_PYRAMID] iter=2 camera=2 visible=248 score=1152 pnp_inliers=243 ratio=0.979839
+[NBV_PYRAMID] iter=2 camera=4 visible=405 score=1200 pnp_inliers=402 ratio=0.992593
+[NBV_PYRAMID] iter=2 camera=5 visible=237 score=944 pnp_inliers=214 ratio=0.902954
+[NBV_PYRAMID] iter=2 camera=6 visible=194 score=860 pnp_inliers=177 ratio=0.912371
+[NBV_PYRAMID] iter=2 camera=7 visible=183 score=864 pnp_inliers=156 ratio=0.852459
+[NBV_PYRAMID] iter=2 camera=8 visible=146 score=720 pnp_inliers=116 ratio=0.794521
+[NBV_PYRAMID] iter=2 camera=9 visible=284 score=928 pnp_inliers=274 ratio=0.964789
+[NBV_PYRAMID] iter=2 camera=10 visible=306 score=1040 pnp_inliers=299 ratio=0.977124
+[NBV_PYRAMID] iter=2 camera=11 visible=375 score=1056 pnp_inliers=373 ratio=0.994667
+[NBV_PYRAMID] iter=2 camera=12 visible=437 score=928 pnp_inliers=436 ratio=0.997712
+[NBV_PYRAMID] iter=2 camera=14 visible=288 score=928 pnp_inliers=282 ratio=0.979167
+[NBV_PYRAMID] iter=2 camera=15 visible=177 score=864 pnp_inliers=169 ratio=0.954802
+[NBV_PYRAMID] iter=2 camera=16 visible=148 score=864 pnp_inliers=134 ratio=0.905405
+NBV selected camera 0 visible=414 pyramid_score=1200 pnp_inliers=412
+ADDED 0 new points
+Using 4 over 17 cameras
+1 1 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 414 points : redoing optim!!
+camera[0]
+{
+	 r_vec : (-1.21799, -9.1018, 2.87897)
+	 t_vec : (-0.816523, 3.99059, -4.48095)
+}
+[NBV_PYRAMID] iter=3 camera=2 visible=91 score=1024 pnp_inliers=89 ratio=0.978022
+[NBV_PYRAMID] iter=3 camera=4 visible=85 score=944 pnp_inliers=83 ratio=0.976471
+[NBV_PYRAMID] iter=3 camera=5 visible=43 score=720 pnp_inliers=38 ratio=0.883721
+[NBV_PYRAMID] iter=3 camera=6 visible=29 score=572 pnp_inliers=24 ratio=0.827586
+[NBV_PYRAMID] iter=3 camera=7 visible=29 score=636 pnp_inliers=20 ratio=0.689655
+[NBV_PYRAMID] iter=3 camera=8 visible=24 score=656 pnp_inliers=19 ratio=0.791667
+[NBV_PYRAMID] iter=3 camera=9 visible=50 score=928 pnp_inliers=44 ratio=0.88
+[NBV_PYRAMID] iter=3 camera=10 visible=48 score=784 pnp_inliers=47 ratio=0.979167
+[NBV_PYRAMID] iter=3 camera=11 visible=93 score=992 pnp_inliers=92 ratio=0.989247
+[NBV_PYRAMID] iter=3 camera=12 visible=143 score=928 pnp_inliers=143 ratio=1
+[NBV_PYRAMID] iter=3 camera=14 visible=106 score=928 pnp_inliers=103 ratio=0.971698
+[NBV_PYRAMID] iter=3 camera=15 visible=65 score=864 pnp_inliers=61 ratio=0.938462
+[NBV_PYRAMID] iter=3 camera=16 visible=54 score=716 pnp_inliers=51 ratio=0.944444
+NBV selected camera 2 visible=91 pyramid_score=1024 pnp_inliers=89
+ADDED 1167 new points
+Using 5 over 17 cameras
+1 1 1 1 0 0 0 0 0 0 0 0 0 1 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 838 points : redoing optim!!
+camera[2]
+{
+	 r_vec : (-0.0053785, 0.0966781, 0.013719)
+	 t_vec : (-1.0091, -0.0782803, 0.00451893)
+}
+[NBV_PYRAMID] iter=4 camera=4 visible=135 score=1072 pnp_inliers=130 ratio=0.962963
+[NBV_PYRAMID] iter=4 camera=5 visible=80 score=784 pnp_inliers=61 ratio=0.7625
+[NBV_PYRAMID] iter=4 camera=6 visible=58 score=636 pnp_inliers=44 ratio=0.758621
+[NBV_PYRAMID] iter=4 camera=7 visible=57 score=636 pnp_inliers=37 ratio=0.649123
+[NBV_PYRAMID] iter=4 camera=8 visible=51 score=720 pnp_inliers=32 ratio=0.627451
+[NBV_PYRAMID] iter=4 camera=9 visible=81 score=928 pnp_inliers=69 ratio=0.851852
+[NBV_PYRAMID] iter=4 camera=10 visible=86 score=928 pnp_inliers=79 ratio=0.918605
+[NBV_PYRAMID] iter=4 camera=11 visible=145 score=1056 pnp_inliers=142 ratio=0.97931
+[NBV_PYRAMID] iter=4 camera=12 visible=207 score=928 pnp_inliers=204 ratio=0.985507
+[NBV_PYRAMID] iter=4 camera=14 visible=234 score=928 pnp_inliers=230 ratio=0.982906
+[NBV_PYRAMID] iter=4 camera=15 visible=141 score=928 pnp_inliers=135 ratio=0.957447
+[NBV_PYRAMID] iter=4 camera=16 visible=121 score=800 pnp_inliers=116 ratio=0.958678
+NBV selected camera 4 visible=135 pyramid_score=1072 pnp_inliers=130
+ADDED 934 new points
+Using 6 over 17 cameras
+1 1 1 1 1 0 0 0 0 0 0 0 0 1 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 654 points : redoing optim!!
+camera[4]
+{
+	 r_vec : (-0.0130743, 0.0378287, -0.00193526)
+	 t_vec : (0.269788, -0.161246, 0.187922)
+}
+[NBV_PYRAMID] iter=5 camera=5 visible=134 score=944 pnp_inliers=113 ratio=0.843284
+[NBV_PYRAMID] iter=5 camera=6 visible=100 score=780 pnp_inliers=88 ratio=0.88
+[NBV_PYRAMID] iter=5 camera=7 visible=95 score=700 pnp_inliers=68 ratio=0.715789
+[NBV_PYRAMID] iter=5 camera=8 visible=84 score=720 pnp_inliers=62 ratio=0.738095
+[NBV_PYRAMID] iter=5 camera=9 visible=140 score=928 pnp_inliers=127 ratio=0.907143
+[NBV_PYRAMID] iter=5 camera=10 visible=152 score=992 pnp_inliers=147 ratio=0.967105
+[NBV_PYRAMID] iter=5 camera=11 visible=259 score=1136 pnp_inliers=256 ratio=0.988417
+[NBV_PYRAMID] iter=5 camera=12 visible=293 score=1008 pnp_inliers=289 ratio=0.986348
+[NBV_PYRAMID] iter=5 camera=14 visible=278 score=1008 pnp_inliers=272 ratio=0.978417
+[NBV_PYRAMID] iter=5 camera=15 visible=176 score=1008 pnp_inliers=166 ratio=0.943182
+[NBV_PYRAMID] iter=5 camera=16 visible=150 score=800 pnp_inliers=136 ratio=0.906667
+NBV selected camera 11 visible=259 pyramid_score=1136 pnp_inliers=256
+ADDED 857 new points
+Using 7 over 17 cameras
+1 1 1 1 1 0 0 0 0 0 0 1 0 1 0 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 515 points : redoing optim!!
+camera[11]
+{
+	 r_vec : (-0.00740572, 0.0184579, -0.00595107)
+	 t_vec : (0.19575, -0.360528, 0.821804)
+}
+[NBV_PYRAMID] iter=6 camera=5 visible=181 score=1088 pnp_inliers=155 ratio=0.856354
+[NBV_PYRAMID] iter=6 camera=6 visible=139 score=780 pnp_inliers=112 ratio=0.805755
+[NBV_PYRAMID] iter=6 camera=7 visible=139 score=700 pnp_inliers=98 ratio=0.705036
+[NBV_PYRAMID] iter=6 camera=8 visible=119 score=720 pnp_inliers=85 ratio=0.714286
+[NBV_PYRAMID] iter=6 camera=9 visible=194 score=928 pnp_inliers=173 ratio=0.891753
+[NBV_PYRAMID] iter=6 camera=10 visible=237 score=1056 pnp_inliers=227 ratio=0.957806
+[NBV_PYRAMID] iter=6 camera=12 visible=400 score=1088 pnp_inliers=393 ratio=0.9825
+[NBV_PYRAMID] iter=6 camera=14 visible=304 score=1168 pnp_inliers=293 ratio=0.963816
+[NBV_PYRAMID] iter=6 camera=15 visible=199 score=1088 pnp_inliers=184 ratio=0.924623
+[NBV_PYRAMID] iter=6 camera=16 visible=174 score=864 pnp_inliers=155 ratio=0.890805
+NBV selected camera 14 visible=304 pyramid_score=1168 pnp_inliers=293
+ADDED 662 new points
+Using 8 over 17 cameras
+1 1 1 1 1 0 0 0 0 0 0 1 0 1 1 0 0 
+****************** OPTIM CHEIRALITY VIOLATION for 300 points : redoing optim!!
+****************** OPTIM FOUND 8 OUTLIERS : redoing optim!!
+camera[14]
+{
+	 r_vec : (-0.00264465, 0.137584, 0.0354983)
+	 t_vec : (-1.09389, -0.332384, 0.846871)
+}
+[NBV_PYRAMID] iter=7 camera=5 visible=196 score=1088 pnp_inliers=163 ratio=0.831633
+[NBV_PYRAMID] iter=7 camera=6 visible=157 score=944 pnp_inliers=125 ratio=0.796178
+[NBV_PYRAMID] iter=7 camera=7 visible=155 score=784 pnp_inliers=109 ratio=0.703226
+[NBV_PYRAMID] iter=7 camera=8 visible=135 score=960 pnp_inliers=93 ratio=0.688889
+[NBV_PYRAMID] iter=7 camera=9 visible=221 score=928 pnp_inliers=192 ratio=0.868778
+[NBV_PYRAMID] iter=7 camera=10 visible=262 score=1136 pnp_inliers=246 ratio=0.938931
+[NBV_PYRAMID] iter=7 camera=12 visible=439 score=1088 pnp_inliers=428 ratio=0.974943
+[NBV_PYRAMID] iter=7 camera=15 visible=281 score=1168 pnp_inliers=260 ratio=0.925267
+[NBV_PYRAMID] iter=7 camera=16 visible=235 score=1008 pnp_inliers=210 ratio=0.893617
+NBV selected camera 15 visible=281 pyramid_score=1168 pnp_inliers=260
+ADDED 0 new points
+Using 9 over 17 cameras
+1 1 1 1 1 0 0 0 0 0 0 1 0 1 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 281 points : redoing optim!!
+camera[15]
+{
+	 r_vec : (0.529788, 0.15875, -3.04906)
+	 t_vec : (2.52427, 1.14185, -15.3056)
+}
+[NBV_PYRAMID] iter=8 camera=5 visible=160 score=1088 pnp_inliers=133 ratio=0.83125
+[NBV_PYRAMID] iter=8 camera=6 visible=128 score=944 pnp_inliers=105 ratio=0.820312
+[NBV_PYRAMID] iter=8 camera=7 visible=122 score=784 pnp_inliers=88 ratio=0.721311
+[NBV_PYRAMID] iter=8 camera=8 visible=106 score=960 pnp_inliers=74 ratio=0.698113
+[NBV_PYRAMID] iter=8 camera=9 visible=166 score=928 pnp_inliers=146 ratio=0.879518
+[NBV_PYRAMID] iter=8 camera=10 visible=212 score=1136 pnp_inliers=198 ratio=0.933962
+[NBV_PYRAMID] iter=8 camera=12 visible=349 score=1088 pnp_inliers=344 ratio=0.985673
+[NBV_PYRAMID] iter=8 camera=16 visible=105 score=800 pnp_inliers=94 ratio=0.895238
+NBV selected camera 10 visible=212 pyramid_score=1136 pnp_inliers=198
+ADDED 523 new points
+Using 10 over 17 cameras
+1 1 1 1 1 0 0 0 0 0 1 1 0 1 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 313 points : redoing optim!!
+****************** OPTIM FOUND 6 OUTLIERS : redoing optim!!
+W0512 21:23:07.077620 40339 levenberg_marquardt_strategy.cc:115] Linear solver failure. Failed to compute a step: Eigen failure. Unable to perform dense Cholesky factorization.
+camera[10]
+{
+	 r_vec : (-0.00722391, 0.00809188, -0.0112923)
+	 t_vec : (0.566331, -0.357425, 0.777169)
+}
+[NBV_PYRAMID] iter=9 camera=5 visible=214 score=1152 pnp_inliers=183 ratio=0.85514
+[NBV_PYRAMID] iter=9 camera=6 visible=175 score=1008 pnp_inliers=138 ratio=0.788571
+[NBV_PYRAMID] iter=9 camera=7 visible=161 score=784 pnp_inliers=107 ratio=0.664596
+[NBV_PYRAMID] iter=9 camera=8 visible=131 score=1024 pnp_inliers=88 ratio=0.671756
+[NBV_PYRAMID] iter=9 camera=9 visible=232 score=1008 pnp_inliers=214 ratio=0.922414
+[NBV_PYRAMID] iter=9 camera=12 visible=382 score=1088 pnp_inliers=374 ratio=0.979058
+[NBV_PYRAMID] iter=9 camera=16 visible=112 score=800 pnp_inliers=96 ratio=0.857143
+NBV selected camera 5 visible=214 pyramid_score=1152 pnp_inliers=183
+ADDED 476 new points
+Using 11 over 17 cameras
+1 1 1 1 1 1 0 0 0 0 1 1 0 1 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 147 points : redoing optim!!
+****************** OPTIM FOUND 14 OUTLIERS : redoing optim!!
+camera[5]
+{
+	 r_vec : (-0.0483925, -0.0650089, -0.0264121)
+	 t_vec : (1.7562, -0.391515, 0.738552)
+}
+[NBV_PYRAMID] iter=10 camera=6 visible=347 score=1072 pnp_inliers=325 ratio=0.936599
+[NBV_PYRAMID] iter=10 camera=7 visible=299 score=944 pnp_inliers=261 ratio=0.87291
+[NBV_PYRAMID] iter=10 camera=8 visible=224 score=1232 pnp_inliers=189 ratio=0.84375
+[NBV_PYRAMID] iter=10 camera=9 visible=382 score=1088 pnp_inliers=364 ratio=0.95288
+[NBV_PYRAMID] iter=10 camera=12 visible=406 score=1088 pnp_inliers=390 ratio=0.960591
+[NBV_PYRAMID] iter=10 camera=16 visible=118 score=944 pnp_inliers=104 ratio=0.881356
+NBV selected camera 8 visible=224 pyramid_score=1232 pnp_inliers=189
+ADDED 550 new points
+Using 12 over 17 cameras
+1 1 1 1 1 1 0 0 1 0 1 1 0 1 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 57 points : redoing optim!!
+****************** OPTIM FOUND 20 OUTLIERS : redoing optim!!
+camera[8]
+{
+	 r_vec : (-0.075298, -0.297735, -0.120613)
+	 t_vec : (3.25582, -0.750886, 1.62637)
+}
+[NBV_PYRAMID] iter=11 camera=6 visible=694 score=1152 pnp_inliers=672 ratio=0.9683
+[NBV_PYRAMID] iter=11 camera=7 visible=634 score=1072 pnp_inliers=601 ratio=0.94795
+[NBV_PYRAMID] iter=11 camera=9 visible=505 score=1088 pnp_inliers=482 ratio=0.954455
+[NBV_PYRAMID] iter=11 camera=12 visible=418 score=1088 pnp_inliers=401 ratio=0.95933
+[NBV_PYRAMID] iter=11 camera=16 visible=125 score=944 pnp_inliers=108 ratio=0.864
+NBV selected camera 6 visible=694 pyramid_score=1152 pnp_inliers=672
+ADDED 1032 new points
+Using 13 over 17 cameras
+1 1 1 1 1 1 1 0 1 0 1 1 0 1 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 64 points : redoing optim!!
+****************** OPTIM FOUND 10 OUTLIERS : redoing optim!!
+camera[6]
+{
+	 r_vec : (-0.0767821, -0.166393, -0.0662067)
+	 t_vec : (2.33601, -0.548954, 1.12793)
+}
+[NBV_PYRAMID] iter=12 camera=7 visible=1153 score=1072 pnp_inliers=1124 ratio=0.974848
+[NBV_PYRAMID] iter=12 camera=9 visible=710 score=1232 pnp_inliers=687 ratio=0.967606
+[NBV_PYRAMID] iter=12 camera=12 visible=432 score=1088 pnp_inliers=411 ratio=0.951389
+[NBV_PYRAMID] iter=12 camera=16 visible=133 score=1024 pnp_inliers=113 ratio=0.849624
+NBV selected camera 9 visible=710 pyramid_score=1232 pnp_inliers=687
+ADDED 560 new points
+Using 14 over 17 cameras
+1 1 1 1 1 1 1 0 1 1 1 1 0 1 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 117 points : redoing optim!!
+****************** OPTIM FOUND 7 OUTLIERS : redoing optim!!
+camera[9]
+{
+	 r_vec : (-0.0777971, -0.136141, -0.0563852)
+	 t_vec : (1.46381, -0.626898, 1.36425)
+}
+[NBV_PYRAMID] iter=13 camera=7 visible=1203 score=1072 pnp_inliers=1176 ratio=0.977556
+[NBV_PYRAMID] iter=13 camera=12 visible=441 score=1088 pnp_inliers=420 ratio=0.952381
+[NBV_PYRAMID] iter=13 camera=16 visible=137 score=1024 pnp_inliers=118 ratio=0.861314
+NBV selected camera 12 visible=441 pyramid_score=1088 pnp_inliers=420
+ADDED 345 new points
+Using 15 over 17 cameras
+1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 98 points : redoing optim!!
+****************** OPTIM FOUND 14 OUTLIERS : redoing optim!!
+camera[12]
+{
+	 r_vec : (-0.077923, -0.0874892, -0.0418033)
+	 t_vec : (0.147946, -0.625334, 1.37436)
+}
+[NBV_PYRAMID] iter=14 camera=7 visible=1212 score=1072 pnp_inliers=1181 ratio=0.974422
+[NBV_PYRAMID] iter=14 camera=16 visible=151 score=1024 pnp_inliers=128 ratio=0.847682
+NBV selected camera 7 visible=1212 pyramid_score=1072 pnp_inliers=1181
+ADDED 751 new points
+Using 16 over 17 cameras
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 
+****************** OPTIM CHEIRALITY VIOLATION for 37 points : redoing optim!!
+****************** OPTIM FOUND 13 OUTLIERS : redoing optim!!
+camera[7]
+{
+	 r_vec : (-0.0831376, -0.230205, -0.0998529)
+	 t_vec : (2.54895, -0.664763, 1.44822)
+}
+[NBV_PYRAMID] iter=15 camera=16 visible=153 score=1024 pnp_inliers=127 ratio=0.830065
+NBV selected camera 16 visible=153 pyramid_score=1024 pnp_inliers=127
+ADDED 0 new points
+Using 17 over 17 cameras
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+****************** OPTIM CHEIRALITY VIOLATION for 153 points : redoing optim!!
+camera[16]
+{
+	 r_vec : (0.550425, 0.31462, -3.04126)
+	 t_vec : (3.10413, 1.62415, -15.1428)
+}
+===== FINAL METRICS =====
+Registered cameras  : 17 / 17  (success rate 100 %)
+Valid 3D points     : 4510
+Mean reprojection err: 0.710865 px  (focal = 1296 px)
+=========================
+Recostruction completed, exiting
