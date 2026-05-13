@@ -41,10 +41,6 @@ struct ReprojectionError
     p[1] += camera[4];
     p[2] += camera[5];
 
-    // AAAA
-    // Avoid division by zero or near-zero depth. This can happen if an invalid
-    // triangulated point accidentally reaches bundle adjustment.
-
     // Canonical camera (K = identity, no distortion): project by dividing by depth.
     T predicted_x = p[0] / p[2];
     T predicted_y = p[1] / p[2];
@@ -525,193 +521,154 @@ void BasicSfM::solve()
   //////////////////////////////////////////////////////////////////////////////////////////////
   if (use_opt1)
   {
-  struct SeedCandidate
-  {
-    int cam0 = -1;
-    int cam1 = -1;
+    struct SeedCandidate{
+        int cam0 = -1;
+        int cam1 = -1;
 
-    int common_observations = 0;
-    int essential_inliers = 0;
-    int homography_inliers = 0;
-    int pose_inliers = 0;
+        int common_observations = 0;
+        int essential_inliers = 0;
+        int homography_inliers = 0;
+        int pose_inliers = 0;
 
-    double lateral_motion = 0.0;
-    double forward_motion = 0.0;
-    double score = -1.0;
-  };
+        double lateral_motion = 0.0;
+        double forward_motion = 0.0;
+        double score = -1.0;
+    };
 
-  std::vector<SeedCandidate> seed_candidates;
+    std::vector<SeedCandidate> seed_candidates;
 
-  const double ransac_threshold = 0.001;
-  const int min_common_observations = 8;
-  const int min_pose_inliers = 8;
+    const double ransac_threshold = 0.001;
+    const int min_common_observations = 8;
+    const int min_pose_inliers = 8;
 
-  // Canonical camera: observations are already normalized.
-  cv::Mat_<double> intrinsics_matrix = cv::Mat_<double>::eye(3, 3);
+     // Canonical camera: observations are already normalized.
+    cv::Mat_<double> intrinsics_matrix = cv::Mat_<double>::eye(3, 3);
 
-  for (int r = 0; r < num_cam_poses_; r++)
-  {
-    for (int c = r + 1; c < num_cam_poses_; c++)
-    {
-      if (corr(r, c) < min_common_observations)
-        continue;
+    for (int r = 0; r < num_cam_poses_; r++) {
+        for (int c = r + 1; c < num_cam_poses_; c++) {
+          
+            if (corr(r, c) < min_common_observations)
+            continue;
 
-      std::vector<cv::Point2d> points0, points1;
-      points0.reserve(corr(r, c));
-      points1.reserve(corr(r, c));
+            std::vector<cv::Point2d> points0, points1;
+            points0.reserve(corr(r, c));
+            points1.reserve(corr(r, c));
 
-      // Collect common observations between camera r and camera c.
-      for (auto const& co_iter : cam_observation_[r])
-      {
-        const int pt_idx = co_iter.first;
+            // Collect common observations between camera r and camera c.
+            for (auto const& co_iter : cam_observation_[r]) {
+                
+                const int pt_idx = co_iter.first;
 
-        auto obs_c = cam_observation_[c].find(pt_idx);
-        if (obs_c != cam_observation_[c].end())
-        {
-          const int obs_r_idx = co_iter.second;
-          const int obs_c_idx = obs_c->second;
+                auto obs_c = cam_observation_[c].find(pt_idx);
 
-          points0.emplace_back(observations_[2 * obs_r_idx], observations_[2 * obs_r_idx + 1]);
+                if (obs_c != cam_observation_[c].end()) {
 
-          points1.emplace_back(observations_[2 * obs_c_idx], observations_[2 * obs_c_idx + 1]);
+                  const int obs_r_idx = co_iter.second;
+                  const int obs_c_idx = obs_c->second;
+
+                  points0.emplace_back(observations_[2 * obs_r_idx], observations_[2 * obs_r_idx + 1]);
+                  points1.emplace_back(observations_[2 * obs_c_idx], observations_[2 * obs_c_idx + 1]);
+                }
+            }
+
+            if (points0.size() < min_common_observations)
+                continue;
+
+            cv::Mat inlier_mask_E, inlier_mask_H;
+            cv::Mat E = cv::findEssentialMat(points0, points1, intrinsics_matrix, cv::RANSAC, 0.999, ransac_threshold, inlier_mask_E);
+
+            if (E.empty() || inlier_mask_E.empty())
+              continue;
+
+            cv::Mat H = cv::findHomography(points0, points1, cv::RANSAC, ransac_threshold, inlier_mask_H);
+
+            const int inliers_E = cv::countNonZero(inlier_mask_E);
+            const int inliers_H = (!H.empty() && !inlier_mask_H.empty()) ? cv::countNonZero(inlier_mask_H) : 0;
+
+            // If H explains the pair almost as well as E, the pair is likely planar
+            // or close to a pure rotation, so it is not ideal for SfM initialization.
+            if (inliers_E <= inliers_H)
+              continue;
+
+            cv::Mat R, t;
+            cv::Mat recover_mask = inlier_mask_E.clone();
+
+            const int pose_inliers = cv::recoverPose(E, points0, points1, intrinsics_matrix, R, t, recover_mask);
+
+            if (pose_inliers < min_pose_inliers)
+              continue;
+
+            const double tx = std::fabs(t.at<double>(0, 0));
+            const double ty = std::fabs(t.at<double>(1, 0));
+            const double tz = std::fabs(t.at<double>(2, 0));
+            const double lateral_motion = std::sqrt(tx * tx + ty * ty);
+            const double forward_motion = std::fabs(tz);
+
+            if (lateral_motion < forward_motion)
+              continue;
+
+            SeedCandidate candidate;
+            candidate.cam0 = r;
+            candidate.cam1 = c;
+            candidate.common_observations = static_cast<int>(points0.size());
+            candidate.essential_inliers = inliers_E;
+            candidate.homography_inliers = inliers_H;
+            candidate.pose_inliers = pose_inliers;
+            candidate.lateral_motion = lateral_motion;
+            candidate.forward_motion = forward_motion;      
+
+            // Score:   
+            candidate.score =
+                2.0 * static_cast<double>(pose_inliers)
+                + 2.0 * static_cast<double>(candidate.common_observations)
+                + 50.0 * static_cast<double>(inliers_E - inliers_H)
+                + 8000.0 * lateral_motion
+                - 2500.0 * forward_motion; 
+
+            seed_candidates.push_back(candidate);
         }
-      }
-
-      if (points0.size() < min_common_observations)
-        continue;
-
-      cv::Mat inlier_mask_E, inlier_mask_H;
-
-      cv::Mat E = cv::findEssentialMat(points0, points1, intrinsics_matrix, cv::RANSAC, 0.999, ransac_threshold, inlier_mask_E);
-
-      if (E.empty() || inlier_mask_E.empty())
-        continue;
-
-      cv::Mat H = cv::findHomography(points0, points1, cv::RANSAC, ransac_threshold, inlier_mask_H);
-
-      const int inliers_E = cv::countNonZero(inlier_mask_E);
-      const int inliers_H = (!H.empty() && !inlier_mask_H.empty()) ? cv::countNonZero(inlier_mask_H) : 0;
-
-      // If H explains the pair almost as well as E, the pair is likely planar
-      // or close to a pure rotation, so it is not ideal for SfM initialization.
-      if (inliers_E <= inliers_H)
-        continue;
-
-      cv::Mat R, t;
-      cv::Mat recover_mask = inlier_mask_E.clone();
-
-      const int pose_inliers = cv::recoverPose(E, points0, points1, intrinsics_matrix, R, t, recover_mask);
-
-      if (pose_inliers < min_pose_inliers)
-        continue;
-
-      const double tx = std::fabs(t.at<double>(0, 0));
-      const double ty = std::fabs(t.at<double>(1, 0));
-      const double tz = std::fabs(t.at<double>(2, 0));
-
-      const double lateral_motion = std::sqrt(tx * tx + ty * ty);
-      const double forward_motion = std::fabs(tz);
-
-      // Keep the same idea used in the basic reconstruction: a mostly forward
-      // translation gives a weak triangulation baseline.
-      if (lateral_motion < forward_motion)
-        continue;
-
-      SeedCandidate candidate;
-      candidate.cam0 = r;
-      candidate.cam1 = c;
-      candidate.common_observations = static_cast<int>(points0.size());
-      candidate.essential_inliers = inliers_E;
-      candidate.homography_inliers = inliers_H;
-      candidate.pose_inliers = pose_inliers;
-      candidate.lateral_motion = lateral_motion;
-      candidate.forward_motion = forward_motion;      
-
-     // Score:   
-      candidate.score =
-          2.0 * static_cast<double>(pose_inliers)
-        + 2.0 * static_cast<double>(candidate.common_observations)
-        + 50.0 * static_cast<double>(inliers_E - inliers_H)
-        + 8000.0 * lateral_motion
-        - 2500.0 * forward_motion; 
-
-      seed_candidates.push_back(candidate);
     }
-  }
 
-  std::sort(seed_candidates.begin(), seed_candidates.end(), [](const SeedCandidate& a, const SeedCandidate& b) {return a.score > b.score;});
+    std::sort(seed_candidates.begin(), seed_candidates.end(), [](const SeedCandidate& a, const SeedCandidate& b) {return a.score > b.score;});
 
-  if (seed_candidates.empty())
-  {
-    std::cout << "No seed pair found with the alternative seed selection, exiting" << std::endl;
+    if (seed_candidates.empty()) {
+        std::cout << "No seed pair found with the alternative seed selection, exiting" << std::endl;
+        return;
+    }
+
+    std::cout << "Alternative seed selection candidates:" << std::endl;
+    const int num_to_print = std::min<int>(10, seed_candidates.size());
+
+    for (int i = 0; i < num_to_print; i++) {
+        
+        const SeedCandidate& candidate = seed_candidates[i];
+
+        std::cout << "  rank " << i + 1
+                  << " pair (" << candidate.cam0 << ", " << candidate.cam1 << ")"
+                  << " common=" << candidate.common_observations
+                  << " E=" << candidate.essential_inliers
+                  << " H=" << candidate.homography_inliers
+                  << " pose=" << candidate.pose_inliers
+                  << " lateral=" << candidate.lateral_motion
+                  << " forward=" << candidate.forward_motion
+                  << " score=" << candidate.score << std::endl;
+    }
+
+    for (const SeedCandidate& candidate : seed_candidates) {
+        std::cout << "Trying alternative seed pair ("
+                  << candidate.cam0 << ", " << candidate.cam1 << ")"
+                  << " score=" << candidate.score << std::endl;
+
+        if (incrementalReconstruction(candidate.cam0, candidate.cam1)) {
+            std::cout << "Recostruction completed, exiting" << std::endl;
+            return;
+        }
+
+        std::cout << "Alternative seed pair failed, trying next candidate" << std::endl;
+    }
+
+    std::cout << "No valid reconstruction found with the alternative seed selection, exiting" << std::endl;
     return;
-  }
-
-  std::cout << "Alternative seed selection candidates:" << std::endl;
-  const int num_to_print = std::min<int>(10, seed_candidates.size());
-
-  for (int i = 0; i < num_to_print; i++)
-  {
-    const SeedCandidate& candidate = seed_candidates[i];
-
-    std::cout << "  rank " << i + 1
-              << " pair (" << candidate.cam0 << ", " << candidate.cam1 << ")"
-              << " common=" << candidate.common_observations
-              << " E=" << candidate.essential_inliers
-              << " H=" << candidate.homography_inliers
-              << " pose=" << candidate.pose_inliers
-              << " lateral=" << candidate.lateral_motion
-              << " forward=" << candidate.forward_motion
-              << " score=" << candidate.score << std::endl;
-  }
-
-  for (const SeedCandidate& candidate : seed_candidates)
-  {
-    std::cout << "Trying alternative seed pair ("
-              << candidate.cam0 << ", " << candidate.cam1 << ")"
-              << " score=" << candidate.score << std::endl;
-
-    if (incrementalReconstruction(candidate.cam0, candidate.cam1))
-    {
-      std::cout << "Recostruction completed, exiting" << std::endl;
-      return;
-    }
-
-    std::cout << "Alternative seed pair failed, trying next candidate" << std::endl;
-  }
-  // triang
-  for (const SeedCandidate& candidate : seed_candidates)
-  {
-    std::cout << "\n[SEED_TRY] pair=("
-            << candidate.cam0 << ", " << candidate.cam1 << ")"
-            << " score=" << candidate.score
-            << " common=" << candidate.common_observations
-            << " E=" << candidate.essential_inliers
-            << " H=" << candidate.homography_inliers
-            << " pose=" << candidate.pose_inliers
-            << " lateral=" << candidate.lateral_motion
-            << " forward=" << candidate.forward_motion
-            << std::endl;
-
-    const bool reconstruction_ok = incrementalReconstruction(candidate.cam0, candidate.cam1);
-
-    std::cout << "[SEED_RESULT] pair=("
-              << candidate.cam0 << ", " << candidate.cam1 << ")"
-              << " success=" << reconstruction_ok
-              << std::endl;
-
-    if (reconstruction_ok)
-    {
-      std::cout << "Recostruction completed, exiting" << std::endl;
-      return;
-    }
-
-    std::cout << "Alternative seed pair failed, trying next candidate" << std::endl;
-  }
-
-
-  std::cout << "No valid reconstruction found with the alternative seed selection, exiting" << std::endl;
-  return;
   }
   ////////////////////////////////////////////////////////////////////////////////////////
 }
@@ -723,8 +680,6 @@ bool BasicSfM::incrementalReconstruction( int seed_pair_idx0, int seed_pair_idx1
   // Masks used to indicate which cameras and points have been optimized so far
   cam_pose_optim_iter_.assign(num_cam_poses_, 0 );
   pts_optim_iter_.assign( num_points_, 0 );
-  //AAA
-
 
   // Init R,t between the seed pair
   cv::Mat init_r_mat, init_r_vec, init_t_vec;
@@ -983,17 +938,15 @@ for (auto const& co_iter : cam_observation_[ref_cam_pose_idx])
     int best_pnp_inliers = -1;
     new_cam_pose_idx = -1;
 
-    // Pyramid levels for the visibility score.
+    // Pyramid levels for the visibility score
     const int grid_resolutions[3] = {2, 4, 8};
 
-    // Thresholds used only to reject clearly unstable NBV candidates.
-    // We are still inside OPTIONAL 2: this is part of the candidate selection.
+    // candidate selection
     const int min_visible_for_pnp = 20;
     const int min_pnp_inliers = 15;
     const double min_pnp_inlier_ratio = 0.35;
 
-    for (int i_c = 0; i_c < num_cam_poses_; i_c++)
-    {
+    for (int i_c = 0; i_c < num_cam_poses_; i_c++) {
       if (cam_pose_optim_iter_[i_c] != 0)
       continue;
 
@@ -1001,12 +954,10 @@ for (auto const& co_iter : cam_observation_[ref_cam_pose_idx])
       std::vector<cv::Point3d> scene_pts_candidate;
       std::vector<cv::Point2d> img_pts_candidate;
 
-      // Collect already reconstructed 3D points seen by this candidate camera.
-      for (int i_p = 0; i_p < num_points_; i_p++)
-      {
-        if (pts_optim_iter_[i_p] > 0 &&
-          cam_observation_[i_c].find(i_p) != cam_observation_[i_c].end())
-        {
+      // Collect already reconstructed 3D points seen by this candidate camera
+      for (int i_p = 0; i_p < num_points_; i_p++) {
+        if (pts_optim_iter_[i_p] > 0 && cam_observation_[i_c].find(i_p) != cam_observation_[i_c].end()) {
+
           const int obs_idx = cam_observation_[i_c][i_p];
 
           const double u = observations_[2 * obs_idx];
@@ -1022,8 +973,7 @@ for (auto const& co_iter : cam_observation_[ref_cam_pose_idx])
 
       n_init_pts[i_c] = static_cast<int>(visible_observations.size());
 
-      if (n_init_pts[i_c] < min_visible_for_pnp)
-      {
+      if (n_init_pts[i_c] < min_visible_for_pnp) {
         std::cout << "[NBV_PYRAMID] iter=" << iter
                   << " camera=" << i_c
                   << " visible=" << n_init_pts[i_c]
@@ -1034,18 +984,15 @@ for (auto const& co_iter : cam_observation_[ref_cam_pose_idx])
 
       double pyramid_score = 0.0;
 
-      for (int i_res = 0; i_res < 3; i_res++)
-      {
+      for (int i_res = 0; i_res < 3; i_res++) {
+
         const int res = grid_resolutions[i_res];
         std::vector<unsigned char> occupied(res * res, 0);
 
-        for (const cv::Point2d& p : visible_observations)
-        {
-          int col = static_cast<int>(
-              std::floor((p.x - obs_min_x) / obs_range_x * static_cast<double>(res)));
+        for (const cv::Point2d& p : visible_observations) {
 
-          int row = static_cast<int>(
-              std::floor((p.y - obs_min_y) / obs_range_y * static_cast<double>(res)));
+          int col = static_cast<int>(std::floor((p.x - obs_min_x) / obs_range_x * static_cast<double>(res)));
+          int row = static_cast<int>(std::floor((p.y - obs_min_y) / obs_range_y * static_cast<double>(res)));
 
           col = std::max(0, std::min(res - 1, col));
           row = std::max(0, std::min(res - 1, row));
@@ -1054,8 +1001,7 @@ for (auto const& co_iter : cam_observation_[ref_cam_pose_idx])
         }
 
         int occupied_cells = 0;
-        for (int i_cell = 0; i_cell < res * res; i_cell++)
-        {
+        for (int i_cell = 0; i_cell < res * res; i_cell++) {
           if (occupied[i_cell])
             occupied_cells++;
         }
@@ -1066,8 +1012,7 @@ for (auto const& co_iter : cam_observation_[ref_cam_pose_idx])
 
       nbv_score[i_c] = pyramid_score;
 
-      // Validate the candidate with PnP, but still as part of the NBV selection.
-      // We do not modify the PnP block below, which is outside the allowed area.
+      // Validate the candidate with PnP
       cv::Mat candidate_r_vec, candidate_t_vec;
       std::vector<int> pnp_inliers;
 
@@ -1088,14 +1033,9 @@ for (auto const& co_iter : cam_observation_[ref_cam_pose_idx])
       );
 
       const int n_pnp_inliers = static_cast<int>(pnp_inliers.size());
-      const double pnp_inlier_ratio =
-          static_cast<double>(n_pnp_inliers) /
-          static_cast<double>(std::max(1, n_init_pts[i_c]));
+      const double pnp_inlier_ratio = static_cast<double>(n_pnp_inliers) / static_cast<double>(std::max(1, n_init_pts[i_c]));
 
-      if (!pnp_ok ||
-          n_pnp_inliers < min_pnp_inliers ||
-          pnp_inlier_ratio < min_pnp_inlier_ratio)
-      {
+      if (!pnp_ok || n_pnp_inliers < min_pnp_inliers || pnp_inlier_ratio < min_pnp_inlier_ratio) {
         std::cout << "[NBV_PYRAMID] iter=" << iter
                   << " camera=" << i_c
                   << " visible=" << n_init_pts[i_c]
@@ -1115,23 +1055,18 @@ for (auto const& co_iter : cam_observation_[ref_cam_pose_idx])
                 << " ratio=" << pnp_inlier_ratio
                 << std::endl;
 
-      // Main criterion: pyramid visibility score.
-      // Tie-breakers: more PnP inliers, then more visible points.
-      if (nbv_score[i_c] > best_nbv_score ||
-          (nbv_score[i_c] == best_nbv_score && n_pnp_inliers > best_pnp_inliers) ||
-          (nbv_score[i_c] == best_nbv_score &&
-          n_pnp_inliers == best_pnp_inliers &&
-          n_init_pts[i_c] > best_visible_points))
-      {
-        best_nbv_score = nbv_score[i_c];
-        best_visible_points = n_init_pts[i_c];
-        best_pnp_inliers = n_pnp_inliers;
-        new_cam_pose_idx = i_c;
+      // Main criterion: pyramid visibility score
+      // Tie-breakers: more PnP inliers, then more visible points
+      if (nbv_score[i_c] > best_nbv_score || (nbv_score[i_c] == best_nbv_score && n_pnp_inliers > best_pnp_inliers) ||
+          (nbv_score[i_c] == best_nbv_score && n_pnp_inliers == best_pnp_inliers && n_init_pts[i_c] > best_visible_points)) {
+            best_nbv_score = nbv_score[i_c];
+            best_visible_points = n_init_pts[i_c];
+            best_pnp_inliers = n_pnp_inliers;
+            new_cam_pose_idx = i_c;
       }
     }
 
-    if (new_cam_pose_idx < 0)
-    {
+    if (new_cam_pose_idx < 0) {
       std::cout << "No other positions can be optimized, exiting" << std::endl;
       return false;
     }
