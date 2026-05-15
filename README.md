@@ -28,6 +28,13 @@ The SuperGlue input variants (`data*_superglue.txt`) are produced by
 `../SuperGluePreTrainedNetwork/superglue_script.py`. They are already
 included in `matching_files/` and do not need to be regenerated to
 reproduce the report.
+If the script needs to be tested, it can be done with the following instruction
+## Running `superglue_script`
+
+```bash
+python3 superglue_script.py --images_folder <images_folder_name> --calib <path_to_the_calibration_file.yml>
+```
+To test it, it is necessary to have python installed on your device and to clone Superglue project files from its respective official github repository.
 
 ## Running `basic_sfm`
 
