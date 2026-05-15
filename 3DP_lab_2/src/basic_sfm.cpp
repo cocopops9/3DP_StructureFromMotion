@@ -434,13 +434,9 @@ void BasicSfM::printPointParams ( int idx ) const
 
 void BasicSfM::solve()
 {
-  // For each camera pose, prepare a map that reports the pairs [point index, observation index]
-  // This map is used to quickly retrieve the observation index given a 3D point index
-  // For instance, to query if the camera pose with index i_cam observed the
-  // 3D point with index i_pt, check if cam_observation_[i_cam].find( i_pt ) is not cam_observation_[i_cam].end(), i.e.,:
-  // if(cam_observation_[i_cam].find( i_pt ) != cam_observation_[i_cam].end())  { .... }
-  // In case of success, you can retrieve the observation index obs_id simply with:
-  // obs_id = cam_observation_[i_cam][i_pt]
+  /*A per-camera map from 3D point index → observation index, enabling O(1) lookup of whether a camera observed a given point and retrieval of its observation index.
+  */
+
   cam_observation_ = vector< map<int,int> > (num_cam_poses_ );
   for( int i_obs = 0; i_obs < num_observations_; i_obs++ )
   {
@@ -1291,16 +1287,15 @@ for (auto const& co_iter : cam_observation_[ref_cam_pose_idx])
     // a different seed pair.
     /////////////////////////////////////////////////////////////////////////////////////////
     
-    // Controllo 1: Esplosione della scala geometrica
-    // Visto che la baseline iniziale è 1.0, se max_dist diventa enorme, 
-    // la geometria è matematicamente esplosa (divergenza di Ceres).
+    // Check 1: Geometric scale explosion
+    // Since the initial baseline is 1.0, if max_dist becomes huge,
+    // the geometry has mathematically exploded (Ceres divergence).
     if (max_dist > 100.0) {
         std::cout << "Diverged: geometry exploded (max_dist = " << max_dist << ")" << std::endl;
         return false;
     }
 
-    // Controllo 2: Collasso dei punti
-    // Se abbiamo perso quasi tutti i punti a causa degli outlier, scartiamo.
+    /*Check 2: Point collapse, If we have lost almost all points due to outliers, we discard.*/
     int n_valid_pts = 0;
     for (int i_p = 0; i_p < num_points_; i_p++) {
         if (pts_optim_iter_[i_p] > 0) n_valid_pts++;
@@ -1311,29 +1306,10 @@ for (auto const& co_iter : cam_observation_[ref_cam_pose_idx])
         return false;
     }
 
-    // Final-iteration metrics (lab spec section 4: comparison tables).
-    // The registration loop runs for iter in [1, num_cam_poses_ - 1), so the
-    // last body execution is at iter == num_cam_poses_ - 2. We compute the
-    // three required quantities (registration success rate, reconstruction
-    // density, average reprojection error) only on that final iteration so
-    // that they reflect the converged state.
-    //
-    // The reprojection error is computed with the same projection model as
-    // the ReprojectionError functor at the top of this file: rotate the 3D
-    // point by camera[0..2] (axis-angle), translate by camera[3..5], then
-    // project by dividing x and y by z. The lab spec asks for the MEAN
-    // geometric error, which is the average over all observations of the
-    // Euclidean distance between observation and projection (not the RMS of
-    // the scalar components, which is a different number).
-    //
-    // The lab spec also asks for the result in pixels, but observations in
-    // test_data*.txt are pre-divided by the calibration matrix K (the matcher
-    // applies obs_norm = K^-1 * obs_pixel before writing the data file), so
-    // residuals come out in normalized canonical coordinates. To recover the
-    // pixel error the focal length used during matching must be supplied at
-    // runtime through the SFM_FOCAL_PX environment variable. If it is set,
-    // the pixel error is printed alongside the normalized error; otherwise
-    // only the normalized error is shown together with a reminder.
+    /*
+    The code computes three final-iteration SfM metrics (registration success rate, reconstruction density, mean reprojection error) only at the last loop step to reflect convergence. 
+    Reprojection error uses axis-angle rotation + translation + perspective projection, averaged as mean Euclidean distance per observation. 
+    Results are in normalized coordinates by default, set SFM_FOCAL_PX to also get pixel-space error.*/
     if (iter == num_cam_poses_ - 2)
     {
       int n_registered_cams = 0;
